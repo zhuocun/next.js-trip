@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/react-travel.iml" filepath="$PROJECT_DIR$/.idea/react-travel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../react-trip/.idea/react-trip.iml" filepath="$PROJECT_DIR$/../react-trip/.idea/react-trip.iml" />
     </modules>
   </component>
 </project>
