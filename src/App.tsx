@@ -1,67 +1,67 @@
 import React from 'react';
-import logo from './logo.svg';
 import styles from "./App.module.css";
-import {Layout, Typography, Input, Menu, Button, Dropdown} from "antd"
-import {GlobalOutlined} from "@ant-design/icons";
+import {Header, Footer, SideMenu, Carousel, ProductCollection} from "./components";
+import {Row, Col, Typography} from "antd";
+import {productList1, productList2, productList3} from "./mockups";
+import sideImage1 from "./assets/images/sider_2019_12-09.png";
+import sideImage2 from "./assets/images/sider_2019_02-04.png";
+import sideImage3 from "./assets/images/sider_2019_02-04-2.png";
 
 function App() {
     return (
         <div className={styles.App}>
-            <div className={styles["top-header"]}>
-                <div className={styles["inner"]}>
-                    <Typography.Text>Make travel more enjoyable</Typography.Text>
-                    <Dropdown.Button
-                        style={{marginLeft: 15}}
-                        overlay={
-                            <Menu items={[
-                                {key: "1", label: "English"}, {key: "2", label: "中文"}
-                            ]}/>
-                        }
-                        icon={<GlobalOutlined />}
-                    >
-                    Language
-                    </Dropdown.Button>
-                    <Button.Group className={styles["button-group"]}>
-                        <Button>Register</Button>
-                        <Button>Login</Button>
-                    </Button.Group>
+            <Header />
+                <div className={styles["page-content"]}>
+                    <Row style={{marginTop: 20}}>
+                        <Col span={6}>
+                            <SideMenu />
+                        </Col>
+
+                        <Col span={18}>
+                            <Carousel />
+                        </Col>
+                    </Row>
+
+                    <ProductCollection
+                        title={
+                            <Typography.Title
+                                level={3}
+                                type={"warning"}
+                            >
+                                Recommendation
+                            </Typography.Title>}
+                        sideImage={sideImage1}
+                        products={productList1}
+                    />
+
+                    <ProductCollection
+                        title={
+                            <Typography.Title
+                                level={3}
+                                type={"danger"}
+                            >
+                                New
+                            </Typography.Title>}
+                        sideImage={sideImage2}
+                        products={productList2}
+                    />
+
+                    <ProductCollection
+                        title={
+                            <Typography.Title
+                                level={3}
+                                type={"success"}
+                            >
+                                Domestic
+                            </Typography.Title>}
+                        sideImage={sideImage3}
+                        products={productList3}
+                    />
+
                 </div>
-            </div>
-
-            <div className={styles["app-header"]}>
-                <Layout.Header className={styles["main-header"]}>
-                    <img src={logo} alt="" className={styles["App-logo"]}/>
-                        <Typography.Title className={styles.title} level={3}>React Trip</Typography.Title>
-                            <Input.Search
-                                placeholder={"Destination, attraction, etc."}
-                                className={styles["search-input"]}
-                            />
-                </Layout.Header>
-                <Menu mode={"horizontal"} className={styles["main-menu"]}
-                      items={[
-                          {key: "1", label: "React Travel"},
-                          {key: "2", label: "Weekend Trip"},
-                          {key: "3", label: "Packaged Tour"},
-                          {key: "4", label: "Daily Trip"},
-                          {key: "5", label: "Theme Tour"},
-                          {key: "6", label: "Custom Tour"},
-                          {key: "7", label: "Study Tour"},
-                          {key: "8", label: "Visa"},
-                          {key: "9", label: "Insurance"},
-                      ]}>
-
-                </Menu>
-            </div>
-
-            <div>
-                <Layout.Footer>
-                    <Typography.Title level={3} style={{textAlign: "center"}}>
-                        © 2022 React Trip. All Rights Reserved.
-                    </Typography.Title>
-                </Layout.Footer>
-            </div>
-    </div>
-  );
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
