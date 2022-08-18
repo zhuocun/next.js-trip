@@ -1,7 +1,7 @@
 import {Layout, Typography} from "antd";
 import React from "react";
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
     return (
         <div>
             <Layout.Footer>

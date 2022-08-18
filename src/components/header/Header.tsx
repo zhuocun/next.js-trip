@@ -4,21 +4,19 @@ import logo from "../../assets/logo.svg"
 import {Layout, Typography, Input, Menu, Button, Dropdown} from "antd"
 import {GlobalOutlined} from "@ant-design/icons";
 
-export const Header = () => {
+export const Header: React.FC = () => {
     return (
         <div>
+            {/* top header */}
             <div className={styles["top-header"]}>
                 <div className={styles["inner"]}>
                     <Typography.Text>Make travel more enjoyable</Typography.Text>
                     <Dropdown.Button
                         style={{marginLeft: 15}}
                         overlay={
-                            <Menu
-                                items={[
-                                    {key: "1", label: "English"},
-                                    {key: "2", label: "中文"}
-                                ]}
-                            />
+                            <Menu items={[
+                                {key: "1", label: "English"},
+                                {key: "2", label: "中文"}]}/>
                         }
                         icon={<GlobalOutlined />}
                     >
@@ -45,9 +43,9 @@ export const Header = () => {
                           {key: "1", label: "React Trip"},
                           {key: "2", label: "Weekend Trip"},
                           {key: "3", label: "Daily Trip"},
-                          {key: "4", label: "Trip Packages"},
-                          {key: "5", label: "Theme Tour"},
-                          {key: "6", label: "Custom Tour"},
+                          {key: "4", label: "Packages"},
+                          {key: "5", label: "Theme"},
+                          {key: "6", label: "Custom"},
                           {key: "7", label: "Study Tour"},
                           {key: "8", label: "Visa"},
                           {key: "9", label: "Insurance"},

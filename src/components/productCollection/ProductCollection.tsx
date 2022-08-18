@@ -33,7 +33,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                             <Col span={12} >
                                 <ProductImage
                                     id={products[1].id}
-                                    size={"large"}
+                                    size={"small"}
                                     title={products[1].title}
                                     imageSrc={products[1].touristRoutePictures[0].url}
                                     price={products[1].price}

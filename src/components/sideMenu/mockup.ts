@@ -1,23 +1,23 @@
 export const sideMenuList = [
     {
-        title: "Theme Tour",
+        title: "Theme",
         subMenu: [
             {
-                title: "With parents",
+                title: "parents",
                 subMenu: ["祈福拜佛", "古镇游玩", "桂林山水", "红色之旅"],
             },
             {
-                title: "With kids",
+                title: "Kids",
                 subMenu: ["上海迪士尼", "探险体验", "海洋公园", "感受名校"],
             },
             {
-                title: "Romantic Trip",
+                title: "Romantic",
                 subMenu: ["浪漫海岛", "豪华酒店", "购物血拼", "全球婚礼"],
             },
         ],
     },
     {
-        title: "Near your place",
+        title: "Nearby",
         subMenu: [
             {
                 title: "周边目的地",
