@@ -13,4 +13,4 @@ export const Carousel: React.FC = () => {
             <Image src={carouselImage3} />
         </AntCarousel>
     )
-}
+};

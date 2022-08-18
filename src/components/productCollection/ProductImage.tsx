@@ -1,5 +1,6 @@
 import React from "react"
 import {Image, Typography} from "antd";
+import{Link} from "react-router-dom";
 
 interface PropsType {
     id: string | number;
@@ -10,9 +11,9 @@ interface PropsType {
 }
 
 export const ProductImage: React.FC<PropsType> =
-    ({size, imageSrc, price, title}) => {
+    ({id, size, imageSrc, price, title}) => {
     return (
-        <div>
+        <Link to={`./detail/${id}`}>
             {size === "large" ?
                 (<Image src={imageSrc} height={285} width={488} />) :
                 (<Image src={imageSrc} height={120} width={240} />)
@@ -26,6 +27,6 @@ export const ProductImage: React.FC<PropsType> =
                     from ${price}
                 </Typography.Text>
             </div>
-        </div>
+        </Link>
     )
-}
+};

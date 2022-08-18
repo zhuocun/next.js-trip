@@ -67,8 +67,10 @@
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
 .button {
     float: right;
     margin-top: 17px;
-    width: 150px;
+    width: 80px;
+    margin-right: 5px;
 }

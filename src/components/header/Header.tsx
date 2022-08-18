@@ -2,9 +2,13 @@ import React from "react"
 import styles from "./Header.module.css"
 import logo from "../../assets/logo.svg"
 import {Layout, Typography, Input, Menu, Button} from "antd"
-import {UserOutlined} from "@ant-design/icons";
+import {useParams, useLocation, useNavigate} from "react-router-dom";
 
 export const Header: React.FC = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const params = useParams();
+
     return (
         <div>
             {/* app header */}
@@ -21,12 +25,24 @@ export const Header: React.FC = () => {
                         <Button
                             type="default"
                             shape="round"
-                            icon={<UserOutlined />}
                             size="middle"
                             className={styles.button}
+                            onClick={() => navigate("/login")}
                         >
-                            My Trips
+                            Login
                         </Button>
+
+                        <Button
+                            type="default"
+                            shape="round"
+                            size="middle"
+                            className={styles.button}
+                            onClick={() => navigate("/signup")}
+                        >
+                            Sign up
+                        </Button>
+
+
                     </div>
                 </Layout.Header>
                 {/* main menu */}
@@ -51,4 +67,4 @@ export const Header: React.FC = () => {
             </div>
         </div>
     )
-}
+};

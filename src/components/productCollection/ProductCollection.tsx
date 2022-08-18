@@ -114,4 +114,4 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
             </Row>
         </div>
     )
-}
+};
