@@ -3,3 +3,10 @@
   padding: 20px;
   background-color: white;
 }
+
+.img {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

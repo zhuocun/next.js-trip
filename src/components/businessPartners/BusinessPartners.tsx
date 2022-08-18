@@ -8,10 +8,10 @@ import image3 from "../../assets/images/follow-826033_640.png";
 import image4 from "../../assets/images/facebook-807588_640.png";
 
 const companies = [
-    { src: image1, title: "Microsoft"},
-    { src: image2, title: "Youtube"},
-    { src: image3, title: "Ins"},
-    { src: image4, title: "Facebook"}
+    {src: image1, title: "Microsoft"},
+    {src: image2, title: "Youtube"},
+    {src: image3, title: "Ins"},
+    {src: image4, title: "Facebook"}
 ]
 
 export const BusinessPartners: React.FC = () => {
@@ -23,17 +23,8 @@ export const BusinessPartners: React.FC = () => {
             <Row>
                 {companies.map((c, index) => (
                     <Col span={6} key={"business-partner-" + index}>
-                        <img
-                            alt="business-partner"
-                            src={c.src}
-                            style={{
-                                width: "80%",
-                                display: "block",
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                            }}
-                        />
-                  </Col>
+                        <img src={c.src} alt="business-partner" className="img"/>
+                    </Col>
                 ))}
             </Row>
         </div>

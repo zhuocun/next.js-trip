@@ -14,7 +14,7 @@ export const ProductImage: React.FC<PropsType> =
     return (
         <div>
             {size === "large" ?
-                (<Image src={imageSrc} height={285} width={490} />) :
+                (<Image src={imageSrc} height={285} width={488} />) :
                 (<Image src={imageSrc} height={120} width={240} />)
             }
             <div>

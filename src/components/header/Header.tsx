@@ -1,56 +1,53 @@
 import React from "react"
 import styles from "./Header.module.css"
 import logo from "../../assets/logo.svg"
-import {Layout, Typography, Input, Menu, Button, Dropdown} from "antd"
-import {GlobalOutlined} from "@ant-design/icons";
+import {Layout, Typography, Input, Menu, Button} from "antd"
+import {UserOutlined} from "@ant-design/icons";
 
 export const Header: React.FC = () => {
     return (
         <div>
-            {/* top header */}
-            <div className={styles["top-header"]}>
-                <div className={styles["inner"]}>
-                    <Typography.Text>Make travel more enjoyable</Typography.Text>
-                    <Dropdown.Button
-                        style={{marginLeft: 15}}
-                        overlay={
-                            <Menu items={[
-                                {key: "1", label: "English"},
-                                {key: "2", label: "中文"}]}/>
-                        }
-                        icon={<GlobalOutlined />}
-                    >
-                        Language
-                    </Dropdown.Button>
-                    <Button.Group className={styles["button-group"]}>
-                        <Button>Register</Button>
-                        <Button>Login</Button>
-                    </Button.Group>
-                </div>
-            </div>
-
+            {/* app header */}
             <div className={styles["app-header"]}>
+                {/* main header */}
                 <Layout.Header className={styles["main-header"]}>
-                    <img src={logo} alt="" className={styles["App-logo"]}/>
-                    <Typography.Title className={styles.title} level={3}>React Trip</Typography.Title>
-                    <Input.Search
-                        placeholder={"Destination, attraction, etc."}
-                        className={styles["search-input"]}
-                    />
+                    <div className={styles.inner}>
+                        <img src={logo} alt="logo" className={styles["App-logo"]}/>
+                        <Typography.Title level={3} className={styles.title}>React Trip</Typography.Title>
+                        <Input.Search
+                            placeholder={"Destination, attraction, etc."}
+                            className={styles["search-input"]}
+                        />
+                        <Button
+                            type="default"
+                            shape="round"
+                            icon={<UserOutlined />}
+                            size="middle"
+                            className={styles.button}
+                        >
+                            My Trips
+                        </Button>
+                    </div>
                 </Layout.Header>
-                <Menu mode={"horizontal"} className={styles["main-menu"]}
-                      items={[
-                          {key: "1", label: "React Trip"},
-                          {key: "2", label: "Weekend Trip"},
-                          {key: "3", label: "Daily Trip"},
-                          {key: "4", label: "Packages"},
-                          {key: "5", label: "Theme"},
-                          {key: "6", label: "Custom"},
-                          {key: "7", label: "Study Tour"},
-                          {key: "8", label: "Visa"},
-                          {key: "9", label: "Insurance"},
-                      ]}
-                />
+                {/* main menu */}
+                <div className={styles["main-menu"]}>
+                    <Menu
+                        mode={"horizontal"}
+                        className={styles["main-menu-inner"]}
+                        items={[
+                              {key: "1", label: "Home"},
+                              {key: "2", label: "Weekend Trips"},
+                              {key: "3", label: "Day Trips"},
+                              {key: "4", label: "Trip Packages"},
+                              {key: "5", label: "Theme Tours"},
+                              {key: "6", label: "Luxury Tours"},
+                              {key: "7", label: "Study Tours"},
+                              {key: "8", label: "Special Occasions"},
+                              {key: "9", label: "Visa"},
+                              {key: "10", label: "Insurance"},
+                          ]}
+                    />
+                </div>
             </div>
         </div>
     )

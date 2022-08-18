@@ -6,19 +6,18 @@ import {Menu} from "antd";
 
 export const SideMenu: React.FC = () => {
     return (
-        <Menu mode={"vertical"}
-              className={styles["side-menu"]}
+        <Menu mode={"vertical"} className={styles["side-menu"]}
               items={sideMenuList.map((m) => ({
+                  key: m.title,
                   label: m.title,
                   icon: <GifOutlined />,
-                  key: m.title,
                   children: m.subMenu.map((sm) => ({
-                      label: sm.title,
                       key: sm.title,
+                      label: sm.title,
                       icon: <GifOutlined />,
                       children: sm.subMenu.map((sms) => ({
-                          label: sms,
                           key: sms,
+                          label: sms,
                           icon: <GifOutlined />
                       }))
                   }))
