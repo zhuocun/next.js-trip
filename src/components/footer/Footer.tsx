@@ -1,40 +1,28 @@
 import {Dropdown, Layout, Menu, Typography} from "antd";
-import React, {useState} from "react";
+import React from "react";
 import {UpOutlined} from "@ant-design/icons";
 import styles from "./Footer.module.css";
-import store from "../../redux/store";
-import {LanguageState} from "../../redux/language/languageReducer";
 import {useTranslation} from "react-i18next";
+import {useReduxSelector} from "../../redux/hooks";
+import {useDispatch} from "react-redux";
 import {
-    SWITCH_LANGUAGE,
-    ADD_LANGUAGE,
     addLanguageActionCreator,
     switchLanguageActionCreator
 } from "../../redux/language/languageActions";
 
-interface State extends LanguageState {}
 
 export const Footer: React.FC = () => {
-    const [language, setLanguage] = useState(store.getState().language);
-    const [languageList, setLanguageList] = useState(store.getState().languageList);
+    const language = useReduxSelector((state) => state.language.language);
+    const languageList = useReduxSelector((state) => state.language.languageList);
+    const dispatch = useDispatch();
     const {t} = useTranslation();
 
-    // get data from store to display it
-    const storeUpdateHandler = () => {
-        setLanguage(store.getState().language);
-        setLanguageList(store.getState().languageList);
-    };
-
-    store.subscribe(storeUpdateHandler);
-
     const menuClickHandler = (e) => {
-        let action;
         if (e.key === "add-lang") {
-            action = addLanguageActionCreator("new_lang", "New Language");
+            dispatch(addLanguageActionCreator("new_lang", "New language"));
         } else {
-            action = switchLanguageActionCreator(e.key);
+            dispatch(switchLanguageActionCreator(e.key));
         }
-        store.dispatch(action);
     };
 
     return (

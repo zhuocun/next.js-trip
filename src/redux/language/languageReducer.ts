@@ -14,10 +14,10 @@ const defaultState: LanguageState = {
     ]
 };
 
-export default (state = defaultState, action: LanguageActionTypes) => {
+export const languageReducer = (state = defaultState, action: LanguageActionTypes) => {
     switch (action.type) {
         case SWITCH_LANGUAGE:
-            i18n.changeLanguage(action.payload);
+            i18n.changeLanguage(action.payload).then();
             return {...state, language: action.payload};
         case ADD_LANGUAGE:
             return {...state, languageList: [...state.languageList, action.payload]};
@@ -25,3 +25,5 @@ export default (state = defaultState, action: LanguageActionTypes) => {
             return state;
     }
 };
+
+export default languageReducer;
