@@ -11,7 +11,7 @@ interface AddLanguageAction {
     payload: {code: string, name: string}
 }
 
-export type LanguageActionTypes = SwitchLanguageAction | AddLanguageAction;
+export type LanguageActions = SwitchLanguageAction | AddLanguageAction;
 
 export const switchLanguageActionCreator = (languageCode: "en" | "zh"): SwitchLanguageAction => {
     return {

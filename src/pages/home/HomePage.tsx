@@ -41,11 +41,13 @@ type PropsType = WithTranslation &
 class HomePageComponent extends React.Component<PropsType> {
 
     componentDidMount() {
+        // call creator
         this.props.giveMeData();
     }
 
     render(): React.ReactNode {
-        const {t, productList, loading, error} = this.props;
+        // get needed items from props - redux folder
+        const {t, loading, error, productList} = this.props;
 
         if (loading) {
             return (

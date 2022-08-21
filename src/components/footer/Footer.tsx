@@ -3,7 +3,7 @@ import React from "react";
 import {UpOutlined} from "@ant-design/icons";
 import styles from "./Footer.module.css";
 import {useTranslation} from "react-i18next";
-import {useReduxSelector} from "../../redux/hooks";
+import {useSelector} from "../../redux/hooks";
 import {useDispatch} from "react-redux";
 import {
     addLanguageActionCreator,
@@ -12,8 +12,8 @@ import {
 
 
 export const Footer: React.FC = () => {
-    const language = useReduxSelector((state) => state.language.language);
-    const languageList = useReduxSelector((state) => state.language.languageList);
+    const currentLanguage = useSelector((state) => state.language.currentLanguage);
+    const languageList = useSelector((state) => state.language.languageList);
     const dispatch = useDispatch();
     const {t} = useTranslation();
 
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
                             style={{marginLeft: 15}}
                             icon={<UpOutlined />}
                         >
-                            {language === "en" ? "English" : "简体中文"}
+                            {currentLanguage === "en" ? "English" : "简体中文"}
                         </Dropdown.Button>
                     </div>
                 </div>
