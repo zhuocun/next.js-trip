@@ -18,7 +18,7 @@ export const languageReducer = (state = defaultState, action: LanguageActions) =
     switch (action.type) {
         case SWITCH_LANGUAGE:
             i18n.changeLanguage(action.payload).then();
-            return {...state, language: action.payload};
+            return {...state, currentLanguage: action.payload};
         case ADD_LANGUAGE:
             return {...state, languageList: [...state.languageList, action.payload]};
         default:

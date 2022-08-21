@@ -50,26 +50,24 @@ export const Header: React.FC = () => {
                 </Layout.Header>
                 {/* main menu */}
                 <div className={styles["main-menu"]}>
-                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}
-                          items={[
-                              { key: "1", label: t("header.home_page") },
-                              { key: "2", label: t("header.weekend") },
-                              { key: "3", label: t("header.group") },
-                              { key: "4", label: t("header.backpack") },
-                              { key: "5", label: t("header.private") },
-                              { key: "6", label: t("header.cruise") },
-                              { key: "7", label: t("header.hotel") },
-                              { key: "8", label: t("header.local") },
-                              { key: "9", label: t("header.theme") },
-                              { key: "10", label: t("header.custom") },
-                              { key: "11", label: t("header.study") },
-                              { key: "12", label: t("header.visa") },
-                              { key: "13", label: t("header.enterprise") },
-                              { key: "14", label: t("header.high_end") },
-                              { key: "15", label: t("header.outdoor") },
-                              { key: "16", label: t("header.insurance") },
-                          ]}
-                    />
+                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}>
+                        <Menu.Item key={"1"}>{t("header.home_page")}</Menu.Item>
+                        <Menu.Item key={"2"}>{t("header.weekend")}</Menu.Item>
+                        <Menu.Item key={"3"}>{t("header.group")}</Menu.Item>
+                        <Menu.Item key={"4"}>{t("header.backpack")}</Menu.Item>
+                        <Menu.Item key={"5"}>{t("header.private")}</Menu.Item>
+                        <Menu.Item key={"6"}>{t("header.cruise")}</Menu.Item>
+                        <Menu.Item key={"7"}>{t("header.hotel")}</Menu.Item>
+                        <Menu.Item key={"8"}>{t("header.local")}</Menu.Item>
+                        <Menu.Item key={"9"}>{t("header.theme")}</Menu.Item>
+                        <Menu.Item key={"10"}>{t("header.custom")}</Menu.Item>
+                        <Menu.Item key={"11"}>{t("header.study")}</Menu.Item>
+                        <Menu.Item key={"12"}>{t("header.visa")}</Menu.Item>
+                        <Menu.Item key={"13"}>{t("header.enterprise")}</Menu.Item>
+                        <Menu.Item key={"14"}>{t("header.high_end")}</Menu.Item>
+                        <Menu.Item key={"15"}>{t("header.outdoor")}</Menu.Item>
+                        <Menu.Item key={"16"}>{t("header.insurance")}</Menu.Item>
+                    </Menu>
                 </div>
             </div>
         </div>
