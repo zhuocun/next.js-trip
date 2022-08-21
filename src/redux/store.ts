@@ -10,8 +10,10 @@ const rootReducer = combineReducers(
     }
 )
 
+// reducers are saved in store
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
+// state of the store, including everything in redux folder
 export type RootState = ReturnType<typeof store.getState>;
 
 export default store;

@@ -22,7 +22,7 @@ const mapStateToProps = (state: RootState) => {
         loading: state.recommendProducts.loading,
         error: state.recommendProducts.error,
         productList: state.recommendProducts.productList
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -37,6 +37,7 @@ type PropsType = WithTranslation &
     ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
+
 class HomePageComponent extends React.Component<PropsType> {
 
     componentDidMount() {
@@ -44,8 +45,8 @@ class HomePageComponent extends React.Component<PropsType> {
     }
 
     render(): React.ReactNode {
-        // console.log(this.props.navigate)
-        const { t, productList, loading, error } = this.props;
+        const {t, productList, loading, error} = this.props;
+
         if (loading) {
             return (
                 <Spin
@@ -60,9 +61,11 @@ class HomePageComponent extends React.Component<PropsType> {
                 />
             );
         }
+
         if (error) {
             return <div>error：{error}</div>;
         }
+
         return (
             <>
                 <Header />
