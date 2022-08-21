@@ -13,14 +13,9 @@ import sideImage2 from "../../assets/images/sider_2019_02-04.png";
 import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
 import styles from "./HomePage.module.css";
 import {withTranslation, WithTranslation} from "react-i18next";
-import axios from "axios";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
-import {
-    fetchRecommendProductFailActionCreator,
-    fetchRecommendProductStartActionCreator,
-    fetchRecommendProductSuccessActionCreator
-} from "../../redux/recommendProducts/recommendProductsAcions";
+import {giveMeDataActionCreator} from "../../redux/recommendProducts/recommendProductsActions";
 
 const mapStateToProps = (state: RootState) => {
     return {
@@ -32,17 +27,11 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchStart: () => {
-            dispatch(fetchRecommendProductStartActionCreator())
-        },
-        fetchSuccess: (data) => {
-            dispatch(fetchRecommendProductSuccessActionCreator(data))
-        },
-        fetchFail: (error) => {
-            dispatch(fetchRecommendProductFailActionCreator(error))
+        giveMeData: () => {
+            dispatch(giveMeDataActionCreator());
         }
-    }
-}
+    };
+};
 
 type PropsType = WithTranslation &
     ReturnType<typeof mapStateToProps> &
@@ -50,16 +39,8 @@ type PropsType = WithTranslation &
 
 class HomePageComponent extends React.Component<PropsType> {
 
-    async componentDidMount() {
-        this.props.fetchStart();
-        try {
-            const {data} = await axios.get(
-                "http://123.56.149.216:8080/api/productCollections"
-            );
-            this.props.fetchSuccess(data);
-        } catch (error) {
-            this.props.fetchFail(error instanceof Error ? error.message : "error");
-        }
+    componentDidMount() {
+        this.props.giveMeData();
     }
 
     render(): React.ReactNode {
@@ -80,12 +61,12 @@ class HomePageComponent extends React.Component<PropsType> {
             );
         }
         if (error) {
-            return <div>网站出错：{error}</div>;
+            return <div>error：{error}</div>;
         }
         return (
             <>
                 <Header />
-                {/* 页面内容 content */}
+                {/* content */}
                 <div className={styles["page-content"]}>
                     <Row style={{ marginTop: 20 }}>
                         <Col span={6}>

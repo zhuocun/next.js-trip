@@ -1,4 +1,4 @@
-import {RecommendProductAction} from "./recommendProductsAcions";
+import {RecommendProductAction} from "./recommendProductsActions";
 
 interface RecommendProductsState {
     productList: any[];
