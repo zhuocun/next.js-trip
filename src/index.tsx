@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import 'antd/dist/antd.min.css';
-import"./i18n/configs";
+import "./i18n/configs";
 import store from "./redux/store";
 import {Provider} from "react-redux";
 import axios from "axios";

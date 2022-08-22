@@ -11,7 +11,7 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/detail/:touristRouterId" element={<DetailPage />} />
+                    <Route path="/detail/:touristRouteId" element={<DetailPage />} />
                     <Route path="*" element={<h1>404 not found</h1>} />
                 </Routes>
             </BrowserRouter>
