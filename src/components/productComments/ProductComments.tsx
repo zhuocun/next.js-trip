@@ -27,7 +27,6 @@ export const ProductComments: React.FC<PropsType> = ({data}) => {
                     </li>
                 )
             }}
-        >
-        </List>
+        />
     )
 }

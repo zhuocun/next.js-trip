@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {Anchor, Col, Divider, Menu, Row, Spin, Typography} from "antd";
@@ -6,6 +6,9 @@ import {Header, Footer, ProductIntro, ProductComments} from "../../components";
 import styles from "./DetailPage.module.css"
 import {DatePicker} from 'antd';
 import {commentMockData} from "./mockup";
+import {productDetailSlice} from "../../redux/productDetail/slice";
+import {useSelector} from "../../redux/hooks";
+import {useDispatch} from "react-redux";
 
 type MatchParams = {
     touristRouteId: string
@@ -15,26 +18,26 @@ const {RangePicker} = DatePicker;
 
 export const DetailPage: React.FC = () => {
     const {touristRouteId} = useParams<MatchParams>();
-    const [loading, setLoading] = useState<boolean>(true);
-    const [product, setProduct] = useState<any>(null);
-    const [error, setError] = useState<string | null>(null);
+    const loading = useSelector(state => state.productDetail.loading);
+    const error = useSelector(state => state.productDetail.error);
+    const product = useSelector(state => state.productDetail.data);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
+            dispatch(productDetailSlice.actions.fetchStart());
             try {
                 const {data} = await axios.get(
                     `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
                 );
-            setProduct(data);
-            setLoading(false)
+            dispatch(productDetailSlice.actions.fetchSuccess(data));
             } catch (error) {
-                setError(error instanceof Error ? error.message : "error");
-                setLoading(false);
+                dispatch(productDetailSlice.actions.fetchFail(error instanceof Error ? error.message : "error"))
             }
         }
         fetchData().then();
-    },[touristRouteId])
+    },[dispatch, touristRouteId])
 
         if (loading) {
             return (
