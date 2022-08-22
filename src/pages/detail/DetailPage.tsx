@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react"
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import {Col, Row, Spin} from "antd";
-import {Header, Footer, ProductIntro} from "../../components";
+import {Anchor, Col, Divider, Menu, Row, Spin, Typography} from "antd";
+import {Header, Footer, ProductIntro, ProductComments} from "../../components";
 import styles from "./DetailPage.module.css"
-import { DatePicker, Space } from 'antd';
+import {DatePicker} from 'antd';
+import {commentMockData} from "./mockup";
 
 type MatchParams = {
     touristRouteId: string
@@ -58,7 +59,7 @@ export const DetailPage: React.FC = () => {
         <>
             <Header />
             <div className={styles["page-content"]}>
-                {/* 产品简介 与 日期选择 */}
+                {/* intro and data */}
                 <div className={styles["product-intro-container"]}>
                     <Row>
                         <Col span={13}>
@@ -78,16 +79,64 @@ export const DetailPage: React.FC = () => {
                         </Col>
                     </Row>
                 </div>
-                {/* 锚点菜单 */}
-                <div className={styles["product-detail-anchor"]}></div>
-                {/* 产品特色 */}
-                <div id="feature" className={styles["product-detail-container"]}></div>
-                {/* 费用 */}
-                <div id="fees" className={styles["product-detail-container"]}></div>
-                {/* 预订须知 */}
-                <div id="notes" className={styles["product-detail-container"]}></div>
-                {/* 商品评价*/}
-                <div id="comments" className={styles["product-detail-container"]}></div>
+                {/* anchor list */}
+                <Anchor className={styles["product-detail-anchor"]}>
+                    <Menu mode="horizontal">
+                        <Menu.Item key="1">
+                            <Anchor.Link href="#feature" title="Features"></Anchor.Link>
+                        </Menu.Item>
+
+                        <Menu.Item key="2">
+                            <Anchor.Link href="#fees" title="Fees"></Anchor.Link>
+                        </Menu.Item>
+
+                        <Menu.Item key="3">
+                            <Anchor.Link href="#notes" title="Notes"></Anchor.Link>
+                        </Menu.Item>
+
+                        <Menu.Item key="4">
+                            <Anchor.Link href="#comments" title="Comments"></Anchor.Link>
+                        </Menu.Item>
+                    </Menu>
+                </Anchor>
+                {/* features */}
+                <div id="feature" className={styles["product-detail-container"]}>
+                    <Divider>
+                        <Typography.Title level={3}>
+                            Features
+                        </Typography.Title>
+                    </Divider>
+                    <div dangerouslySetInnerHTML={{__html: product.features}} style={{margin: 50}} />
+                </div>
+                {/* fees */}
+                <div id="fees" className={styles["product-detail-container"]}>
+                    <Divider>
+                        <Typography.Title level={3}>
+                            Fees
+                        </Typography.Title>
+                    </Divider>
+                    <div dangerouslySetInnerHTML={{__html: product.fees}} style={{margin: 50}} />
+                </div>
+                {/* notes */}
+                <div id="notes" className={styles["product-detail-container"]}>
+                    <Divider>
+                        <Typography.Title level={3}>
+                            Notes
+                        </Typography.Title>
+                    </Divider>
+                    <div dangerouslySetInnerHTML={{__html: product.notes}} style={{margin: 50}} />
+                </div>
+                {/* comments */}
+                <div id="comments" className={styles["product-detail-container"]}>
+                    <Divider>
+                        <Typography.Title level={3}>
+                            Comments
+                        </Typography.Title>
+                    </Divider>
+                    <div style={{margin: 40}} >
+                        <ProductComments data={commentMockData} />
+                    </div>
+                </div>
             </div>
             <Footer />
         </>

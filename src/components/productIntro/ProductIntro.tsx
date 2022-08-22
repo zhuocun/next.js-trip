@@ -57,7 +57,7 @@ export const ProductIntro: React.FC<PropsType> = ({
             title: "价格",
             description: (
                 <>
-                    ¥{" "}
+                    ${" "}
                     <Typography.Text type="danger" strong>
                         {price}
                     </Typography.Text>
@@ -71,7 +71,7 @@ export const ProductIntro: React.FC<PropsType> = ({
                 <>
                     ¥ <Typography.Text delete>{price}</Typography.Text>{" "}
                     <Typography.Text type="danger" strong>
-                        ¥ {discount}
+                        $ {discount}
                     </Typography.Text>
                 </>
             ) : (
