@@ -5,6 +5,14 @@ import {productDetailSlice} from "./productDetail/slice";
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {productSearchSlice} from "./productSearch/slice";
 import {userSlice} from "./user/slice";
+import {persistStore, persistReducer} from "redux-persist";
+import storage from "redux-persist/lib/storage"
+
+const persistConfig = {
+    key: "root",
+    storage,
+    whiteList: ["user"]
+}
 
 const rootReducer = combineReducers(
     {
@@ -16,17 +24,22 @@ const rootReducer = combineReducers(
     }
 )
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 // reducers are saved in store
 const store = configureStore(
     {
-        reducer: rootReducer,
+        reducer: persistedReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
         devTools: true
     }
 );
 
+const persistor = persistStore(store);
+
 // state of the store, including everything in redux folder
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export default store;
+const stores = {store, persistor};
+export default stores;
