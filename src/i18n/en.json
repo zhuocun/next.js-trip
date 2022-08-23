@@ -19,7 +19,11 @@
         "enterprise":"Enterprise",
         "high_end":"High-end",
         "outdoor":"Outdoor",
-        "insurance":"Insurance"
+        "insurance":"Insurance",
+        "shoppingCart": "My cart",
+        "logout": "Logout",
+        "hail": "Hi ",
+        "welcome": ", welcome back!"
     },
     "footer": {
         "detail" : "© 2022 React Trip made by zhuocun. All Rights Reserved.",

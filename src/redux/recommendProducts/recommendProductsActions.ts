@@ -26,7 +26,7 @@ interface FetchRecommendProductsFailAction {
 }
 
 export type RecommendProductsActions =
-      FetchRecommendProductsStartAction
+    FetchRecommendProductsStartAction
     | FetchRecommendProductsSuccessAction
     | FetchRecommendProductsFailAction;
 
@@ -35,7 +35,7 @@ export const fetchRecommendProductStartActionCreator =
         return (
             {type: FETCH_RECOMMEND_PRODUCTS_START}
         );
-};
+    };
 
 export const fetchRecommendProductSuccessActionCreator =
     (data): FetchRecommendProductsSuccessAction => {
@@ -45,7 +45,7 @@ export const fetchRecommendProductSuccessActionCreator =
                 payload: data
             }
         );
-};
+    };
 
 export const fetchRecommendProductFailActionCreator =
     (error): FetchRecommendProductsFailAction => {
@@ -55,7 +55,7 @@ export const fetchRecommendProductFailActionCreator =
                 payload: error
             }
         );
-};
+    };
 
 /*
     1. call action creators when in the process of fetching data

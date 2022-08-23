@@ -50,7 +50,7 @@
 .search-input {
     width: 400px !important;
     line-height: 60px;
-    margin-top: 17px;
+    margin-top: 16px;
     margin-left: 25px;
 }
 
@@ -70,7 +70,12 @@
 
 .button {
     float: right;
-    margin-top: 17px;
+    margin-top: 16px;
     width: 80px;
     margin-right: 5px;
+}
+
+.hail {
+    float: right;
+    margin-right: 16px;
 }

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import styles from "./SearchPage.module.css";
 import {Header, Footer, FilterArea, ProductList} from "../../components";
 import {useLocation, useParams} from "react-router-dom";
-import {useAppDispatch, useReduxSelector} from "../../redux/hooks";
+import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
 import {searchProduct} from "../../redux/productSearch/slice";
 import {Spin} from "antd";
 
@@ -19,7 +19,7 @@ export const SearchPage: React.FC = () => {
     const pagination = useReduxSelector((state) => state.productSearch.pagination);
     const productList = useReduxSelector((state) => state.productSearch.data);
 
-    const dispatch = useAppDispatch();
+    const dispatch = useReduxDispatch();
     const location = useLocation();
 
     useEffect(() => {
@@ -55,10 +55,10 @@ export const SearchPage: React.FC = () => {
 
     return (
         <div>
-            <Header />
+            <Header/>
             <div className={styles["page-content"]}>
                 <div className={styles["product-list-container"]}>
-                    <FilterArea />
+                    <FilterArea/>
                 </div>
                 <div className={styles["product-list-container"]}>
                     <ProductList
@@ -68,7 +68,7 @@ export const SearchPage: React.FC = () => {
                     />
                 </div>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     )
 }

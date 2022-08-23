@@ -3,7 +3,7 @@ import {SWITCH_LANGUAGE, ADD_LANGUAGE, LanguageActions} from "./languageActions"
 
 export interface LanguageState {
     currentLanguage: "en" | "zh";
-    languageList: {name: string, code: string}[];
+    languageList: { name: string, code: string }[];
 }
 
 const defaultState: LanguageState = {

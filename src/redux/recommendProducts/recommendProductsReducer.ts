@@ -25,7 +25,7 @@ const defaultState: RecommendProductsState = {
  */
 export const recommendProductReducer =
     (state = defaultState, action: RecommendProductsActions) => {
-        switch(action.type) {
+        switch (action.type) {
             case "FETCH_RECOMMEND_PRODUCTS_START":
                 return {...state, loading: true};
             case "FETCH_RECOMMEND_PRODUCTS_SUCCESS":
@@ -35,6 +35,6 @@ export const recommendProductReducer =
             default:
                 return state;
         }
-};
+    };
 
 export default recommendProductReducer;

@@ -1,7 +1,11 @@
-import React from "react"
+import React from "react";
+import {AuthenticationLayout} from "../../layouts";
+import {SignupForm} from "../../components";
 
 export const Signup = () => {
     return (
-        <div></div>
+        <AuthenticationLayout>
+            <SignupForm/>
+        </AuthenticationLayout>
     )
 }

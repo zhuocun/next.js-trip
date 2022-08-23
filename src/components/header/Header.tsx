@@ -1,13 +1,45 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./Header.module.css"
 import logo from "../../assets/logo.svg"
 import {Layout, Typography, Input, Menu, Button} from "antd"
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
+import jwt_decode, {JwtPayload as DefaultJwtPayload} from "jwt-decode";
+import {userSlice} from "../../redux/user/slice";
+
+interface JwtPayload extends DefaultJwtPayload {
+    username: string;
+}
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();
     const {t} = useTranslation();
+    const dispatch = useReduxDispatch();
+
+    const jwtToken = useReduxSelector((state) => state.user.token);
+    const [username, setUsername] = useState("");
+
+    const searchHandler = (keywords) => {
+        for (let i = 0; i < keywords.length; i++) {
+            if (keywords[i] !== " ") {
+                navigate(`/search/${keywords}`);
+                break;
+            }
+        }
+    };
+
+    const onLogout = () => {
+        dispatch(userSlice.actions.logout());
+        navigate("/");
+    }
+
+    useEffect(() => {
+        if (jwtToken) {
+            const token = jwt_decode<JwtPayload>(jwtToken);
+            setUsername(token.username);
+        }
+    }, [jwtToken])
 
     return (
         <div>
@@ -23,27 +55,54 @@ export const Header: React.FC = () => {
                         <Input.Search
                             placeholder={"Destination, attraction, etc."}
                             className={styles["search-input"]}
-                            onSearch={(keyword) => navigate("/search/" + keyword)}
+                            onSearch={(keywords) => searchHandler(keywords)}
                         />
-                        <Button
-                            type="default"
-                            shape="round"
-                            size="middle"
-                            className={styles.button}
-                            onClick={() => navigate("/login")}
-                        >
-                            {t("header.login")}
-                        </Button>
+                        {jwtToken ?
+                            (<>
+                                <Button type="default"
+                                        shape="round"
+                                        size="middle"
+                                        className={styles.button}
+                                        onClick={onLogout}
+                                >
+                                    {t("header.logout")}
+                                </Button>
+                                <Button type="default"
+                                        shape="round"
+                                        size="middle"
+                                        className={styles.button}
+                                >
+                                    {t("header.shoppingCart")}
+                                </Button>
+                                <span className={styles.hail}>
+                                    {t("header.hail")}
+                                    <Typography.Text strong>{username}</Typography.Text>
+                                    {t("header.welcome")}
+                                </span>
+                            </>) : (
+                                <>
+                                    <Button
+                                        type="default"
+                                        shape="round"
+                                        size="middle"
+                                        className={styles.button}
+                                        onClick={() => navigate("/login")}
+                                    >
+                                        {t("header.login")}
+                                    </Button>
 
-                        <Button
-                            type="default"
-                            shape="round"
-                            size="middle"
-                            className={styles.button}
-                            onClick={() => navigate("/signup")}
-                        >
-                            {t("header.signup")}
-                        </Button>
+                                    <Button
+                                        type="default"
+                                        shape="round"
+                                        size="middle"
+                                        className={styles.button}
+                                        onClick={() => navigate("/signup")}
+                                    >
+                                        {t("header.signup")}
+                                    </Button>
+                                </>)
+                        }
+
 
                     </div>
                 </Layout.Header>

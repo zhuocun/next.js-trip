@@ -1,7 +1,5 @@
 import React from "react";
 import {
-    Header,
-    Footer,
     Carousel,
     SideMenu,
     ProductCollection,
@@ -11,11 +9,11 @@ import {Row, Col, Typography, Spin} from "antd";
 import sideImage from "../../assets/images/sider_2019_12-09.png";
 import sideImage2 from "../../assets/images/sider_2019_02-04.png";
 import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
-import styles from "./HomePage.module.css";
 import {withTranslation, WithTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
 import {giveMeDataActionCreator} from "../../redux/recommendProducts/recommendProductsActions";
+import {MainLayout} from "../../layouts";
 
 const mapStateToProps = (state: RootState) => {
     return {
@@ -70,15 +68,15 @@ class HomePageComponent extends React.Component<PropsType> {
 
         return (
             <>
-                <Header />
-                {/* content */}
-                <div className={styles["page-content"]}>
-                    <Row style={{ marginTop: 20 }}>
+                <MainLayout>
+                    {/* content */}
+
+                    <Row style={{marginTop: 20}}>
                         <Col span={6}>
-                            <SideMenu />
+                            <SideMenu/>
                         </Col>
                         <Col span={18}>
-                            <Carousel />
+                            <Carousel/>
                         </Col>
                     </Row>
                     <ProductCollection
@@ -108,9 +106,9 @@ class HomePageComponent extends React.Component<PropsType> {
                         sideImage={sideImage3}
                         products={productList[2].touristRoutes}
                     />
-                    <BusinessPartners />
-                </div>
-                <Footer />
+                    <BusinessPartners/>
+
+                </MainLayout>
             </>
         );
     }

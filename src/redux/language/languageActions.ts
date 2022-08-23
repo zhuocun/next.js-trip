@@ -8,7 +8,7 @@ interface SwitchLanguageAction {
 
 interface AddLanguageAction {
     type: typeof ADD_LANGUAGE,
-    payload: {code: string, name: string}
+    payload: { code: string, name: string }
 }
 
 export type LanguageActions = SwitchLanguageAction | AddLanguageAction;

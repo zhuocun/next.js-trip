@@ -1,12 +1,13 @@
 import React, {useEffect} from "react"
 import {useParams} from "react-router-dom";
 import {Anchor, Col, Divider, Menu, Row, Spin, Typography} from "antd";
-import {Header, Footer, ProductIntro, ProductComments} from "../../components";
+import {ProductIntro, ProductComments} from "../../components";
 import styles from "./DetailPage.module.css"
 import {DatePicker} from 'antd';
 import {commentMockData} from "./mockup";
 import {getProductDetail} from "../../redux/productDetail/slice";
-import {useReduxSelector, useAppDispatch} from "../../redux/hooks";
+import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
+import {MainLayout} from "../../layouts";
 
 type MatchParams = {
     touristRouteId: string
@@ -24,37 +25,36 @@ export const DetailPage: React.FC = () => {
     const error = useReduxSelector(state => state.productDetail.error);
     const product = useReduxSelector(state => state.productDetail.data);
 
-    const dispatch = useAppDispatch();
+    const dispatch = useReduxDispatch();
 
     useEffect(() => {
-        if(touristRouteId) {
+        if (touristRouteId) {
             dispatch(getProductDetail(touristRouteId))
         }
-    },[dispatch, touristRouteId])
+    }, [dispatch, touristRouteId])
 
-        if (loading) {
-            return (
-                <Spin
-                    size="large"
-                    style={{
-                        marginTop: 200,
-                        marginBottom: 200,
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        width: "100%",
-                    }}
-                />
-            );
-        }
+    if (loading) {
+        return (
+            <Spin
+                size="large"
+                style={{
+                    marginTop: 200,
+                    marginBottom: 200,
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "100%",
+                }}
+            />
+        );
+    }
 
-        if (error) {
-            return <div>error：{error}</div>;
-        }
+    if (error) {
+        return <div>error：{error}</div>;
+    }
 
     return (
         <>
-            <Header />
-            <div className={styles["page-content"]}>
+            <MainLayout>
                 <div className={styles["product-intro-container"]}>
                     <Row>
                         {/* intro */}
@@ -72,7 +72,7 @@ export const DetailPage: React.FC = () => {
                         </Col>
                         {/* date */}
                         <Col span={11}>
-                            <RangePicker open style={{ marginTop: 20 }} />
+                            <RangePicker open style={{marginTop: 20}}/>
                         </Col>
                     </Row>
                 </div>
@@ -103,7 +103,7 @@ export const DetailPage: React.FC = () => {
                             Features
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.features}} style={{margin: 50}} />
+                    <div dangerouslySetInnerHTML={{__html: product.features}} style={{margin: 50}}/>
                 </div>
                 {/* fees */}
                 <div id="fees" className={styles["product-detail-container"]}>
@@ -112,7 +112,7 @@ export const DetailPage: React.FC = () => {
                             Fees
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.fees}} style={{margin: 50}} />
+                    <div dangerouslySetInnerHTML={{__html: product.fees}} style={{margin: 50}}/>
                 </div>
                 {/* notes */}
                 <div id="notes" className={styles["product-detail-container"]}>
@@ -121,7 +121,7 @@ export const DetailPage: React.FC = () => {
                             Notes
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.notes}} style={{margin: 50}} />
+                    <div dangerouslySetInnerHTML={{__html: product.notes}} style={{margin: 50}}/>
                 </div>
                 {/* comments */}
                 <div id="comments" className={styles["product-detail-container"]}>
@@ -130,12 +130,11 @@ export const DetailPage: React.FC = () => {
                             Comments
                         </Typography.Title>
                     </Divider>
-                    <div style={{margin: 40}} >
-                        <ProductComments data={commentMockData} />
+                    <div style={{margin: 40}}>
+                        <ProductComments data={commentMockData}/>
                     </div>
                 </div>
-            </div>
-            <Footer />
+            </MainLayout>
         </>
     );
 };
