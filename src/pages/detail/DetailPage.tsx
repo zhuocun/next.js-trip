@@ -16,7 +16,10 @@ const {RangePicker} = DatePicker;
 
 
 export const DetailPage: React.FC = () => {
+    // get parameter through router
     const {touristRouteId} = useParams<MatchParams>();
+
+    // get states from Redux
     const loading = useReduxSelector(state => state.productDetail.loading);
     const error = useReduxSelector(state => state.productDetail.error);
     const product = useReduxSelector(state => state.productDetail.data);
@@ -52,9 +55,9 @@ export const DetailPage: React.FC = () => {
         <>
             <Header />
             <div className={styles["page-content"]}>
-                {/* intro and data */}
                 <div className={styles["product-intro-container"]}>
                     <Row>
+                        {/* intro */}
                         <Col span={13}>
                             <ProductIntro
                                 title={product.title}
@@ -67,16 +70,17 @@ export const DetailPage: React.FC = () => {
                                 pictures={product.touristRoutePictures.map((p) => p.url)}
                             />
                         </Col>
+                        {/* date */}
                         <Col span={11}>
                             <RangePicker open style={{ marginTop: 20 }} />
                         </Col>
                     </Row>
                 </div>
-                {/* anchor list */}
+                {/* anchor menu */}
                 <Anchor className={styles["product-detail-anchor"]}>
                     <Menu mode="horizontal">
                         <Menu.Item key="1">
-                            <Anchor.Link href="#feature" title="Features"></Anchor.Link>
+                            <Anchor.Link href="#features" title="Features"></Anchor.Link>
                         </Menu.Item>
 
                         <Menu.Item key="2">
@@ -93,7 +97,7 @@ export const DetailPage: React.FC = () => {
                     </Menu>
                 </Anchor>
                 {/* features */}
-                <div id="feature" className={styles["product-detail-container"]}>
+                <div id="features" className={styles["product-detail-container"]}>
                     <Divider>
                         <Typography.Title level={3}>
                             Features

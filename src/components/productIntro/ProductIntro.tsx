@@ -17,24 +17,24 @@ interface PropsType {
 
 const columns: ColumnsType<RowType> = [
     {
-        title: "title",
+        key: "",
+        title: "",
         dataIndex: "title",
-        key: "title",
         align: "left",
         width: "center"
     },
     {
-        title: "description",
+        key: "",
+        title: "",
         dataIndex: "description",
-        key: "description",
         align: "center"
     }
 ];
 
 interface RowType {
+    key: number;
     title: string;
     description: string | number | JSX.Element;
-    key: number;
 }
 
 export const ProductIntro: React.FC<PropsType> = ({
@@ -49,15 +49,15 @@ export const ProductIntro: React.FC<PropsType> = ({
     const tableDataSource: RowType[] = [
         {
             key: 0,
-            title: "路线名称",
+            title: "Route name",
             description: title,
         },
         {
             key: 1,
-            title: "价格",
+            title: "Price",
             description: (
                 <>
-                    ${" "}
+                    $
                     <Typography.Text type="danger" strong>
                         {price}
                     </Typography.Text>
@@ -66,31 +66,31 @@ export const ProductIntro: React.FC<PropsType> = ({
         },
         {
             key: 2,
-            title: "限时抢购折扣",
+            title: "Discount",
             description: discount ? (
                 <>
-                    ¥ <Typography.Text delete>{price}</Typography.Text>{" "}
+                    $<Typography.Text delete>{price}</Typography.Text>{" "}
                     <Typography.Text type="danger" strong>
-                        $ {discount}
+                        ${discount}
                     </Typography.Text>
                 </>
             ) : (
-                "暂无折扣"
+                "Full price"
             ),
         },
         {
-            key: 2,
-            title: "领取优惠",
-            description: coupons ? discount : "无优惠券可领",
+            key: 3,
+            title: "Get coupons",
+            description: coupons ? discount : "No coupons",
         },
         {
-            key: 2,
-            title: "线路评价",
+            key: 4,
+            title: "Ratings",
             description: (
                 <>
                     <Rate allowHalf defaultValue={+rating} />
                     <Typography.Text style={{ marginLeft: 10 }}>
-                        {rating} 星
+                        {rating} / 5
                     </Typography.Text>
                 </>
             ),
@@ -99,26 +99,32 @@ export const ProductIntro: React.FC<PropsType> = ({
 
     return (
         <div className={styles["intro-container"]}>
+            {/* product title */}
             <Typography.Title level={4}>{title}</Typography.Title>
+            {/* product short description */}
             <Typography.Text>{shortDescription}</Typography.Text>
+            {/* price */}
             <div className={styles["intro-detail-content"]}>
                 <Typography.Text style={{marginLeft: 20}}>
                     $
                     <span className={styles["intro-detail-strong-text"]}>
                         {price}
                     </span>
-                    per person
+                    {""} / person
                 </Typography.Text>
+                {/* rating */}
                 <Typography.Text style={{marginLeft: 50}}>
-                    rating:
+                    rating: {" "}
                     <span className={styles["intro-detail-strong-text"]}>
                         {rating}
                     </span>
                 </Typography.Text>
             </div>
+            {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
                 {pictures.map((p) => <Image height={150} src={p}/>)}
             </Carousel>
+            {/* product detail in table */}
             <Table<RowType>
                 columns={columns}
                 dataSource={tableDataSource}

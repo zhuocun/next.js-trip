@@ -1,5 +1,5 @@
 import React from "react";
-import {Comment, Tooltip, List} from "antd";
+import {Comment, List} from "antd";
 
 interface PropsType {
     data: {

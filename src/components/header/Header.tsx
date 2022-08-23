@@ -2,13 +2,11 @@ import React from "react"
 import styles from "./Header.module.css"
 import logo from "../../assets/logo.svg"
 import {Layout, Typography, Input, Menu, Button} from "antd"
-import {useParams, useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const params = useParams();
     const {t} = useTranslation();
 
     return (
@@ -25,6 +23,7 @@ export const Header: React.FC = () => {
                         <Input.Search
                             placeholder={"Destination, attraction, etc."}
                             className={styles["search-input"]}
+                            onSearch={(keyword) => navigate("/search/" + keyword)}
                         />
                         <Button
                             type="default"
