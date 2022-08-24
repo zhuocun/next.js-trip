@@ -20,6 +20,9 @@ export const Header: React.FC = () => {
     const jwtToken = useReduxSelector((state) => state.user.token);
     const [username, setUsername] = useState("");
 
+    const shoppingCartItems = useReduxSelector((state) => state.shoppingCart.items);
+    const shoppingCartLoading = useReduxSelector((state) => state.shoppingCart.loading);
+
     const searchHandler = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
             if (keywords[i] !== " ") {
@@ -71,8 +74,10 @@ export const Header: React.FC = () => {
                                         shape="round"
                                         size="middle"
                                         className={styles.button}
+                                        onClick={() => navigate("/shoppingCart")}
+                                        loading={shoppingCartLoading}
                                 >
-                                    {t("header.shoppingCart")}
+                                    {t("header.shoppingCart")}{shoppingCartItems.length}
                                 </Button>
                                 <span className={styles.hail}>
                                     {t("header.hail")}

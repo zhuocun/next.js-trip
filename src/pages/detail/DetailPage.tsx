@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"
 import {useParams} from "react-router-dom";
-import {Anchor, Col, Divider, Menu, Row, Spin, Typography} from "antd";
+import {Anchor, Button, Col, Divider, Menu, Row, Spin, Typography} from "antd";
 import {ProductIntro, ProductComments} from "../../components";
 import styles from "./DetailPage.module.css"
 import {DatePicker} from 'antd';
@@ -8,6 +8,8 @@ import {commentMockData} from "./mockup";
 import {getProductDetail} from "../../redux/productDetail/slice";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
 import {MainLayout} from "../../layouts";
+import {ShoppingCartOutlined} from "@ant-design/icons";
+import {addShoppingCartItem} from "../../redux/shoppingCart/slice";
 
 type MatchParams = {
     touristRouteId: string
@@ -21,11 +23,15 @@ export const DetailPage: React.FC = () => {
     const {touristRouteId} = useParams<MatchParams>();
 
     // get states from Redux
-    const loading = useReduxSelector(state => state.productDetail.loading);
-    const error = useReduxSelector(state => state.productDetail.error);
-    const product = useReduxSelector(state => state.productDetail.data);
+    const loading = useReduxSelector((state) => state.productDetail.loading);
+    const error = useReduxSelector((state) => state.productDetail.error);
+    const product = useReduxSelector((state) => state.productDetail.data);
+    const jwtToken = useReduxSelector((state) => state.user.token) as string;
+    const shoppingCartLoading = useReduxSelector((state) => state.shoppingCart.loading);
+
 
     const dispatch = useReduxDispatch();
+
 
     useEffect(() => {
         if (touristRouteId) {
@@ -74,6 +80,18 @@ export const DetailPage: React.FC = () => {
                         <Col span={11}>
                             <RangePicker open style={{marginTop: 20}}/>
                         </Col>
+                        <Button
+                            style={{marginTop: 50, marginBottom: 30, display: "block"}}
+                            type="primary"
+                            danger
+                            loading={shoppingCartLoading}
+                            onClick={() => {
+                                dispatch(addShoppingCartItem({jwtToken, touristRouteId: product.id}))
+                            }}
+                        >
+                            <ShoppingCartOutlined/>
+                            Add to cart
+                        </Button>
                     </Row>
                 </div>
                 {/* anchor menu */}
