@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
     return (
         <div>
             <Layout.Footer
-                style={{backgroundColor: "#000072"}}
+                style={{backgroundColor: "#000069"}}
                 className={styles.footer}>
                 <div className={styles.inner}>
                     <Typography.Title level={5} style={{textAlign: "center", color: "white"}}>

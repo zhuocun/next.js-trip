@@ -1,26 +1,26 @@
 export const sideMenuList = [
     {
-        title: "Theme",
+        title: "Domestic",
         subMenu: [
             {
-                title: "parents",
-                subMenu: ["祈福拜佛", "古镇游玩", "桂林山水", "红色之旅"],
+                title: "New South Wales",
+                subMenu: ["Sydney", "古镇游玩", "桂林山水", "红色之旅"],
             },
             {
-                title: "Kids",
-                subMenu: ["上海迪士尼", "探险体验", "海洋公园", "感受名校"],
+                title: "Victoria",
+                subMenu: ["Melbourne", "探险体验", "海洋公园", "感受名校"],
             },
             {
-                title: "Romantic",
-                subMenu: ["浪漫海岛", "豪华酒店", "购物血拼", "全球婚礼"],
+                title: "Queensland",
+                subMenu: ["Brisbane", "豪华酒店", "购物血拼", "全球婚礼"],
             },
         ],
     },
     {
-        title: "Nearby",
+        title: "New Zealand",
         subMenu: [
             {
-                title: "周边目的地",
+                title: "Auckland",
                 subMenu: ["新疆", "南京", "苏州", "黄山"],
             },
             {
@@ -30,19 +30,19 @@ export const sideMenuList = [
         ],
     },
     {
-        title: "Domestic",
+        title: "Asia",
         subMenu: [
             {
-                title: "广东",
-                subMenu: ["广州", "深圳", "珠海", "惠州"],
+                title: "China",
+                subMenu: ["Beijing", "Shanghai", "Shenzhen", "HongKong"],
             },
             {
-                title: "浙江",
-                subMenu: ["杭州", "普陀山", "千岛湖", "宁波"],
+                title: "Japan",
+                subMenu: ["Tokyo", "普陀山", "千岛湖", "宁波"],
             },
             {
-                title: "江苏",
-                subMenu: ["舟山", "乌镇", "干山", "湖州"],
+                title: "South Korea",
+                subMenu: ["Seoul", "乌镇", "干山", "湖州"],
             },
         ],
     },
@@ -50,11 +50,15 @@ export const sideMenuList = [
         title: "Southeast Asia",
         subMenu: [
             {
-                title: "热门目的地",
+                title: "Singapore",
                 subMenu: ["新加坡", "巴厘岛", "越南", "柬埔寨"],
             },
             {
-                title: "热门景点2",
+                title: "Malaysia",
+                subMenu: ["下龙湾", "吴哥窟", "西哈努克", "槟城珍珠岛"],
+            },
+            {
+                title: "Vietnam",
                 subMenu: ["下龙湾", "吴哥窟", "西哈努克", "槟城珍珠岛"],
             },
         ],
@@ -63,15 +67,15 @@ export const sideMenuList = [
         title: "Europe",
         subMenu: [
             {
-                title: "热门邮轮航线",
+                title: "UK",
                 subMenu: ["欧洲河轮", "北欧邮轮", "爱琴海邮轮", "英伦三岛"],
             },
             {
-                title: "热门景点3",
+                title: "France",
                 subMenu: ["贝加尔湖", "普罗旺斯", "阿尔卑斯", "圣托里尼岛"],
             },
             {
-                title: "蜜月游",
+                title: "Germany",
                 subMenu: ["极光中心", "俄罗斯远东地区", "英格兰少女峰", "玻璃海滩"],
             },
         ],

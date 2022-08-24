@@ -5,12 +5,12 @@
 }
 
 .app-header {
-    background-color: #000072 !important;
+    background-color: #000069 !important;
 
 }
 
 .main-header {
-    background-color: #000072 !important;
+    background-color: #000069 !important;
 }
 
 .App-logo {
@@ -50,7 +50,7 @@
 .main-menu-inner {
     justify-content: center;
     color: white !important;
-    background-color: #000072 !important;
+    background-color: #000069 !important;
     width: 100%;
     height: 60px !important;
 }
@@ -59,7 +59,7 @@
     float: right;
     margin-top: 32px;
     width: auto;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .hail {
