@@ -117,10 +117,7 @@ export const Header: React.FC = () => {
                                     </span>
                                 </>)
                         }
-
-
                     </div>
-
                 </Layout.Header>
                 {/* main menu */}
                 <div className={styles["main-menu"]}>
