@@ -117,31 +117,27 @@ export const Header: React.FC = () => {
                                     </span>
                                 </>)
                         }
-                        <div className={styles["main-menu"]}>
-                            <Menu mode={"horizontal"} className={styles["main-menu-inner"]}>
-                                <Menu.Item key={"1"}>{t("header.home_page")}</Menu.Item>
-                                <Menu.Item key={"2"}>{t("header.weekend")}</Menu.Item>
-                                <Menu.Item key={"3"}>{t("header.group")}</Menu.Item>
-                                <Menu.Item key={"4"}>{t("header.backpack")}</Menu.Item>
-                                <Menu.Item key={"5"}>{t("header.private")}</Menu.Item>
-                                <Menu.Item key={"6"}>{t("header.cruise")}</Menu.Item>
-                                <Menu.Item key={"7"}>{t("header.hotel")}</Menu.Item>
-                                <Menu.Item key={"8"}>{t("header.local")}</Menu.Item>
-                                <Menu.Item key={"9"}>{t("header.theme")}</Menu.Item>
-                                <Menu.Item key={"10"}>{t("header.custom")}</Menu.Item>
-                                <Menu.Item key={"11"}>{t("header.study")}</Menu.Item>
-                                <Menu.Item key={"12"}>{t("header.visa")}</Menu.Item>
-                                <Menu.Item key={"13"}>{t("header.enterprise")}</Menu.Item>
-                                <Menu.Item key={"14"}>{t("header.high_end")}</Menu.Item>
-                                <Menu.Item key={"15"}>{t("header.outdoor")}</Menu.Item>
-                                <Menu.Item key={"16"}>{t("header.insurance")}</Menu.Item>
-                            </Menu>
-                        </div>
+
+
                     </div>
 
                 </Layout.Header>
                 {/* main menu */}
-
+                <div className={styles["main-menu"]}>
+                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}>
+                        <Menu.Item key={"1"}>{t("header.home_page")}</Menu.Item>
+                        <Menu.Item key={"2"}>{t("header.stays")}</Menu.Item>
+                        <Menu.Item key={"3"}>{t("header.flights")}</Menu.Item>
+                        <Menu.Item key={"4"}>{t("header.trains")}</Menu.Item>
+                        <Menu.Item key={"5"}>{t("header.cars")}</Menu.Item>
+                        <Menu.Item key={"6"}>{t("header.tours_tickets")}</Menu.Item>
+                        <Menu.Item key={"7"}>{t("header.bundle_save")}</Menu.Item>
+                        <Menu.Item key={"8"}>{t("header.attractions")}</Menu.Item>
+                        <Menu.Item key={"9"}>{t("header.gift_cards")}</Menu.Item>
+                        <Menu.Item key={"10"}>{t("header.rewards")}</Menu.Item>
+                        <Menu.Item key={"11"}>{t("header.deals")}</Menu.Item>
+                    </Menu>
+                </div>
             </div>
         </div>
     )

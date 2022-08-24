@@ -14,7 +14,7 @@ export const LoginForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if( token !== null) {
+        if (token !== null) {
             navigate("/");
         }
     }, [navigate, token])

@@ -1,40 +1,34 @@
 {
-    "header": {
-        "slogan": "Make travel happier",
-        "title": "React Trip",
-        "signup":"Sign up",
-        "login":"Login",
-        "home_page": "Home",
-        "weekend": "Weekend",
-        "group": "Group",
-        "backpack": "Backpack",
-        "private": "Private",
-        "cruise": "Cruise",
-        "hotel": "Hotel & Attractions",
-        "local": "Local",
-        "theme": "Theme",
-        "custom": "Custom",
-        "study": "Study",
-        "visa":"Visa",
-        "enterprise":"Enterprise",
-        "high_end":"High-end",
-        "outdoor":"Outdoor",
-        "insurance":"Insurance",
-        "shoppingCart": "My cart ",
-        "logout": "Logout",
-        "welcome_without_login": "Welcome!",
-        "hail": "Hi ",
-        "welcome": ", welcome back!"
-    },
-    "footer": {
-        "detail" : "© 2022 React Trip made by zhuocun. All Rights Reserved.",
-        "add_new_language": "add new language"
-    },
-    "home_page": {
-        "hot_recommended": "Hot Recommended",
-        "new_arrival": "New arrival",
-        "domestic_travel": "Domestic travel",
-        "joint_venture": "Joint Venture",
-        "start_from": "(start from)"
-    }
+  "header": {
+    "title": "React Trip",
+    "signup": "Sign up",
+    "login": "Login",
+    "home_page": "Home",
+    "stays": "Stays",
+    "flights": "Flights",
+    "trains": "Trains",
+    "cars": "Cars",
+    "tours_tickets": "Tours & Tickets",
+    "bundle_save": "Bundle & Save",
+    "attractions": "Attractions",
+    "gift_cards": "Gift Cards",
+    "rewards": "React Trip Rewards",
+    "deals": "Weekly Deals",
+    "shoppingCart": "My cart ",
+    "logout": "Logout",
+    "welcome_without_login": "Welcome!",
+    "hail": "Hi ",
+    "welcome": ", welcome back!"
+  },
+  "footer": {
+    "detail": "© 2022 React Trip made by zhuocun. All Rights Reserved.",
+    "add_new_language": "add new language"
+  },
+  "home_page": {
+    "hot_recommended": "Hot Recommended",
+    "new_arrival": "New arrival",
+    "domestic_travel": "Domestic travel",
+    "joint_venture": "Joint Venture",
+    "start_from": "(start from)"
+  }
 }

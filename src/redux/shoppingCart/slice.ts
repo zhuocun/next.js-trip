@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface ShoppingCartState {
@@ -10,18 +10,18 @@ interface ShoppingCartState {
 const initialState: ShoppingCartState = {
     loading: true,
     error: null,
-    items: []
-}
+    items: [],
+};
 
 export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
-    async (jwtToken: string, thunkAPI) => {
+    async (jwtToken: string) => {
         const {data} = await axios.get(
             `http://123.56.149.216:8080/api/shoppingCart`,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`
-                }
+                    Authorization: `bearer ${jwtToken}`,
+                },
             }
         );
         return data.shoppingCartItems;
@@ -30,16 +30,16 @@ export const getShoppingCart = createAsyncThunk(
 
 export const addShoppingCartItem = createAsyncThunk(
     "shoppingCart/addShoppingCartItem",
-    async (parameters: { jwtToken: string, touristRouteId: string }, thunkAPI) => {
+    async (parameters: { jwtToken: string; touristRouteId: string }) => {
         const {data} = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
-                touristRouteId: parameters.touristRouteId
+                touristRouteId: parameters.touristRouteId,
             },
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`
-                }
+                    Authorization: `bearer ${parameters.jwtToken}`,
+                },
             }
         );
         return data.shoppingCartItems;
@@ -48,15 +48,14 @@ export const addShoppingCartItem = createAsyncThunk(
 
 export const checkout = createAsyncThunk(
     "shoppingCart/checkout",
-    async (jwtToken: string, thunkAPI) => {
+    async (jwtToken: string) => {
         const {data} = await axios.post(
-            `http://123.56.149.216:8080/api/shoppingCart/items`,
-            null
-            ,
+            `http://123.56.149.216:8080/api/shoppingCart/checkout`,
+            null,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`
-                }
+                    Authorization: `bearer ${jwtToken}`,
+                },
             }
         );
         return data;
@@ -65,13 +64,15 @@ export const checkout = createAsyncThunk(
 
 export const clearShoppingCartItem = createAsyncThunk(
     "shoppingCart/clearShoppingCartItem",
-    async (parameters: { jwtToken: string, itemIds: number[] }, thunkAPI) => {
+    async (parameters: { jwtToken: string; itemIds: number[] }) => {
         return await axios.delete(
-            `http://123.56.149.216:8080/api/shoppingCart/items/(${parameters.itemIds.join(",")})`,
+            `http://123.56.149.216:8080/api/shoppingCart/items/(${parameters.itemIds.join(
+                ","
+            )})`,
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`
-                }
+                    Authorization: `bearer ${parameters.jwtToken}`,
+                },
             }
         );
     }
@@ -82,58 +83,65 @@ export const shoppingCartSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        // get shopping cart
         [getShoppingCart.pending.type]: (state) => {
             state.loading = true;
         },
         [getShoppingCart.fulfilled.type]: (state, action) => {
+            state.items = action.payload;
             state.loading = false;
             state.error = null;
-            state.items = action.payload;
         },
-        [getShoppingCart.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [getShoppingCart.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         },
-        // add item to shopping cart
         [addShoppingCartItem.pending.type]: (state) => {
             state.loading = true;
         },
         [addShoppingCartItem.fulfilled.type]: (state, action) => {
+            state.items = action.payload;
             state.loading = false;
             state.error = null;
-            state.items = action.payload;
         },
-        [addShoppingCartItem.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [addShoppingCartItem.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         },
-        // clear shopping cart
         [clearShoppingCartItem.pending.type]: (state) => {
             state.loading = true;
         },
         [clearShoppingCartItem.fulfilled.type]: (state) => {
+            state.items = [];
             state.loading = false;
             state.error = null;
-            state.items = [];
         },
-        [clearShoppingCartItem.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [clearShoppingCartItem.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         },
-        // get shopping cart
         [checkout.pending.type]: (state) => {
             state.loading = true;
         },
         [checkout.fulfilled.type]: (state) => {
+            state.items = [];
             state.loading = false;
             state.error = null;
-            state.items = [];
         },
-        [checkout.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [checkout.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
-        }
-    }
+        },
+    },
 });
-

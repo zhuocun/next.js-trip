@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { Tag } from "antd";
-const { CheckableTag } = Tag;
+import React, {useState} from "react";
+import {Tag} from "antd";
+
+const {CheckableTag} = Tag;
 
 interface PropsType {
-  onSelect?: () => void;
-  children?: React.ReactNode;
+    onSelect?: () => void;
+    children?: React.ReactNode;
 }
 
 export const FilterTag: React.FC<PropsType> = (props) => {
-  const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
 
-  const handleChange = (checked) => {
-    setChecked(checked);
-  };
+    const handleChange = (checked) => {
+        setChecked(checked);
+    };
 
-  return <CheckableTag {...props} checked={checked} onChange={handleChange} />;
+    return <CheckableTag {...props} checked={checked} onChange={handleChange}/>;
 };

@@ -63,12 +63,16 @@ export const ProductList: React.FC<PropsType> = ({
             itemLayout="vertical"
             size="large"
             pagination={
-                paging ? {
-                    current: paging.currentPage,
-                    onChange: (page) => onPageChange && onPageChange(page, paging.pageSize),
-                    pageSize: paging.pageSize,
-                    total: paging.totalCount,
-                } : false}
+                paging
+                    ? {
+                        current: paging.currentPage,
+                        onChange: (page) =>
+                            onPageChange && onPageChange(page, paging.pageSize),
+                        pageSize: paging.pageSize,
+                        total: paging.totalCount,
+                    }
+                    : false
+            }
             dataSource={products}
             footer={
                 paging && (

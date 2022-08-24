@@ -20,44 +20,44 @@ export const ShoppingCartPage = () => {
             <Row>
                 <Col span={16}>
                     <div className={styles["product-list-container"]}>
-                    <ProductList
-                        data={shoppingCartItems.map((state) => state.touristRoute)}
-                    />
+                        <ProductList
+                            data={shoppingCartItems.map((state) => state.touristRoute)}
+                        />
                     </div>
                 </Col>
                 <Col span={8}>
-                <Affix>
-                    <div className={styles["payment-card-container"]}>
-                        <PaymentCard
-                            loading={loading}
-                            originalPrice={shoppingCartItems
-                                .map((state) => state.originalPrice)
-                                .reduce((a, b) => a + b, 0)}
-                            price={shoppingCartItems
-                                .map((state) =>
-                                    state.originalPrice *
-                                    (state.discountPresent ? state.discountPresent : 1))
-                                .reduce((a, b) => a + b, 0)}
-                            onCheckout={() => {
-                                if (shoppingCartItems.length < 1) {
-                                    return;
-                                } else {
-                                    dispatch(checkout(jwtToken));
-                                    navigate("/placeOrder");
-                                }
-                            }}
-                            onShoppingCartClear={() => {
-                                dispatch(
-                                    clearShoppingCartItem({
-                                        jwtToken,
-                                        itemIds: shoppingCartItems.map((state) => state.id)
-                                    })
-                                );
-                            }}
-                        />
+                    <Affix>
+                        <div className={styles["payment-card-container"]}>
+                            <PaymentCard
+                                loading={loading}
+                                originalPrice={shoppingCartItems
+                                    .map((state) => state.originalPrice)
+                                    .reduce((a, b) => a + b, 0)}
+                                price={shoppingCartItems
+                                    .map((state) =>
+                                        state.originalPrice *
+                                        (state.discountPresent ? state.discountPresent : 1))
+                                    .reduce((a, b) => a + b, 0)}
+                                onCheckout={() => {
+                                    if (shoppingCartItems.length < 1) {
+                                        return;
+                                    } else {
+                                        dispatch(checkout(jwtToken));
+                                        navigate("/placeOrder");
+                                    }
+                                }}
+                                onShoppingCartClear={() => {
+                                    dispatch(
+                                        clearShoppingCartItem({
+                                            jwtToken,
+                                            itemIds: shoppingCartItems.map((state) => state.id)
+                                        })
+                                    );
+                                }}
+                            />
 
-                    </div>
-                </Affix>
+                        </div>
+                    </Affix>
                 </Col>
             </Row>
         </MainLayout>

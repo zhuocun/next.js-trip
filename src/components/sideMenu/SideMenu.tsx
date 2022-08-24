@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SideMenu.module.css";
 import {sideMenuList} from "./mockup";
-import {GifOutlined} from "@ant-design/icons";
+import {MenuUnfoldOutlined} from "@ant-design/icons";
 import {Menu} from "antd";
 
 export const SideMenu: React.FC = () => {
@@ -10,15 +10,15 @@ export const SideMenu: React.FC = () => {
               items={sideMenuList.map((m) => ({
                   key: m.title,
                   label: m.title,
-                  icon: <GifOutlined />,
+                  icon: <MenuUnfoldOutlined/>,
                   children: m.subMenu.map((sm) => ({
                       key: sm.title,
                       label: sm.title,
-                      icon: <GifOutlined />,
+                      icon: <MenuUnfoldOutlined/>,
                       children: sm.subMenu.map((sms) => ({
                           key: sms,
                           label: sms,
-                          icon: <GifOutlined />
+                          icon: <MenuUnfoldOutlined/>
                       }))
                   }))
               }))}

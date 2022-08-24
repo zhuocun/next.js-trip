@@ -32,7 +32,7 @@ export const AuthenticationLayout: React.FC<PropsTypes> = (props) => {
                     {props.children}
                 </div>
             </Content>
-            <Footer />
+            <Footer/>
         </Layout>
     );
 };

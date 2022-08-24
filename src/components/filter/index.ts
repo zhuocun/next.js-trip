@@ -1,1 +1,1 @@
-export * from './FilterArea'
+export * from './FilterArea';

@@ -38,14 +38,14 @@ interface RowType {
 }
 
 export const ProductIntro: React.FC<PropsType> = ({
-    title,
-    shortDescription,
-    price,
-    coupons,
-    discount,
-    rating,
-    pictures
-}) => {
+                                                      title,
+                                                      shortDescription,
+                                                      price,
+                                                      coupons,
+                                                      discount,
+                                                      rating,
+                                                      pictures
+                                                  }) => {
     const tableDataSource: RowType[] = [
         {
             key: 0,
@@ -88,8 +88,8 @@ export const ProductIntro: React.FC<PropsType> = ({
             title: "Ratings",
             description: (
                 <>
-                    <Rate allowHalf defaultValue={+rating} />
-                    <Typography.Text style={{ marginLeft: 10 }}>
+                    <Rate allowHalf defaultValue={+rating}/>
+                    <Typography.Text style={{marginLeft: 10}}>
                         {rating} / 5
                     </Typography.Text>
                 </>
