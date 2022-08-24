@@ -78,20 +78,20 @@ export const DetailPage: React.FC = () => {
                         </Col>
                         {/* date */}
                         <Col span={11}>
+                            <Button
+                                style={{marginTop: 50, marginBottom: 30, display: "block"}}
+                                type="primary"
+                                danger
+                                loading={shoppingCartLoading}
+                                onClick={() => {
+                                    dispatch(addShoppingCartItem({jwtToken, touristRouteId: product.id}))
+                                }}
+                            >
+                                <ShoppingCartOutlined/>
+                                Add to cart
+                            </Button>
                             <RangePicker open style={{marginTop: 20}}/>
                         </Col>
-                        <Button
-                            style={{marginTop: 50, marginBottom: 30, display: "block"}}
-                            type="primary"
-                            danger
-                            loading={shoppingCartLoading}
-                            onClick={() => {
-                                dispatch(addShoppingCartItem({jwtToken, touristRouteId: product.id}))
-                            }}
-                        >
-                            <ShoppingCartOutlined/>
-                            Add to cart
-                        </Button>
                     </Row>
                 </div>
                 {/* anchor menu */}

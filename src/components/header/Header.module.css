@@ -75,6 +75,13 @@
     margin-right: 5px;
 }
 
+.shopping-cart-button {
+    float: right;
+    margin-top: 16px;
+    width: 128px;
+    margin-right: 5px;
+}
+
 .hail {
     float: right;
     margin-right: 16px;

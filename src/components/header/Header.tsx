@@ -62,22 +62,25 @@ export const Header: React.FC = () => {
                         />
                         {jwtToken ?
                             (<>
-                                <Button type="default"
-                                        shape="round"
-                                        size="middle"
-                                        className={styles.button}
-                                        onClick={onLogout}
+                                <Button
+                                    type="default"
+                                    shape="round"
+                                    size="middle"
+                                    className={styles.button}
+                                    onClick={onLogout}
                                 >
                                     {t("header.logout")}
                                 </Button>
-                                <Button type="default"
-                                        shape="round"
-                                        size="middle"
-                                        className={styles.button}
-                                        onClick={() => navigate("/shoppingCart")}
-                                        loading={shoppingCartLoading}
+                                <Button
+                                    type="default"
+                                    shape="round"
+                                    size="middle"
+                                    className={styles["shopping-cart-button"]}
+                                    onClick={() => navigate("/shoppingCart")}
+                                    loading={shoppingCartLoading}
                                 >
-                                    {t("header.shoppingCart")}{shoppingCartItems.length}
+                                    {t("header.shoppingCart")}
+                                    ({shoppingCartItems.length})
                                 </Button>
                                 <span className={styles.hail}>
                                     {t("header.hail")}
