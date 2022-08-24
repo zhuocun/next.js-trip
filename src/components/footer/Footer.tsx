@@ -27,9 +27,11 @@ export const Footer: React.FC = () => {
 
     return (
         <div>
-            <Layout.Footer className={styles.footer}>
+            <Layout.Footer
+                style={{backgroundColor: "#000072"}}
+                className={styles.footer}>
                 <div className={styles.inner}>
-                    <Typography.Title level={5} style={{textAlign: "center"}}>
+                    <Typography.Title level={5} style={{textAlign: "center", color: "white"}}>
                         {t("footer.detail")}
                     </Typography.Title>
                     <div className={styles.lang}>
@@ -49,7 +51,7 @@ export const Footer: React.FC = () => {
                                 </Menu>
                             }
                             style={{marginLeft: 15}}
-                            icon={<UpOutlined />}
+                            icon={<UpOutlined/>}
                         >
                             {currentLanguage === "en" ? "English" : "简体中文"}
                         </Dropdown.Button>

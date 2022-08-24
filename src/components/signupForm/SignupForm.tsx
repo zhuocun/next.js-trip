@@ -16,7 +16,7 @@ export const SignupForm = () => {
                 password: values.password,
                 confirmPassword: values.confirm
             });
-            navigate("/LoginPage/");
+            navigate("/Login/");
         } catch (error) {
             alert("SignupPage failed");
         }

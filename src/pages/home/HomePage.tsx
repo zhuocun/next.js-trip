@@ -107,7 +107,6 @@ class HomePageComponent extends React.Component<PropsType> {
                         products={productList[2].touristRoutes}
                     />
                     <BusinessPartners/>
-
                 </MainLayout>
             </>
         );

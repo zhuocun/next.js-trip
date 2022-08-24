@@ -22,6 +22,7 @@
         "insurance":"保险",
         "shoppingCart": "购物车 ",
         "logout": "登出",
+        "welcome_without_login": "欢迎!",
         "hail": "你好 ",
         "welcome": "，欢迎回来！"
     },

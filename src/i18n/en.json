@@ -22,6 +22,7 @@
         "insurance":"Insurance",
         "shoppingCart": "My cart ",
         "logout": "Logout",
+        "welcome_without_login": "Welcome!",
         "hail": "Hi ",
         "welcome": ", welcome back!"
     },

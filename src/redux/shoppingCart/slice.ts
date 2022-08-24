@@ -4,7 +4,7 @@ import axios from "axios";
 interface ShoppingCartState {
     loading: boolean;
     error: string | null;
-    items: [];
+    items: any[];
 }
 
 const initialState: ShoppingCartState = {
@@ -12,6 +12,7 @@ const initialState: ShoppingCartState = {
     error: null,
     items: []
 }
+
 export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
     async (jwtToken: string, thunkAPI) => {
@@ -42,6 +43,23 @@ export const addShoppingCartItem = createAsyncThunk(
             }
         );
         return data.shoppingCartItems;
+    }
+);
+
+export const checkout = createAsyncThunk(
+    "shoppingCart/checkout",
+    async (jwtToken: string, thunkAPI) => {
+        const {data} = await axios.post(
+            `http://123.56.149.216:8080/api/shoppingCart/items`,
+            null
+            ,
+            {
+                headers: {
+                    Authorization: `bearer ${jwtToken}`
+                }
+            }
+        );
+        return data;
     }
 );
 
@@ -100,6 +118,19 @@ export const shoppingCartSlice = createSlice({
             state.items = [];
         },
         [clearShoppingCartItem.rejected.type]: (state, action: PayloadAction<string | null>) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        // get shopping cart
+        [checkout.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [checkout.fulfilled.type]: (state) => {
+            state.loading = false;
+            state.error = null;
+            state.items = [];
+        },
+        [checkout.rejected.type]: (state, action: PayloadAction<string | null>) => {
             state.loading = false;
             state.error = action.payload;
         }
