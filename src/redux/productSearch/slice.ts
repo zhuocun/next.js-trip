@@ -16,6 +16,7 @@ const initialState: ProductSearchState = {
 }
 
 export const searchProduct = createAsyncThunk(
+    // typePrefix does not matter
     "productSearch/searchProduct",
     async (
         parameters: {
@@ -23,10 +24,10 @@ export const searchProduct = createAsyncThunk(
             nextPage: number | string,
             pageSize: number | string
         }) => {
-        let url = `http://123.56.149.216:8080/api/touristRoutes?pageNumber=${parameters.nextPage}&pageSize=${parameters.pageSize}`;
-        if (parameters.keywords) {
-            url += `&keyword=${parameters.keywords}`;
-        }
+        let url = `http://123.56.149.216:8080/api/touristRoutes?`;
+        url += `pageNumber=${parameters.nextPage}`;
+        url += `&pageSize=${parameters.pageSize}`;
+        url += `&keyword=${parameters.keywords}`;
         const response = await axios.get(url);
         return {
             data: response.data,
@@ -36,6 +37,7 @@ export const searchProduct = createAsyncThunk(
 );
 
 export const productSearchSlice = createSlice({
+    // name does not matter
     name: "productSearch",
     initialState,
     reducers: {},

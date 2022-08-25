@@ -1,14 +1,14 @@
 import languageReducer from "./language/languageReducer";
-import recommendProductsReducer from "./recommendProducts/recommendProductsReducer";
 import {actionLog} from "./middlewares/actionLog";
-import {productDetailSlice} from "./productDetail/slice";
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {recommendedProductsSlice} from "./recommendProducts/slice";
+import {productDetailSlice} from "./productDetail/slice";
 import {productSearchSlice} from "./productSearch/slice";
 import {userSlice} from "./user/slice";
-import {persistStore, persistReducer} from "redux-persist";
-import storage from "redux-persist/lib/storage"
 import {shoppingCartSlice} from "./shoppingCart/slice";
 import {orderSlice} from "./order/slice";
+import {persistStore, persistReducer} from "redux-persist";
+import storage from "redux-persist/lib/storage"
 
 const persistConfig = {
     key: "root",
@@ -19,7 +19,7 @@ const persistConfig = {
 const rootReducer = combineReducers(
     {
         language: languageReducer,
-        recommendProducts: recommendProductsReducer,
+        recommendedProducts: recommendedProductsSlice.reducer,
         productDetail: productDetailSlice.reducer,
         productSearch: productSearchSlice.reducer,
         user: userSlice.reducer,
