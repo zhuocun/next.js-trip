@@ -14,10 +14,10 @@ export const SearchPage: React.FC = () => {
 
     const {keywords} = useParams<MatchParams>();
 
-    const loading = useReduxSelector((state) => state.productSearch.loading);
-    const error = useReduxSelector((state) => state.productSearch.error);
-    const pagination = useReduxSelector((state) => state.productSearch.pagination);
-    const productList = useReduxSelector((state) => state.productSearch.data);
+    const loading = useReduxSelector((s) => s.productSearch.loading);
+    const error = useReduxSelector((s) => s.productSearch.error);
+    const pagination = useReduxSelector((s) => s.productSearch.pagination);
+    const productList = useReduxSelector((s) => s.productSearch.searchResult);
 
     const dispatch = useReduxDispatch();
     const location = useLocation();

@@ -4,14 +4,14 @@ import axios from "axios";
 interface ProductSearchState {
     loading: boolean;
     error: string | null;
-    data: any;
+    searchResult: any;
     pagination: any;
 }
 
 const initialState: ProductSearchState = {
     loading: true,
     error: null,
-    data: null,
+    searchResult: null,
     pagination: null
 }
 
@@ -28,16 +28,15 @@ export const searchProduct = createAsyncThunk(
         url += `pageNumber=${parameters.nextPage}`;
         url += `&pageSize=${parameters.pageSize}`;
         url += `&keyword=${parameters.keywords}`;
-        const response = await axios.get(url);
+        const axiosResponse = await axios.get(url);
         return {
-            data: response.data,
-            pagination: JSON.parse(response.headers["x-pagination"])
+            searchResult: axiosResponse.data,
+            pagination: JSON.parse(axiosResponse.headers["x-pagination"])
         };
     }
 );
 
 export const productSearchSlice = createSlice({
-    // name does not matter
     name: "productSearch",
     initialState,
     reducers: {},
@@ -48,13 +47,12 @@ export const productSearchSlice = createSlice({
         [searchProduct.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.data = action.payload.data;
+            state.searchResult = action.payload.searchResult;
             state.pagination = action.payload.pagination;
         },
         [searchProduct.rejected.type]: (state, action: PayloadAction<string | null>) => {
             state.loading = false;
             state.error = action.payload;
-            state.data = "sorry";
         }
     }
 })

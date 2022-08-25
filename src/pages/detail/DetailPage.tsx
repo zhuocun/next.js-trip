@@ -23,11 +23,11 @@ export const DetailPage: React.FC = () => {
     const {touristRouteId} = useParams<MatchParams>();
 
     // get states from Redux
-    const loading = useReduxSelector((state) => state.productDetail.loading);
-    const error = useReduxSelector((state) => state.productDetail.error);
-    const product = useReduxSelector((state) => state.productDetail.data);
-    const jwtToken = useReduxSelector((state) => state.user.token) as string;
-    const shoppingCartLoading = useReduxSelector((state) => state.shoppingCart.loading);
+    const loading = useReduxSelector((s) => s.productDetail.loading);
+    const error = useReduxSelector((s) => s.productDetail.error);
+    const product = useReduxSelector((s) => s.productDetail.productDetail);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
+    const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
 
 
     const dispatch = useReduxDispatch();

@@ -18,10 +18,10 @@ const initialState: RecommendedProductsState = {
 export const recommendProducts = createAsyncThunk(
     "recommendedProducts/recommendProducts",
     async () => {
-        const {data} = await axios.get(
+        const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/productCollections`
         );
-        return data;
+        return axiosResponse.data;
     }
 );
 

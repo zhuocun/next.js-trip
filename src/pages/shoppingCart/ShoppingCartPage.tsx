@@ -9,9 +9,9 @@ import {useNavigate} from "react-router-dom";
 
 export const ShoppingCartPage = () => {
 
-    const loading = useReduxSelector((state) => state.shoppingCart.loading);
-    const shoppingCartItems = useReduxSelector((state) => state.shoppingCart.items);
-    const jwtToken = useReduxSelector((state) => state.user.token) as string;
+    const loading = useReduxSelector((s) => s.shoppingCart.loading);
+    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const dispatch = useReduxDispatch();
     const navigate = useNavigate();
 

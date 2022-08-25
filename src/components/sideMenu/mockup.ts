@@ -59,7 +59,7 @@ export const sideMenuList = [
             },
             {
                 title: "Vietnam",
-                subMenu: ["下龙湾", "吴哥窟", "西哈努克", "槟城珍珠岛"],
+                subMenu: ["city1", "city2", "city3", "city4"],
             },
         ],
     },

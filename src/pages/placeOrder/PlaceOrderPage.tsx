@@ -1,12 +1,12 @@
 import React from "react";
-import {PaymentForm, CheckOutCard} from "../../components";
+import {CreditCard, CheckOutCard} from "../../components";
 import {MainLayout} from "../../layouts";
 import {Row, Col} from "antd";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
 import {placeOrder} from "../../redux/order/slice";
 
 export const PlaceOrderPage: React.FC = () => {
-    const jwtToken = useReduxSelector((s) => s.user.token) as string;
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const order = useReduxSelector((s) => s.order.currentOrder);
     const dispatch = useReduxDispatch();
@@ -15,7 +15,7 @@ export const PlaceOrderPage: React.FC = () => {
         <MainLayout>
             <Row>
                 <Col span={12}>
-                    <PaymentForm/>
+                    <CreditCard/>
                 </Col>
                 <Col span={12}>
                     <CheckOutCard

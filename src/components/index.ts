@@ -12,4 +12,4 @@ export * from "./signupForm";
 export * from "./loginForm";
 export * from "./paymentCard";
 export * from "./checkOutCard";
-export * from "./paymentForm";
+export * from "./creditCard";

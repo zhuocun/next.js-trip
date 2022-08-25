@@ -1,5 +1,5 @@
-import {Button, Checkbox, Form, Input} from 'antd';
-import React from 'react';
+import {Button, Checkbox, Form, Input} from "antd";
+import React from "react";
 import styles from "./SignupForm.module.css";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -9,7 +9,7 @@ export const SignupForm = () => {
     const navigate = useNavigate();
 
     const onFinish = async (values: any) => {
-        console.log('Success:', values);
+        console.log("Success:", values);
         try {
             await axios.post("http://123.56.149.216:8080/auth/register", {
                 email: values.username,
@@ -18,12 +18,12 @@ export const SignupForm = () => {
             });
             navigate("/Login/");
         } catch (error) {
-            alert("SignupPage failed");
+            alert("Signup failed");
         }
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        console.log("Failed:", errorInfo);
     };
 
     return (
@@ -49,7 +49,7 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your username!',
+                        message: "Please input your username!",
                     },
                 ]}
             >
@@ -62,7 +62,7 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
+                        message: "Please input your password!",
                     },
                 ]}
             >
@@ -76,7 +76,7 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please confirm your password!',
+                        message: "Please confirm your password!",
                     },
                     (({getFieldValue}) => (
                         {

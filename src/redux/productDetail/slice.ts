@@ -9,14 +9,14 @@ import axios from "axios";
 interface ProductDetailState {
     loading: boolean;
     error: string | null;
-    data: any;
+    productDetail: any;
 }
 
 // initial state of page
 const initialState: ProductDetailState = {
     loading: true,
     error: null,
-    data: null
+    productDetail: null
 }
 
 /*
@@ -27,12 +27,13 @@ const initialState: ProductDetailState = {
     3. UI will update once the state is changed
  */
 export const getProductDetail = createAsyncThunk(
+    // typePrefix doesn't matter
     "productDetail/getProductDetail",
     async (touristRouteId: string) => {
-        const {data} = await axios.get(
+        const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
         );
-        return data;
+        return axiosResponse.data;
     }
 );
 
@@ -44,6 +45,7 @@ export const getProductDetail = createAsyncThunk(
         2 change state based on action type
  */
 export const productDetailSlice = createSlice({
+    // name doesn't matter
     name: "productDetail",
     initialState,
     reducers: {},
@@ -61,7 +63,7 @@ export const productDetailSlice = createSlice({
         [getProductDetail.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.data = action.payload;
+            state.productDetail = action.payload;
         },
         // action.type = error
         [getProductDetail.rejected.type]: (state, action: PayloadAction<string | null>) => {

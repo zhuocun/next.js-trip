@@ -7,14 +7,14 @@ import {useReduxDispatch, useReduxSelector} from "./redux/hooks";
 import {getShoppingCart} from "./redux/shoppingCart/slice";
 
 const PrivateRoute = ({children}) => {
-    const jwtToken = useReduxSelector((state) => state.user.token);
+    const jwtToken = useReduxSelector((state) => state.authentication.jwtToken);
     // unprofessional method
     return jwtToken ? children : <Navigate to="/login"/>;
 };
 
-function App() {
+const App = () => {
 
-    const jwtToken = useReduxSelector((state) => state.user.token);
+    const jwtToken = useReduxSelector((state) => state.authentication.jwtToken);
     const dispatch = useReduxDispatch();
 
     useEffect(() => {

@@ -17,9 +17,9 @@ import {recommendProducts} from "../../redux/recommendProducts/slice";
 
 export const HomePage: React.FC = () => {
 
-    const loading = useReduxSelector((state) => state.recommendedProducts.loading);
-    const error = useReduxSelector((state) => state.recommendedProducts.error);
-    const productList = useReduxSelector((state) => state.recommendedProducts.productList);
+    const loading = useReduxSelector((s) => s.recommendedProducts.loading);
+    const error = useReduxSelector((s) => s.recommendedProducts.error);
+    const productList = useReduxSelector((s) => s.recommendedProducts.productList);
 
     const dispatch = useReduxDispatch();
     const {t} = useTranslation();

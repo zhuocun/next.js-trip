@@ -16,7 +16,7 @@ const initialState: ShoppingCartState = {
 export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
     async (jwtToken: string) => {
-        const {data} = await axios.get(
+        const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/shoppingCart`,
             {
                 headers: {
@@ -24,14 +24,14 @@ export const getShoppingCart = createAsyncThunk(
                 },
             }
         );
-        return data.shoppingCartItems;
+        return axiosResponse.data.shoppingCartItems;
     }
 );
 
 export const addShoppingCartItem = createAsyncThunk(
     "shoppingCart/addShoppingCartItem",
     async (parameters: { jwtToken: string; touristRouteId: string }) => {
-        const {data} = await axios.post(
+        const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
                 touristRouteId: parameters.touristRouteId,
@@ -42,14 +42,14 @@ export const addShoppingCartItem = createAsyncThunk(
                 },
             }
         );
-        return data.shoppingCartItems;
+        return axiosResponse.data.shoppingCartItems;
     }
 );
 
 export const checkout = createAsyncThunk(
     "shoppingCart/checkout",
     async (jwtToken: string) => {
-        const {data} = await axios.post(
+        const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/checkout`,
             null,
             {
@@ -58,7 +58,7 @@ export const checkout = createAsyncThunk(
                 },
             }
         );
-        return data;
+        return axiosResponse.data;
     }
 );
 

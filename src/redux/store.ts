@@ -3,7 +3,7 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {recommendedProductsSlice} from "./recommendProducts/slice";
 import {productDetailSlice} from "./productDetail/slice";
 import {productSearchSlice} from "./productSearch/slice";
-import {userSlice} from "./user/slice";
+import {authenticationSlice} from "./authentication/slice";
 import {shoppingCartSlice} from "./shoppingCart/slice";
 import {orderSlice} from "./order/slice";
 import {persistStore, persistReducer} from "redux-persist";
@@ -22,7 +22,7 @@ const rootReducer = combineReducers(
         recommendedProducts: recommendedProductsSlice.reducer,
         productDetail: productDetailSlice.reducer,
         productSearch: productSearchSlice.reducer,
-        user: userSlice.reducer,
+        authentication: authenticationSlice.reducer,
         shoppingCart: shoppingCartSlice.reducer,
         order: orderSlice.reducer
     }

@@ -9,8 +9,8 @@ import {languageSlice} from "../../redux/language/slice";
 
 
 export const Footer: React.FC = () => {
-    const currentLanguage = useReduxSelector((state) => state.language.currentLanguage);
-    const languageList = useReduxSelector((state) => state.language.languageList);
+    const currentLanguage = useReduxSelector((s) => s.language.currentLanguage);
+    const languageList = useReduxSelector((s) => s.language.languageList);
 
     const dispatch = useDispatch();
     const {t} = useTranslation();

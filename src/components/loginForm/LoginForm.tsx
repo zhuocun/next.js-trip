@@ -3,24 +3,24 @@ import {Button, Checkbox, Form, Input} from 'antd';
 import styles from "./LoginForm.module.css";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
 import {useNavigate} from "react-router-dom";
-import {login} from "../../redux/user/slice";
+import {login} from "../../redux/authentication/slice";
 
 export const LoginForm = () => {
 
-    const loading = useReduxSelector((state) => state.user.loading);
-    const token = useReduxSelector((state) => state.user.token);
+    const loading = useReduxSelector((s) => s.authentication.loading);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
 
     const dispatch = useReduxDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (token !== null) {
+        if (jwtToken !== null) {
             navigate("/");
         }
-    }, [navigate, token])
+    }, [navigate, jwtToken])
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        console.log("Success:", values);
         dispatch(login({
             email: values.username,
             password: values.password
@@ -28,7 +28,7 @@ export const LoginForm = () => {
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        console.log("Failed:", errorInfo);
     };
 
     return (

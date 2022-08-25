@@ -5,10 +5,10 @@ import {Layout, Typography, Input, Menu, Button} from "antd"
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
-import jwt_decode, {JwtPayload as DefaultJwtPayload} from "jwt-decode";
-import {userSlice} from "../../redux/user/slice";
+import jwt_decode, {JwtPayload} from "jwt-decode";
+import {authenticationSlice} from "../../redux/authentication/slice";
 
-interface JwtPayload extends DefaultJwtPayload {
+interface MyJwtPayload extends JwtPayload {
     username: string;
 }
 
@@ -17,11 +17,11 @@ export const Header: React.FC = () => {
     const {t} = useTranslation();
     const dispatch = useReduxDispatch();
 
-    const jwtToken = useReduxSelector((state) => state.user.token);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const [username, setUsername] = useState("");
 
-    const shoppingCartItems = useReduxSelector((state) => state.shoppingCart.items);
-    const shoppingCartLoading = useReduxSelector((state) => state.shoppingCart.loading);
+    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
+    const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
 
     const searchHandler = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
@@ -33,13 +33,13 @@ export const Header: React.FC = () => {
     };
 
     const onLogout = () => {
-        dispatch(userSlice.actions.logout());
+        dispatch(authenticationSlice.actions.logout());
         navigate("/");
     }
 
     useEffect(() => {
         if (jwtToken) {
-            const token = jwt_decode<JwtPayload>(jwtToken);
+            const token = jwt_decode<MyJwtPayload>(jwtToken);
             setUsername(token.username);
         }
     }, [jwtToken])
@@ -60,6 +60,7 @@ export const Header: React.FC = () => {
                             className={styles["search-input"]}
                             onSearch={(keywords) => searchHandler(keywords)}
                         />
+                        {/* buttons and welcome */}
                         {jwtToken ?
                             (<>
                                 <Button
@@ -82,6 +83,7 @@ export const Header: React.FC = () => {
                                     {t("header.shoppingCart")}
                                     ({shoppingCartItems.length})
                                 </Button>
+                                {/* welcome */}
                                 <span className={styles.hail}>
                                     {t("header.hail")}
                                     <Typography.Text
@@ -112,6 +114,7 @@ export const Header: React.FC = () => {
                                     >
                                         {t("header.signup")}
                                     </Button>
+                                    {/* welcome */}
                                     <span className={styles.hail}>
                                         {t("header.welcome_without_login")}
                                     </span>
@@ -121,19 +124,21 @@ export const Header: React.FC = () => {
                 </Layout.Header>
                 {/* main menu */}
                 <div className={styles["main-menu"]}>
-                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}>
-                        <Menu.Item key={"1"}>{t("header.home_page")}</Menu.Item>
-                        <Menu.Item key={"2"}>{t("header.stays")}</Menu.Item>
-                        <Menu.Item key={"3"}>{t("header.flights")}</Menu.Item>
-                        <Menu.Item key={"4"}>{t("header.trains")}</Menu.Item>
-                        <Menu.Item key={"5"}>{t("header.cars")}</Menu.Item>
-                        <Menu.Item key={"6"}>{t("header.tours_tickets")}</Menu.Item>
-                        <Menu.Item key={"7"}>{t("header.bundle_save")}</Menu.Item>
-                        <Menu.Item key={"8"}>{t("header.attractions")}</Menu.Item>
-                        <Menu.Item key={"9"}>{t("header.gift_cards")}</Menu.Item>
-                        <Menu.Item key={"10"}>{t("header.rewards")}</Menu.Item>
-                        <Menu.Item key={"11"}>{t("header.deals")}</Menu.Item>
-                    </Menu>
+                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}
+                          items={[
+                              { key: "1", label: t("header.home_page") },
+                              { key: "2", label: t("header.stays") },
+                              { key: "3", label: t("header.flights") },
+                              { key: "4", label: t("header.trains") },
+                              { key: "5", label: t("header.cars") },
+                              { key: "6", label: t("header.tours_tickets") },
+                              { key: "7", label: t("header.bundle_save") },
+                              { key: "8", label: t("header.attractions") },
+                              { key: "9", label: t("header.gift_cards") },
+                              { key: "10", label: t("header.rewards") },
+                              { key: "11", label: t("header.deals") }
+                          ]}
+                    />
                 </div>
             </div>
         </div>
