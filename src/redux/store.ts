@@ -1,4 +1,3 @@
-import languageReducer from "./language/languageReducer";
 import {actionLog} from "./middlewares/actionLog";
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {recommendedProductsSlice} from "./recommendProducts/slice";
@@ -9,6 +8,7 @@ import {shoppingCartSlice} from "./shoppingCart/slice";
 import {orderSlice} from "./order/slice";
 import {persistStore, persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage"
+import {languageSlice} from "./language/slice";
 
 const persistConfig = {
     key: "root",
@@ -18,7 +18,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers(
     {
-        language: languageReducer,
+        language: languageSlice.reducer,
         recommendedProducts: recommendedProductsSlice.reducer,
         productDetail: productDetailSlice.reducer,
         productSearch: productSearchSlice.reducer,

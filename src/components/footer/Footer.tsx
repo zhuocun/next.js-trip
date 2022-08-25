@@ -1,27 +1,25 @@
-import {Dropdown, Layout, Menu, Typography} from "antd";
 import React from "react";
+import {Dropdown, Layout, Menu, Typography} from "antd";
 import {UpOutlined} from "@ant-design/icons";
 import styles from "./Footer.module.css";
 import {useTranslation} from "react-i18next";
 import {useReduxSelector} from "../../redux/hooks";
 import {useDispatch} from "react-redux";
-import {
-    addLanguageActionCreator,
-    switchLanguageActionCreator
-} from "../../redux/language/languageActions";
+import {languageSlice} from "../../redux/language/slice";
 
 
 export const Footer: React.FC = () => {
     const currentLanguage = useReduxSelector((state) => state.language.currentLanguage);
     const languageList = useReduxSelector((state) => state.language.languageList);
+
     const dispatch = useDispatch();
     const {t} = useTranslation();
 
     const menuClickHandler = (e) => {
         if (e.key === "add-lang") {
-            dispatch(addLanguageActionCreator("new_lang", "New language"));
+            dispatch(languageSlice.actions.fetchAdd());
         } else {
-            dispatch(switchLanguageActionCreator(e.key));
+            dispatch(languageSlice.actions.fetchSwitch(e.key));
         }
     };
 
