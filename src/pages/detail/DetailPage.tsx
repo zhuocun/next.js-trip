@@ -29,7 +29,6 @@ export const DetailPage: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
 
-
     const dispatch = useReduxDispatch();
 
 
