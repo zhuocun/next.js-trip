@@ -65,11 +65,9 @@ export const checkout = createAsyncThunk(
 export const clearShoppingCartItem = createAsyncThunk(
     "shoppingCart/clearShoppingCartItem",
     async (parameters: { jwtToken: string; itemIds: number[] }) => {
-        return await axios.delete(
-            `http://123.56.149.216:8080/api/shoppingCart/items/(${parameters.itemIds.join(
-                ","
-            )})`,
-            {
+        let url = `http://123.56.149.216:8080/api/shoppingCart/items/`;
+        url += `(${parameters.itemIds.join(",")})`;
+        return await axios.delete(url, {
                 headers: {
                     Authorization: `bearer ${parameters.jwtToken}`,
                 },
@@ -83,13 +81,14 @@ export const shoppingCartSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
+        // get shopping cart
         [getShoppingCart.pending.type]: (state) => {
             state.loading = true;
         },
         [getShoppingCart.fulfilled.type]: (state, action) => {
-            state.items = action.payload;
             state.loading = false;
             state.error = null;
+            state.items = action.payload;
         },
         [getShoppingCart.rejected.type]: (
             state,
@@ -98,13 +97,14 @@ export const shoppingCartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // add item to shopping cart
         [addShoppingCartItem.pending.type]: (state) => {
             state.loading = true;
         },
         [addShoppingCartItem.fulfilled.type]: (state, action) => {
-            state.items = action.payload;
             state.loading = false;
             state.error = null;
+            state.items = action.payload;
         },
         [addShoppingCartItem.rejected.type]: (
             state,
@@ -113,13 +113,14 @@ export const shoppingCartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // clear shopping cart
         [clearShoppingCartItem.pending.type]: (state) => {
             state.loading = true;
         },
         [clearShoppingCartItem.fulfilled.type]: (state) => {
-            state.items = [];
             state.loading = false;
             state.error = null;
+            state.items = [];
         },
         [clearShoppingCartItem.rejected.type]: (
             state,
@@ -128,13 +129,14 @@ export const shoppingCartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // checkout
         [checkout.pending.type]: (state) => {
             state.loading = true;
         },
         [checkout.fulfilled.type]: (state) => {
-            state.items = [];
             state.loading = false;
             state.error = null;
+            state.items = [];
         },
         [checkout.rejected.type]: (
             state,

@@ -1,27 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from "./App.module.css";
 import {DetailPage, HomePage, LoginPage, SearchPage, SignupPage, ShoppingCartPage, PlaceOrderPage} from "./pages";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Navigate} from "react-router-dom";
-import {useReduxDispatch, useReduxSelector} from "./redux/hooks";
-import {getShoppingCart} from "./redux/shoppingCart/slice";
+import {useReduxSelector} from "./redux/hooks";
 
 const PrivateRoute = ({children}) => {
-    const jwtToken = useReduxSelector((state) => state.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     // unprofessional method
     return jwtToken ? children : <Navigate to="/login"/>;
 };
 
 const App = () => {
-
-    const jwtToken = useReduxSelector((state) => state.authentication.jwtToken);
-    const dispatch = useReduxDispatch();
-
-    useEffect(() => {
-        if (jwtToken) {
-            dispatch(getShoppingCart(jwtToken));
-        }
-    }, [dispatch, jwtToken])
 
     return (
         <div className={styles.App}>

@@ -126,17 +126,17 @@ export const Header: React.FC = () => {
                 <div className={styles["main-menu"]}>
                     <Menu mode={"horizontal"} className={styles["main-menu-inner"]}
                           items={[
-                              { key: "1", label: t("header.home_page") },
-                              { key: "2", label: t("header.stays") },
-                              { key: "3", label: t("header.flights") },
-                              { key: "4", label: t("header.trains") },
-                              { key: "5", label: t("header.cars") },
-                              { key: "6", label: t("header.tours_tickets") },
-                              { key: "7", label: t("header.bundle_save") },
-                              { key: "8", label: t("header.attractions") },
-                              { key: "9", label: t("header.gift_cards") },
-                              { key: "10", label: t("header.rewards") },
-                              { key: "11", label: t("header.deals") }
+                              {key: "1", label: t("header.home_page"), onClick: (() => navigate("/"))},
+                              {key: "2", label: t("header.stays")},
+                              {key: "3", label: t("header.flights")},
+                              {key: "4", label: t("header.trains")},
+                              {key: "5", label: t("header.cars")},
+                              {key: "6", label: t("header.tours_tickets")},
+                              {key: "7", label: t("header.bundle_save")},
+                              {key: "8", label: t("header.attractions")},
+                              {key: "9", label: t("header.gift_cards")},
+                              {key: "10", label: t("header.rewards")},
+                              {key: "11", label: t("header.deals")}
                           ]}
                     />
                 </div>
