@@ -1,5 +1,5 @@
 import React from "react";
-import {CreditCard, CheckOutCard} from "../../components";
+import {CreditCard, CheckoutCard} from "../../components";
 import {MainLayout} from "../../layouts";
 import {Row, Col} from "antd";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
@@ -19,7 +19,7 @@ export const CheckoutPage: React.FC = () => {
                     <CreditCard/>
                 </Col>
                 <Col span={12}>
-                    <CheckOutCard
+                    <CheckoutCard
                         loading={loading}
                         order={order}
                         // call redux

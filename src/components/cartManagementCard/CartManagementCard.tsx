@@ -20,12 +20,12 @@ interface Item {
 
 const columns: ColumnsType<Item> = [
     {
-        title: "项目",
+        title: "Item",
         dataIndex: "item",
         key: "item",
     },
     {
-        title: "金额",
+        title: "Amount",
         dataIndex: "amount",
         key: "amount",
     },
@@ -49,15 +49,15 @@ export const CartManagementCard: React.FC<PropsType> = ({
     const orderData: Item[] = [
         {
             key: 1,
-            item: "原价",
-            amount: <Text delete>¥ {originalPrice}</Text>,
+            item: "Full price: ",
+            amount: <Text delete>$ {originalPrice}</Text>,
         },
         {
             key: 3,
-            item: "现价",
+            item: "Discounted: ",
             amount: (
                 <Title type="danger" level={2}>
-                    ¥ {price}
+                    $ {price}
                 </Title>
             ),
         },
@@ -85,7 +85,7 @@ export const CartManagementCard: React.FC<PropsType> = ({
         >
             <Skeleton loading={loading} active>
                 <Meta
-                    title={<Title level={2}>总计</Title>}
+                    title={<Title level={2}>Total</Title>}
                     description={
                         <Table<Item>
                             columns={columns}

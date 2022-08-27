@@ -15,7 +15,7 @@ export const CreditCard = () => {
 
     return (
         <Card
-            title="信用卡"
+            title="Credit card"
             bordered={false}
             className={styles["payment-credit-card"]}
         >

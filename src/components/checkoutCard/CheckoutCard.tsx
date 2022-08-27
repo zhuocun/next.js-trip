@@ -32,7 +32,7 @@ interface PropsType {
     onCheckout: () => void;
 }
 
-export const CheckOutCard: React.FC<PropsType> = ({
+export const CheckoutCard: React.FC<PropsType> = ({
                                                       loading,
                                                       order,
                                                       onCheckout,
@@ -45,9 +45,9 @@ export const CheckOutCard: React.FC<PropsType> = ({
             item: i.touristRoute.title,
             amount: (
                 <>
-                    <Text delete>¥ {i.originalPrice} </Text>{" "}
+                    <Text delete>$ {i.originalPrice} </Text>{" "}
                     <Text type="danger" strong>
-                        ¥ {i.originalPrice * i.discountPresent}
+                        $ {i.originalPrice * i.discountPresent}
                     </Text>
                 </>
             ),
@@ -67,12 +67,12 @@ export const CheckOutCard: React.FC<PropsType> = ({
                         loading={loading}
                     >
                         <HomeOutlined/>
-                        回到首页
+                        Home
                     </Button>
                 ) : (
                     <Button type="primary" danger onClick={onCheckout} loading={loading}>
                         <CheckCircleOutlined/>
-                        支付
+                        Checkout
                     </Button>
                 ),
             ]}
@@ -81,7 +81,7 @@ export const CheckOutCard: React.FC<PropsType> = ({
                 <Meta
                     title={
                         <Title level={2}>
-                            {order && order.state === "Completed" ? "支付成功" : "总计"}
+                            {order && order.state === "Completed" ? "Payment successful" : "Total"}
                         </Title>
                     }
                     description={

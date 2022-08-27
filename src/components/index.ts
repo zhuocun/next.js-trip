@@ -11,5 +11,5 @@ export * from "./productList";
 export * from "./signupForm";
 export * from "./loginForm";
 export * from "./cartManagementCard";
-export * from "./checkOutCard";
+export * from "./checkoutCard";
 export * from "./creditCard";
