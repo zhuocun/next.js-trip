@@ -14,8 +14,8 @@ const initialState: OrderState = {
     currentOrder: null,
 };
 
-export const placeOrder = createAsyncThunk(
-    "order/placeOrder",
+export const checkout = createAsyncThunk(
+    "order/checkout",
     async (parameters: { jwtToken: string; orderId: string }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
@@ -48,15 +48,15 @@ export const orderSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        [placeOrder.pending.type]: (state) => {
+        [checkout.pending.type]: (state) => {
             state.loading = true;
         },
-        [placeOrder.fulfilled.type]: (state, action) => {
+        [checkout.fulfilled.type]: (state, action) => {
             state.currentOrder = action.payload;
             state.loading = false;
             state.error = null;
         },
-        [placeOrder.rejected.type]: (
+        [checkout.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {

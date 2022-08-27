@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from "./App.module.css";
-import {DetailPage, HomePage, LoginPage, SearchPage, SignupPage, ShoppingCartPage, PlaceOrderPage} from "./pages";
+import {DetailPage, HomePage, LoginPage, SearchPage, SignupPage, ShoppingCartPage, CheckoutPage} from "./pages";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Navigate} from "react-router-dom";
 import {useReduxDispatch, useReduxSelector} from "./redux/hooks";
@@ -44,7 +44,7 @@ const App = () => {
                         path="/placeOrder"
                         element={
                             <PrivateRoute>
-                                <PlaceOrderPage/>
+                                <CheckoutPage/>
                             </PrivateRoute>
                         }
                     />

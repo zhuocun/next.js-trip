@@ -3,10 +3,10 @@ import {CreditCard, CheckOutCard} from "../../components";
 import {MainLayout} from "../../layouts";
 import {Row, Col} from "antd";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
-import {placeOrder} from "../../redux/order/slice";
+import {checkout} from "../../redux/order/slice";
 import {getShoppingCart} from "../../redux/shoppingCart/slice";
 
-export const PlaceOrderPage: React.FC = () => {
+export const CheckoutPage: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const order = useReduxSelector((s) => s.order.currentOrder);
@@ -24,7 +24,9 @@ export const PlaceOrderPage: React.FC = () => {
                         order={order}
                         // call redux
                         onCheckout={() => {
-                            dispatch(placeOrder({jwtToken, orderId: order.id}));
+                            // checkout
+                            dispatch(checkout({jwtToken, orderId: order.id}));
+                            // refresh shopping cart to update header
                             dispatch(getShoppingCart(jwtToken));
                         }}
                     />
