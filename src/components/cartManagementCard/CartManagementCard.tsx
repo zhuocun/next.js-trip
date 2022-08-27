@@ -4,7 +4,7 @@ import {
     Card,
     Button,
     Typography,
-    Table,
+    Table, Row, Col,
 } from "antd";
 import {DeleteOutlined, CheckCircleOutlined} from "@ant-design/icons";
 import {ColumnsType} from "antd/es/table";
@@ -36,17 +36,17 @@ interface PropsType {
     originalPrice: number;
     price: number;
     onShoppingCartClear: () => void;
-    onCheckout: () => void;
+    onCreateOrder: () => void;
 }
 
-export const PaymentCard: React.FC<PropsType> = ({
-                                                     loading,
-                                                     originalPrice,
-                                                     price,
-                                                     onShoppingCartClear,
-                                                     onCheckout,
-                                                 }) => {
-    const paymentData: Item[] = [
+export const CartManagementCard: React.FC<PropsType> = ({
+                                                            loading,
+                                                            originalPrice,
+                                                            price,
+                                                            onShoppingCartClear,
+                                                            onCreateOrder,
+                                                        }) => {
+    const orderData: Item[] = [
         {
             key: 1,
             item: "原价",
@@ -65,16 +65,22 @@ export const PaymentCard: React.FC<PropsType> = ({
 
     return (
         <Card
-            style={{width: 300, marginTop: 16}}
+            style={{width: 320, marginTop: 16}}
             actions={[
-                <Button type="primary" danger onClick={onCheckout} loading={loading}>
-                    <CheckCircleOutlined/>
-                    下单支付
-                </Button>,
-                <Button onClick={onShoppingCartClear} loading={loading}>
-                    <DeleteOutlined/>
-                    清空
-                </Button>,
+                <Row>
+                    <Col span={14}>
+                        <Button type="primary" danger onClick={onCreateOrder} loading={loading}>
+                            <CheckCircleOutlined/>
+                            Create Order
+                        </Button>
+                    </Col>
+                    <Col span={10}>
+                        <Button onClick={onShoppingCartClear} loading={loading}>
+                            <DeleteOutlined/>
+                            Clear
+                        </Button>
+                    </Col>
+                </Row>
             ]}
         >
             <Skeleton loading={loading} active>
@@ -83,7 +89,7 @@ export const PaymentCard: React.FC<PropsType> = ({
                     description={
                         <Table<Item>
                             columns={columns}
-                            dataSource={paymentData}
+                            dataSource={orderData}
                             showHeader={false}
                             size="small"
                             bordered={false}

@@ -4,6 +4,7 @@ import {MainLayout} from "../../layouts";
 import {Row, Col} from "antd";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
 import {placeOrder} from "../../redux/order/slice";
+import {getShoppingCart} from "../../redux/shoppingCart/slice";
 
 export const PlaceOrderPage: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
@@ -21,8 +22,10 @@ export const PlaceOrderPage: React.FC = () => {
                     <CheckOutCard
                         loading={loading}
                         order={order}
+                        // call redux
                         onCheckout={() => {
                             dispatch(placeOrder({jwtToken, orderId: order.id}));
+                            dispatch(getShoppingCart(jwtToken));
                         }}
                     />
                 </Col>

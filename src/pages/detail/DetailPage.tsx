@@ -75,8 +75,8 @@ export const DetailPage: React.FC = () => {
                                 pictures={product.touristRoutePictures.map((p) => p.url)}
                             />
                         </Col>
-                        {/* date */}
                         <Col span={11}>
+                            {/* add to cart button */}
                             <Button
                                 style={{marginTop: 50, marginBottom: 30, display: "block"}}
                                 type="primary"
@@ -89,6 +89,7 @@ export const DetailPage: React.FC = () => {
                                 <ShoppingCartOutlined/>
                                 Add to cart
                             </Button>
+                            {/* date */}
                             <RangePicker open style={{marginTop: 20}}/>
                         </Col>
                     </Row>

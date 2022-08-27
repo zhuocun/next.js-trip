@@ -16,7 +16,6 @@ const initialState: ProductSearchState = {
 }
 
 export const searchProduct = createAsyncThunk(
-    // typePrefix does not matter
     "productSearch/searchProduct",
     async (
         parameters: {
@@ -55,5 +54,5 @@ export const productSearchSlice = createSlice({
             state.error = action.payload;
         }
     }
-})
+});
 

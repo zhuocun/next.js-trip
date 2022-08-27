@@ -46,8 +46,9 @@ export const addShoppingCartItem = createAsyncThunk(
     }
 );
 
-export const checkout = createAsyncThunk(
-    "shoppingCart/checkout",
+// the response data will be saved in order's slice
+export const createOrder = createAsyncThunk(
+    "shoppingCart/createOrder",
     async (jwtToken: string) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/checkout`,
@@ -128,22 +129,6 @@ export const shoppingCartSlice = createSlice({
         ) => {
             state.loading = false;
             state.error = action.payload;
-        },
-        // checkout
-        [checkout.pending.type]: (state) => {
-            state.loading = true;
-        },
-        [checkout.fulfilled.type]: (state) => {
-            state.loading = false;
-            state.error = null;
-            state.items = [];
-        },
-        [checkout.rejected.type]: (
-            state,
-            action: PayloadAction<string | null>
-        ) => {
-            state.loading = false;
-            state.error = action.payload;
-        },
+        }
     },
 });

@@ -7,7 +7,7 @@ import {authenticationSlice} from "./authentication/slice";
 import {shoppingCartSlice} from "./shoppingCart/slice";
 import {orderSlice} from "./order/slice";
 import {persistStore, persistReducer} from "redux-persist";
-import storage from "redux-persist/lib/storage"
+import storage from "redux-persist/lib/storage";
 import {languageSlice} from "./language/slice";
 
 const persistConfig = {
@@ -43,7 +43,7 @@ const persistor = persistStore(store);
 
 // state of the store, including everything in redux folder
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type ReduxDispatch = typeof store.dispatch;
 
 const stores = {store, persistor};
 export default stores;

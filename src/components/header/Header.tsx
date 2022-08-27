@@ -7,7 +7,6 @@ import {useTranslation} from "react-i18next";
 import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
 import jwt_decode, {JwtPayload} from "jwt-decode";
 import {authenticationSlice} from "../../redux/authentication/slice";
-import {getShoppingCart} from "../../redux/shoppingCart/slice";
 
 interface MyJwtPayload extends JwtPayload {
     username: string;
@@ -40,7 +39,6 @@ export const Header: React.FC = () => {
 
     useEffect(() => {
         if (jwtToken) {
-            dispatch(getShoppingCart(jwtToken));
             const token = jwt_decode<MyJwtPayload>(jwtToken);
             setUsername(token.username);
         }

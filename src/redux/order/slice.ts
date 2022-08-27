@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
-import {checkout} from "../shoppingCart/slice";
+import {createOrder} from "../shoppingCart/slice";
 
 interface OrderState {
     loading: boolean;
@@ -35,6 +35,19 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
+        // create order, save response data from backend
+        [createOrder.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [createOrder.fulfilled.type]: (state, action) => {
+            state.currentOrder = action.payload;
+            state.loading = false;
+            state.error = null;
+        },
+        [createOrder.rejected.type]: (state, action: PayloadAction<string | null>) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
         [placeOrder.pending.type]: (state) => {
             state.loading = true;
         },
@@ -49,18 +62,6 @@ export const orderSlice = createSlice({
         ) => {
             state.loading = false;
             state.error = action.payload;
-        },
-        [checkout.pending.type]: (state) => {
-            state.loading = true;
-        },
-        [checkout.fulfilled.type]: (state, action) => {
-            state.currentOrder = action.payload;
-            state.loading = false;
-            state.error = null;
-        },
-        [checkout.rejected.type]: (state, action: PayloadAction<string | null>) => {
-            state.loading = false;
-            state.error = action.payload;
-        },
+        }
     },
 });
