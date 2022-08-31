@@ -14,7 +14,7 @@ import { Navigate } from "react-router-dom";
 import { useReduxDispatch, useReduxSelector } from "./redux/hooks";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
 
-const PrivateRoute = (children: React.ReactNode) => {
+const PrivateRoute = (children) => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     // unprofessional method
     return jwtToken ? children : <Navigate to="/login" />;
