@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react"
-import styles from "./Header.module.css"
-import logo from "../../assets/logo.svg"
-import {Layout, Typography, Input, Menu, Button} from "antd"
-import {useNavigate} from "react-router-dom";
-import {useTranslation} from "react-i18next";
-import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
-import jwt_decode, {JwtPayload} from "jwt-decode";
-import {authenticationSlice} from "../../redux/authentication/slice";
+import React, { useEffect, useState } from "react";
+import styles from "./Header.module.css";
+import logo from "../../assets/logo.svg";
+import { Layout, Typography, Input, Menu, Button } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
+import jwt_decode, { JwtPayload } from "jwt-decode";
+import { authenticationSlice } from "../../redux/authentication/slice";
 
 interface MyJwtPayload extends JwtPayload {
     username: string;
@@ -14,7 +14,7 @@ interface MyJwtPayload extends JwtPayload {
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const dispatch = useReduxDispatch();
 
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
@@ -35,14 +35,15 @@ export const Header: React.FC = () => {
     const onLogout = () => {
         dispatch(authenticationSlice.actions.logout());
         navigate("/");
-    }
+    };
 
     useEffect(() => {
         if (jwtToken) {
+            // prettier-ignore
             const token = jwt_decode<MyJwtPayload>(jwtToken);
             setUsername(token.username);
         }
-    }, [dispatch, jwtToken])
+    }, [dispatch, jwtToken]);
 
     return (
         <div>
@@ -51,7 +52,11 @@ export const Header: React.FC = () => {
                 {/* main header */}
                 <Layout.Header className={styles["main-header"]}>
                     <div className={styles.inner}>
-                        <img src={logo} alt="logo" className={styles["App-logo"]}/>
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className={styles["App-logo"]}
+                        />
                         <Typography.Title level={3} className={styles.title}>
                             {t("header.title")}
                         </Typography.Title>
@@ -61,8 +66,8 @@ export const Header: React.FC = () => {
                             onSearch={(keywords) => searchHandler(keywords)}
                         />
                         {/* buttons and welcome */}
-                        {jwtToken ?
-                            (<>
+                        {jwtToken ? (
+                            <>
                                 <Button
                                     type="default"
                                     shape="round"
@@ -80,67 +85,75 @@ export const Header: React.FC = () => {
                                     onClick={() => navigate("/shoppingCart")}
                                     loading={shoppingCartLoading}
                                 >
-                                    {t("header.shoppingCart")}
-                                    ({shoppingCartItems.length})
+                                    {t("header.shoppingCart")}(
+                                    {shoppingCartItems.length})
                                 </Button>
                                 {/* welcome */}
                                 <span className={styles.hail}>
                                     {t("header.hail")}
                                     <Typography.Text
                                         strong
-                                        style={{color: "white"}}>
+                                        style={{ color: "white" }}
+                                    >
                                         {username}
                                     </Typography.Text>
                                     {t("header.welcome")}
                                 </span>
-                            </>) : (
-                                <>
-                                    <Button
-                                        type="default"
-                                        shape="round"
-                                        size="middle"
-                                        className={styles.button}
-                                        onClick={() => navigate("/login")}
-                                    >
-                                        {t("header.login")}
-                                    </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Button
+                                    type="default"
+                                    shape="round"
+                                    size="middle"
+                                    className={styles.button}
+                                    onClick={() => navigate("/login")}
+                                >
+                                    {t("header.login")}
+                                </Button>
 
-                                    <Button
-                                        type="default"
-                                        shape="round"
-                                        size="middle"
-                                        className={styles.button}
-                                        onClick={() => navigate("/signup")}
-                                    >
-                                        {t("header.signup")}
-                                    </Button>
-                                    {/* welcome */}
-                                    <span className={styles.hail}>
-                                        {t("header.welcome_without_login")}
-                                    </span>
-                                </>)
-                        }
+                                <Button
+                                    type="default"
+                                    shape="round"
+                                    size="middle"
+                                    className={styles.button}
+                                    onClick={() => navigate("/register")}
+                                >
+                                    {t("header.register")}
+                                </Button>
+                                {/* welcome */}
+                                <span className={styles.hail}>
+                                    {t("header.welcome_without_login")}
+                                </span>
+                            </>
+                        )}
                     </div>
                 </Layout.Header>
                 {/* main menu */}
                 <div className={styles["main-menu"]}>
-                    <Menu mode={"horizontal"} className={styles["main-menu-inner"]}
-                          items={[
-                              {key: "1", label: t("header.home_page"), onClick: (() => navigate("/"))},
-                              {key: "2", label: t("header.stays")},
-                              {key: "3", label: t("header.flights")},
-                              {key: "4", label: t("header.trains")},
-                              {key: "5", label: t("header.cars")},
-                              {key: "6", label: t("header.tours_tickets")},
-                              {key: "7", label: t("header.bundle_save")},
-                              {key: "8", label: t("header.attractions")},
-                              {key: "9", label: t("header.gift_cards")},
-                              {key: "10", label: t("header.rewards")},
-                              {key: "11", label: t("header.deals")}
-                          ]}
+                    <Menu
+                        mode={"horizontal"}
+                        className={styles["main-menu-inner"]}
+                        items={[
+                            {
+                                key: "1",
+                                label: t("header.home_page"),
+                                onClick: () => navigate("/")
+                            },
+                            { key: "2", label: t("header.stays") },
+                            { key: "3", label: t("header.flights") },
+                            { key: "4", label: t("header.trains") },
+                            { key: "5", label: t("header.cars") },
+                            { key: "6", label: t("header.tours_tickets") },
+                            { key: "7", label: t("header.bundle_save") },
+                            { key: "8", label: t("header.attractions") },
+                            { key: "9", label: t("header.gift_cards") },
+                            { key: "10", label: t("header.rewards") },
+                            { key: "11", label: t("header.deals") }
+                        ]}
                     />
                 </div>
             </div>
         </div>
-    )
+    );
 };

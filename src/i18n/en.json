@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "React Trip",
-    "signup": "Sign up",
+    "register": "Register",
     "login": "Login",
     "home_page": "Home",
     "stays": "Stays",

@@ -39,7 +39,7 @@ interface PropsType {
     onCreateOrder: () => void;
 }
 
-export const CartManagementCard: React.FC<PropsType> = ({
+export const CartMgmtCard: React.FC<PropsType> = ({
                                                             loading,
                                                             originalPrice,
                                                             price,
@@ -67,6 +67,7 @@ export const CartManagementCard: React.FC<PropsType> = ({
         <Card
             style={{width: 320, marginTop: 16}}
             actions={[
+                // eslint-disable-next-line react/jsx-key
                 <Row>
                     <Col span={14}>
                         <Button type="primary" danger onClick={onCreateOrder} loading={loading}>

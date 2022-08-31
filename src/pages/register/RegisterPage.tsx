@@ -1,11 +1,11 @@
 import React from "react";
 import {AuthnLayout} from "../../layouts";
-import {LoginForm} from "../../components";
+import {RegisterForm} from "../../components";
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
     return (
         <AuthnLayout>
-            <LoginForm/>
+            <RegisterForm/>
         </AuthnLayout>
     )
 }

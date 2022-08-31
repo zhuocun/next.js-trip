@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Authentication.module.css";
+import styles from "./AuthnLayout.module.css";
 import logo from "../../assets/logo.svg";
 import {Link} from "react-router-dom";
 import {Layout} from "antd";
@@ -7,11 +7,11 @@ import {Footer} from "../../components";
 
 const {Header, Content} = Layout;
 
-interface PropsTypes {
+interface PropsType {
     children: React.ReactNode;
 }
 
-export const AuthenticationLayout: React.FC<PropsTypes> = (props) => {
+export const AuthnLayout: React.FC<PropsType> = (props) => {
 
     return (
         <Layout className={styles["user-layout-container"]}>

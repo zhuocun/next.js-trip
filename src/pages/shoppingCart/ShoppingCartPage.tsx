@@ -2,7 +2,7 @@ import React from "react";
 import {MainLayout} from "../../layouts";
 import {Affix, Col, Row} from "antd";
 import styles from "./ShoppingCartPage.module.css"
-import {CartManagementCard, ProductList} from "../../components";
+import {CartMgmtCard, ProductList} from "../../components";
 import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
 import {createOrder, clearShoppingCartItem} from "../../redux/shoppingCart/slice";
 import {useNavigate} from "react-router-dom";
@@ -29,7 +29,7 @@ export const ShoppingCartPage = () => {
                     <Affix>
                         <div className={styles["payment-card-container"]}>
                             {/* cart management card */}
-                            <CartManagementCard
+                            <CartMgmtCard
                                 loading={loading}
                                 // calculate full original price
                                 originalPrice={shoppingCartItems

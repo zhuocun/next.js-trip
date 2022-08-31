@@ -1,14 +1,17 @@
-import {Button, Checkbox, Form, Input} from "antd";
+import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
-import styles from "./SignupForm.module.css";
+import styles from "./RegisterForm.module.css";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const SignupForm = () => {
-
+export const RegisterForm = () => {
     const navigate = useNavigate();
 
-    const onFinish = async (values: any) => {
+    const onFinish = async (values: {
+        username: string,
+        password: string,
+        confirm: string
+    }) => {
         console.log("Success:", values);
         try {
             await axios.post("http://123.56.149.216:8080/auth/register", {
@@ -18,7 +21,7 @@ export const SignupForm = () => {
             });
             navigate("/Login/");
         } catch (error) {
-            alert("Signup failed");
+            alert("Register failed");
         }
     };
 
@@ -30,18 +33,18 @@ export const SignupForm = () => {
         <Form
             name="basic"
             labelCol={{
-                span: 8,
+                span: 8
             }}
             wrapperCol={{
-                span: 16,
+                span: 16
             }}
             initialValues={{
-                remember: true,
+                remember: true
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
-            className={styles["signup-form"]}
+            className={styles["register-form"]}
         >
             <Form.Item
                 label="Username"
@@ -49,11 +52,11 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: "Please input your username!",
-                    },
+                        message: "Please input your username!"
+                    }
                 ]}
             >
-                <Input/>
+                <Input />
             </Form.Item>
 
             <Form.Item
@@ -62,11 +65,11 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: "Please input your password!",
-                    },
+                        message: "Please input your password!"
+                    }
                 ]}
             >
-                <Input.Password/>
+                <Input.Password />
             </Form.Item>
 
             <Form.Item
@@ -76,23 +79,20 @@ export const SignupForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: "Please confirm your password!",
+                        message: "Please confirm your password!"
                     },
-                    (({getFieldValue}) => (
-                        {
-                            validator(_, value) {
-                                if (!value || getFieldValue("password") === value) {
-                                    return Promise.resolve();
-                                } else {
-                                    return Promise.reject("Confirmation failed");
-                                }
+                    ({ getFieldValue }) => ({
+                        validator(_, value) {
+                            if (!value || getFieldValue("password") === value) {
+                                return Promise.resolve();
+                            } else {
+                                return Promise.reject("Confirmation failed");
                             }
-
                         }
-                    ))
+                    })
                 ]}
             >
-                <Input.Password/>
+                <Input.Password />
             </Form.Item>
 
             <Form.Item
@@ -100,7 +100,7 @@ export const SignupForm = () => {
                 valuePropName="checked"
                 wrapperCol={{
                     offset: 8,
-                    span: 16,
+                    span: 16
                 }}
             >
                 <Checkbox>Remember me</Checkbox>
@@ -109,7 +109,7 @@ export const SignupForm = () => {
             <Form.Item
                 wrapperCol={{
                     offset: 8,
-                    span: 16,
+                    span: 16
                 }}
             >
                 <Button type="primary" htmlType="submit">

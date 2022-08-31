@@ -5,13 +5,6 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.8.5",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.49",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
     "antd": "^4.22.5",
     "axios": "^0.27.2",
     "i18next": "^21.9.1",
@@ -26,8 +19,6 @@
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "typescript": "^4.7.4",
-    "typescript-plugin-css-modules": "^3.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -55,6 +46,20 @@
     ]
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.24"
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.49",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "eslint": "8.22.0",
+    "eslint-config-next": "^12.2.5",
+    "eslint-plugin-react": "^7.31.1",
+    "prettier": "2.7.1",
+    "typescript": "^4.7.4",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

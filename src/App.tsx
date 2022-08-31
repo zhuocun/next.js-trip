@@ -1,19 +1,26 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 import styles from "./App.module.css";
-import {DetailPage, HomePage, LoginPage, SearchPage, SignupPage, ShoppingCartPage, CheckoutPage} from "./pages";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Navigate} from "react-router-dom";
-import {useReduxDispatch, useReduxSelector} from "./redux/hooks";
-import {getShoppingCart} from "./redux/shoppingCart/slice";
+import {
+    DetailPage,
+    HomePage,
+    LoginPage,
+    SearchPage,
+    RegisterPage,
+    ShoppingCartPage,
+    CheckoutPage
+} from "./pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useReduxDispatch, useReduxSelector } from "./redux/hooks";
+import { getShoppingCart } from "./redux/shoppingCart/slice";
 
-const PrivateRoute = ({children}) => {
+const PrivateRoute = (children: React.ReactNode) => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     // unprofessional method
-    return jwtToken ? children : <Navigate to="/login"/>;
+    return jwtToken ? children : <Navigate to="/login" />;
 };
 
 const App = () => {
-
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const dispatch = useReduxDispatch();
 
@@ -21,22 +28,25 @@ const App = () => {
         if (jwtToken) {
             dispatch(getShoppingCart(jwtToken));
         }
-    }, [dispatch, jwtToken])
+    }, [dispatch, jwtToken]);
 
     return (
         <div className={styles.App}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/signup" element={<SignupPage/>}/>
-                    <Route path="/detail/:touristRouteId" element={<DetailPage/>}/>
-                    <Route path="/search/:keywords" element={<SearchPage/>}/>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route
+                        path="/detail/:touristRouteId"
+                        element={<DetailPage />}
+                    />
+                    <Route path="/search/:keywords" element={<SearchPage />} />
                     <Route
                         path="/shoppingCart"
                         element={
                             <PrivateRoute>
-                                <ShoppingCartPage/>
+                                <ShoppingCartPage />
                             </PrivateRoute>
                         }
                     />
@@ -44,15 +54,15 @@ const App = () => {
                         path="/placeOrder"
                         element={
                             <PrivateRoute>
-                                <CheckoutPage/>
+                                <CheckoutPage />
                             </PrivateRoute>
                         }
                     />
-                    <Route path="*" element={<h1>404 not found</h1>}/>
+                    <Route path="*" element={<h1>404 not found</h1>} />
                 </Routes>
             </BrowserRouter>
         </div>
     );
-}
+};
 
 export default App;
