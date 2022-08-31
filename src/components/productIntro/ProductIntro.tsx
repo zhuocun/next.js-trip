@@ -122,7 +122,7 @@ export const ProductIntro: React.FC<PropsType> = ({
             </div>
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
-                {pictures.map((p) => <Image height={150} src={p}/>)}
+                {pictures.map((p, index) => <Image key={index} height={150} src={p}/>)}
             </Carousel>
             {/* product detail in table */}
             <Table<RowType>
