@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Product } from "../../components";
 
 interface ProductSearchState {
     loading: boolean;
     error: string | null;
-    searchResult: any;
-    pagination: any;
+    searchResult: Product[] | null;
+    pagination: Pagination;
 }
 
 const initialState: ProductSearchState = {
@@ -34,7 +35,7 @@ export const searchProduct = createAsyncThunk(
     }
 );
 
-export const productSearchSlice = createSlice({
+export const prodSearchSlice = createSlice({
     name: "productSearch",
     initialState,
     reducers: {},

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/searchResult.css";
 import { Header, Footer, FilterArea, ProductList } from "../../components";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { searchProduct } from "../../redux/productSearch/slice";
+import { searchProduct } from "../../redux/reducers/prodSearchSlice";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 
@@ -52,11 +51,11 @@ const SearchResult: React.FC = () => {
     return (
         <div>
             <Header />
-            <div className={styles["page-content"]}>
-                <div className={styles["product-list-container"]}>
+            <div className={"page-content"}>
+                <div className={"product-list-container"}>
                     <FilterArea />
                 </div>
-                <div className={styles["product-list-container"]}>
+                <div className={"product-list-container"}>
                     <ProductList
                         data={productList}
                         paging={pagination}

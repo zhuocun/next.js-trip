@@ -1,10 +1,10 @@
 import React from "react";
-import {CreditCard, CheckoutCard} from "../components";
-import {MainLayout} from "../layouts";
-import {Row, Col} from "antd";
-import {useReduxSelector, useReduxDispatch} from "../redux/hooks";
-import {checkout} from "../redux/order/slice";
-import {getShoppingCart} from "../redux/shoppingCart/slice";
+import { CreditCard, CheckoutCard } from "../components";
+import { MainLayout } from "../layouts";
+import { Row, Col } from "antd";
+import { useReduxSelector, useReduxDispatch } from "../redux/hooks";
+import { checkout } from "../redux/reducers/orderSlice";
+import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 
 const Checkout: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
@@ -16,7 +16,7 @@ const Checkout: React.FC = () => {
         <MainLayout>
             <Row>
                 <Col span={12}>
-                    <CreditCard/>
+                    <CreditCard />
                 </Col>
                 <Col span={12}>
                     <CheckoutCard
@@ -25,7 +25,7 @@ const Checkout: React.FC = () => {
                         // call redux
                         onCheckout={() => {
                             // checkout
-                            dispatch(checkout({jwtToken, orderId: order.id}));
+                            dispatch(checkout({ jwtToken, orderId: order.id }));
                             // refresh shopping cart to update header
                             dispatch(getShoppingCart(jwtToken));
                         }}

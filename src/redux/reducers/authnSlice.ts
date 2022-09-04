@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface AuthenticationState {
@@ -11,16 +11,14 @@ const initialState: AuthenticationState = {
     loading: false,
     error: null,
     jwtToken: null
-}
+};
 
 export const login = createAsyncThunk(
     "authentication/login",
-    async (parameters: {
-        email: string,
-        password: string
-    }) => {
+    async (parameters: { email: string, password: string }) => {
         const axiosResponse = await axios.post(
-            `http://123.56.149.216:8080/auth/login`, {
+            `http://123.56.149.216:8080/auth/login`,
+            {
                 email: parameters.email,
                 password: parameters.password
             }
@@ -48,10 +46,12 @@ export const authenticationSlice = createSlice({
             state.error = null;
             state.jwtToken = action.payload;
         },
-        [login.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [login.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.jwtToken = action.payload;
         }
     }
 });
-

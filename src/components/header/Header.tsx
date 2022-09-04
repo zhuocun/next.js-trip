@@ -4,7 +4,7 @@ import { Layout, Typography, Input, Menu, Button } from "antd";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import jwt_decode, { JwtPayload } from "jwt-decode";
-import { authenticationSlice } from "../../redux/authentication/slice";
+import { authenticationSlice } from "../../redux/reducers/authnSlice";
 import { useRouter } from "next/router";
 
 interface MyJwtPayload extends JwtPayload {

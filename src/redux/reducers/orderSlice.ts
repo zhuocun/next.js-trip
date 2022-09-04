@@ -1,29 +1,30 @@
-import {createSlice, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {createOrder} from "../shoppingCart/slice";
+import { createOrder } from "./shoppingCartSlice";
+import { OrderItem } from "../../components";
 
 interface OrderState {
     loading: boolean;
     error: string | null;
-    currentOrder: any;
+    currentOrder: OrderItem | null;
 }
 
 const initialState: OrderState = {
     loading: false,
     error: null,
-    currentOrder: null,
+    currentOrder: null
 };
 
 export const checkout = createAsyncThunk(
     "order/checkout",
-    async (parameters: { jwtToken: string; orderId: string }) => {
+    async (parameters: { jwtToken: string, orderId: string }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
             null,
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`,
-                },
+                    Authorization: `bearer ${parameters.jwtToken}`
+                }
             }
         );
         return axiosResponse.data;
@@ -44,7 +45,10 @@ export const orderSlice = createSlice({
             state.loading = false;
             state.error = null;
         },
-        [createOrder.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [createOrder.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         },
@@ -63,5 +67,5 @@ export const orderSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         }
-    },
+    }
 });

@@ -4,12 +4,13 @@
  */
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ProductDetail } from "../../components";
 
 // state of page
 interface ProductDetailState {
     loading: boolean;
     error: string | null;
-    productDetail: any;
+    productDetail: ProductDetail | null;
 }
 
 // initial state of page
@@ -44,7 +45,7 @@ export const getProductDetail = createAsyncThunk(
             using returned action type of thunk
         2 change state based on action type
  */
-export const productDetailSlice = createSlice({
+export const prodDetailSlice = createSlice({
     // name doesn't matter
     name: "productDetail",
     initialState,

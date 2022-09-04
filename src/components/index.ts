@@ -10,6 +10,6 @@ export * from "./filter";
 export * from "./productList";
 export * from "./RegisterForm";
 export * from "./loginForm";
-export * from "./cartMgmtCard";
+export * from "./cartManager";
 export * from "./checkoutCard";
 export * from "./creditCard";

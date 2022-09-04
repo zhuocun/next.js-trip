@@ -4,11 +4,11 @@ import { ProductIntro, ProductComments } from "../../components";
 import styles from "../../styles/productDetail.css";
 import { DatePicker } from "antd";
 import { commentMockData } from "../../../mocks/comments";
-import { getProductDetail } from "../../redux/productDetail/slice";
+import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
 import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { addShoppingCartItem } from "../../redux/shoppingCart/slice";
+import { addShoppingCartItem } from "../../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 
 const { RangePicker } = DatePicker;

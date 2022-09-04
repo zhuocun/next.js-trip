@@ -9,13 +9,22 @@ import { Row, Col, Typography, Spin } from "antd";
 import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { recommendProducts } from "../redux/recommendProducts/slice";
+import { recommendProducts } from "../redux/reducers/rcmdProdSlice";
+import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 
 const sideImage1 = "/images/sider_2019_12-09.png";
 const sideImage2 = "/images/sider_2019_02-04.png";
 const sideImage3 = "/images/sider_2019_02-04-2.png";
 
 const Home: React.FC = () => {
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+
+    useEffect(() => {
+        if (jwtToken) {
+            dispatch(getShoppingCart(jwtToken));
+        }
+    }, [jwtToken]);
+
     const loading = useReduxSelector((s) => s.recommendedProducts.loading);
     const error = useReduxSelector((s) => s.recommendedProducts.error);
     const productList = useReduxSelector(

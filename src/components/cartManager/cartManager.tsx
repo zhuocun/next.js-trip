@@ -4,13 +4,13 @@ import {
     Card,
     Button,
     Typography,
-    Table, Row, Col,
+    Table, Row, Col
 } from "antd";
-import {DeleteOutlined, CheckCircleOutlined} from "@ant-design/icons";
-import {ColumnsType} from "antd/es/table";
+import { DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";
+import { ColumnsType } from "antd/es/table";
 
-const {Meta} = Card;
-const {Title, Text} = Typography;
+const { Meta } = Card;
+const { Title, Text } = Typography;
 
 interface Item {
     key: number;
@@ -22,13 +22,13 @@ const columns: ColumnsType<Item> = [
     {
         title: "Item",
         dataIndex: "item",
-        key: "item",
+        key: "item"
     },
     {
         title: "Amount",
         dataIndex: "amount",
-        key: "amount",
-    },
+        key: "amount"
+    }
 ];
 
 interface PropsType {
@@ -39,18 +39,18 @@ interface PropsType {
     onCreateOrder: () => void;
 }
 
-export const CartMgmtCard: React.FC<PropsType> = ({
-                                                            loading,
-                                                            originalPrice,
-                                                            price,
-                                                            onShoppingCartClear,
-                                                            onCreateOrder,
-                                                        }) => {
+export const CartManager: React.FC<PropsType> = ({
+                                                      loading,
+                                                      originalPrice,
+                                                      price,
+                                                      onShoppingCartClear,
+                                                      onCreateOrder
+                                                  }) => {
     const orderData: Item[] = [
         {
             key: 1,
             item: "Full price: ",
-            amount: <Text delete>$ {originalPrice}</Text>,
+            amount: <Text delete>$ {originalPrice}</Text>
         },
         {
             key: 3,
@@ -59,25 +59,25 @@ export const CartMgmtCard: React.FC<PropsType> = ({
                 <Title type="danger" level={2}>
                     $ {price}
                 </Title>
-            ),
-        },
+            )
+        }
     ];
 
     return (
         <Card
-            style={{width: 320, marginTop: 16}}
+            style={{ width: 320, marginTop: 16 }}
             actions={[
                 // eslint-disable-next-line react/jsx-key
                 <Row>
                     <Col span={14}>
                         <Button type="primary" danger onClick={onCreateOrder} loading={loading}>
-                            <CheckCircleOutlined/>
+                            <CheckCircleOutlined />
                             Create Order
                         </Button>
                     </Col>
                     <Col span={10}>
                         <Button onClick={onShoppingCartClear} loading={loading}>
-                            <DeleteOutlined/>
+                            <DeleteOutlined />
                             Clear
                         </Button>
                     </Col>

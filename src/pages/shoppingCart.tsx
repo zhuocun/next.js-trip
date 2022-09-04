@@ -1,10 +1,10 @@
 import React from "react";
-import {MainLayout} from "../layouts";
-import {Affix, Col, Row} from "antd";
-import styles from "../styles/shoppingCart.css"
-import {CartMgmtCard, ProductList} from "../components";
-import {useReduxDispatch, useReduxSelector} from "../redux/hooks";
-import {createOrder, clearShoppingCartItem} from "../redux/shoppingCart/slice";
+import { MainLayout } from "../layouts";
+import { Affix, Col, Row } from "antd";
+
+import { CartManager, ProductList } from "../components";
+import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
+import { createOrder, clearShoppingCartItem } from "../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 
 const ShoppingCart = () => {
@@ -19,7 +19,7 @@ const ShoppingCart = () => {
         <MainLayout>
             <Row>
                 <Col span={16}>
-                    <div className={styles["product-list-container"]}>
+                    <div className={"product-list-container"}>
                         <ProductList
                             data={shoppingCartItems.map((s) => s.touristRoute)}
                         />
@@ -27,9 +27,9 @@ const ShoppingCart = () => {
                 </Col>
                 <Col span={8}>
                     <Affix>
-                        <div className={styles["payment-card-container"]}>
+                        <div className={"payment-card-container"}>
                             {/* cart management card */}
-                            <CartMgmtCard
+                            <CartManager
                                 loading={loading}
                                 // calculate full original price
                                 originalPrice={shoppingCartItems
@@ -64,7 +64,7 @@ const ShoppingCart = () => {
                 </Col>
             </Row>
         </MainLayout>
-    )
+    );
 };
 
 export default ShoppingCart;
