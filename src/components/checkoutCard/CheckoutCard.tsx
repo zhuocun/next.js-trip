@@ -7,16 +7,11 @@ import { useRouter } from "next/router";
 const { Meta } = Card;
 const { Title, Text } = Typography;
 
-export interface Order {
+interface Order {
     key: number;
     item: string;
     amount: string | number | JSX.Element;
 
-}
-
-export interface OrderSet {
-    orderItems: OrderItems[];
-    state: string;
 }
 
 interface OrderItems {
@@ -25,6 +20,12 @@ interface OrderItems {
     };
     originalPrice: number;
     discountPresent: number;
+}
+
+export interface OrderSet {
+    id: string;
+    state: string;
+    orderItems: OrderItems[];
 }
 
 const columns: ColumnsType<Order> = [
@@ -42,7 +43,7 @@ const columns: ColumnsType<Order> = [
 
 interface PropsType {
     loading: boolean;
-    orderSet: OrderSet;
+    orderSet: OrderSet | null;
     onCheckout: () => void;
 }
 

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createOrder } from "./shoppingCartSlice";
-import { OrderItem } from "../../components";
+import { OrderSet } from "../../components";
 
 interface OrderState {
     loading: boolean;
     error: string | null;
-    currentOrder: OrderItem | null;
+    currentOrder: OrderSet | null;
 }
 
 const initialState: OrderState = {
@@ -17,7 +17,7 @@ const initialState: OrderState = {
 
 export const checkout = createAsyncThunk(
     "order/checkout",
-    async (parameters: { jwtToken: string, orderId: string }) => {
+    async (parameters: { jwtToken: string, orderId: string | undefined }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
             null,

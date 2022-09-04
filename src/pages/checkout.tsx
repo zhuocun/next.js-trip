@@ -9,7 +9,7 @@ import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 const Checkout: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const loading = useReduxSelector((s) => s.order.loading);
-    const order = useReduxSelector((s) => s.order.currentOrder);
+    const orderSet = useReduxSelector((s) => s.order.currentOrder);
     const dispatch = useReduxDispatch();
 
     return (
@@ -21,11 +21,11 @@ const Checkout: React.FC = () => {
                 <Col span={12}>
                     <CheckoutCard
                         loading={loading}
-                        order={order}
+                        orderSet={orderSet}
                         // call redux
                         onCheckout={() => {
                             // checkout
-                            dispatch(checkout({ jwtToken, orderId: order.id }));
+                            dispatch(checkout({ jwtToken, orderId: orderSet?.id }));
                             // refresh shopping cart to update header
                             dispatch(getShoppingCart(jwtToken));
                         }}
