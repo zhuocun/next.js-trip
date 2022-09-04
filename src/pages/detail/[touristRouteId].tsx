@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Anchor, Button, Col, Divider, Menu, Row, Spin, Typography } from "antd";
-import { ProductIntro, ProductComments } from "../../components";
-import styles from "../../styles/productDetail.css";
 import { DatePicker } from "antd";
 import { commentMockData } from "../../../mocks/comments";
 import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
@@ -10,6 +8,8 @@ import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { addShoppingCartItem } from "../../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
+import { ProductIntro } from "../../components/productIntro";
+import { ProductComments } from "../../components/productComments";
 
 const { RangePicker } = DatePicker;
 
@@ -56,7 +56,7 @@ const ProductDetail: React.FC = () => {
     return (
         <>
             <MainLayout>
-                <div className={styles["product-intro-container"]}>
+                <div className={"product-intro-container"}>
                     <Row>
                         {/* intro */}
                         <Col span={13}>
@@ -91,7 +91,7 @@ const ProductDetail: React.FC = () => {
                     </Row>
                 </div>
                 {/* anchor menu */}
-                <Anchor className={styles["product-detail-anchor"]}>
+                <Anchor className={"product-detail-anchor"}>
                     <Menu mode="horizontal">
                         <Menu.Item key="1">
                             <Anchor.Link href="#features" title="Features"></Anchor.Link>
@@ -111,7 +111,7 @@ const ProductDetail: React.FC = () => {
                     </Menu>
                 </Anchor>
                 {/* features */}
-                <div id="features" className={styles["product-detail-container"]}>
+                <div id="features" className={"product-detail-container"}>
                     <Divider>
                         <Typography.Title level={3}>
                             Features
@@ -120,7 +120,7 @@ const ProductDetail: React.FC = () => {
                     <div dangerouslySetInnerHTML={{ __html: product.features }} style={{ margin: 50 }} />
                 </div>
                 {/* fees */}
-                <div id="fees" className={styles["product-detail-container"]}>
+                <div id="fees" className={"product-detail-container"}>
                     <Divider>
                         <Typography.Title level={3}>
                             Fees
@@ -129,7 +129,7 @@ const ProductDetail: React.FC = () => {
                     <div dangerouslySetInnerHTML={{ __html: product.fees }} style={{ margin: 50 }} />
                 </div>
                 {/* notes */}
-                <div id="notes" className={styles["product-detail-container"]}>
+                <div id="notes" className={"product-detail-container"}>
                     <Divider>
                         <Typography.Title level={3}>
                             Notes
@@ -138,7 +138,7 @@ const ProductDetail: React.FC = () => {
                     <div dangerouslySetInnerHTML={{ __html: product.notes }} style={{ margin: 50 }} />
                 </div>
                 {/* comments */}
-                <div id="comments" className={styles["product-detail-container"]}>
+                <div id="comments" className={"product-detail-container"}>
                     <Divider>
                         <Typography.Title level={3}>
                             Comments

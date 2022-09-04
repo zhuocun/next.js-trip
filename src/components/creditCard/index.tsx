@@ -1,8 +1,8 @@
 import React from "react";
-import {PaymentInputsWrapper, usePaymentInputs} from "react-payment-inputs";
+import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
-import {Card} from "antd";
-import styles from "./CreditCard.module.css";
+import { Card } from "antd";
+import styles from "./index.module.css";
 
 export const CreditCard = () => {
     const {
@@ -10,7 +10,7 @@ export const CreditCard = () => {
         getCardImageProps,
         getCardNumberProps,
         getExpiryDateProps,
-        getCVCProps,
+        getCVCProps
     } = usePaymentInputs();
 
     return (
@@ -20,7 +20,7 @@ export const CreditCard = () => {
             className={styles["payment-credit-card"]}
         >
             <PaymentInputsWrapper {...wrapperProps}>
-                <svg {...getCardImageProps({images})} />
+                <svg {...getCardImageProps({ images })} />
                 <input {...getCardNumberProps()} />
                 <input {...getExpiryDateProps()} />
                 <input {...getCVCProps()} />

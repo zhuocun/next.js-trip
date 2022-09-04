@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import {Tag} from "antd";
+import React, { useState } from "react";
+import { Tag } from "antd";
 
-const {CheckableTag} = Tag;
+const { CheckableTag } = Tag;
 
 interface PropsType {
     onSelect?: () => void;
@@ -15,5 +15,7 @@ export const FilterTag: React.FC<PropsType> = (props) => {
         setChecked(checked);
     };
 
-    return <CheckableTag {...props} checked={checked} onChange={handleChange}/>;
+    return (
+        <CheckableTag {...props} checked={checked} onChange={handleChange} />
+    );
 };

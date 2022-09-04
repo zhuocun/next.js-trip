@@ -5,7 +5,7 @@ import { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
 
 const { Meta } = Card;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 interface Order {
     key: number;
@@ -30,12 +30,12 @@ export interface OrderSet {
 
 const columns: ColumnsType<Order> = [
     {
-        title: "产品",
+        title: "Product",
         dataIndex: "item",
         key: "item"
     },
     {
-        title: "价格",
+        title: "Price",
         dataIndex: "amount",
         key: "amount"
     }
@@ -57,13 +57,13 @@ export const CheckoutCard: React.FC<PropsType> = ({
     const paymentData: Order[] = orderSet
         ? orderSet.orderItems.map((i, index) => ({
             key: index,
-            item: i.touristRoute.title,
+            item: i.touristRoute.title.slice(0, 25),
             amount: (
                 <>
-                    <Text delete>$ {i.originalPrice} </Text>{" "}
-                    <Text type="danger" strong>
+                    <Title level={5} delete>$ {i.originalPrice} </Title>
+                    <Title type="danger" level={5}>
                         $ {i.originalPrice * i.discountPresent}
-                    </Text>
+                    </Title>
                 </>
             )
         }))
@@ -71,7 +71,7 @@ export const CheckoutCard: React.FC<PropsType> = ({
 
     return (
         <Card
-            style={{ width: 600, marginTop: 50 }}
+            style={{ width: 500, marginTop: 50 }}
             actions={[
                 orderSet && orderSet.state === "Completed" ? (
                     <Button
@@ -104,7 +104,7 @@ export const CheckoutCard: React.FC<PropsType> = ({
                             columns={columns}
                             dataSource={paymentData}
                             showHeader={false}
-                            size="small"
+                            size="large"
                             bordered={false}
                             pagination={false}
                         />

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Carousel.module.css";
+import styles from "./index.module.css";
 import { Image as AntImage, Carousel as AntCarousel } from "antd";
 
 export const Carousel: React.FC = () => {

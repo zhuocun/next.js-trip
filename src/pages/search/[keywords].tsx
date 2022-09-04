@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
-import { Header, Footer, FilterArea, ProductList } from "../../components";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { searchProduct } from "../../redux/reducers/prodSearchSlice";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
+import { Header } from "../../components/header";
+import { FilterArea } from "../../components/filter";
+import { ProductList } from "../../components/productList";
+import { Footer } from "../../components/footer";
 
 const SearchResult: React.FC = () => {
     const router = useRouter();

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import styles from "./LoginForm.module.css";
+import styles from "./index.module.css";
 import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authnSlice";
 import { useRouter } from "next/router";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Layout, Menu, Typography } from "antd";
 import { UpOutlined } from "@ant-design/icons";
-import styles from "./Footer.module.css";
+import styles from "./index.module.css";
 import { useTranslation } from "react-i18next";
 import { useReduxSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";

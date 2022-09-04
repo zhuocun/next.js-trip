@@ -1,11 +1,11 @@
 import React from "react";
 import { MainLayout } from "../layouts";
 import { Affix, Col, Row } from "antd";
-
-import { CartManager, ProductList } from "../components";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { createOrder, clearShoppingCartItem } from "../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
+import { ProductList } from "../components/productList";
+import { CartManager } from "../components/cartManager";
 
 const ShoppingCart = () => {
 

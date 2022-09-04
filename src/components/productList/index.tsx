@@ -13,7 +13,7 @@ export interface Pagination {
     totalCount: number | undefined;
 }
 
-export interface Product {
+export interface TouristRoute {
     departureCity: string;
     description: string;
     discountPresent: number;
@@ -28,12 +28,12 @@ export interface Product {
 }
 
 interface PropsType {
-    data: Product[] | null;
+    data: TouristRoute[] | null;
     pagination?: Pagination;
     onPageChange?: (nextPage, pageSize) => void;
 }
 
-const listData = (productList: Product[] | null) =>
+const listData = (productList: TouristRoute[] | null) =>
     productList?.map((p) => ({
         id: p.id,
         title: p.title,
@@ -143,7 +143,7 @@ export const ProductList: React.FC<PropsType> = ({ data, pagination }) => {
                                     >
                                         ¥ {item.price}
                                     </Text>
-                                )}
+                                )}{" "}
                                 <Link href={"/detail/" + item.id}>
                                     {item.title}
                                 </Link>

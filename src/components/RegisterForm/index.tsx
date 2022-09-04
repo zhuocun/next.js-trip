@@ -1,6 +1,6 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
-import styles from "./RegisterForm.module.css";
+import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 

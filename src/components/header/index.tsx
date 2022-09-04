@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Header.module.css";
+import styles from "./index.module.css";
 import { Layout, Typography, Input, Menu, Button } from "antd";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
@@ -12,7 +12,7 @@ interface MyJwtPayload extends JwtPayload {
 }
 
 export const Header: React.FC = () => {
-    const logo = "/svg/logo.svg";
+    const logo = "/logo.svg";
     const router = useRouter();
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();

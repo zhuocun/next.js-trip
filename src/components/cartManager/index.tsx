@@ -40,12 +40,12 @@ interface PropsType {
 }
 
 export const CartManager: React.FC<PropsType> = ({
-                                                      loading,
-                                                      originalPrice,
-                                                      price,
-                                                      onShoppingCartClear,
-                                                      onCreateOrder
-                                                  }) => {
+                                                     loading,
+                                                     originalPrice,
+                                                     price,
+                                                     onShoppingCartClear,
+                                                     onCreateOrder
+                                                 }) => {
     const orderData: Item[] = [
         {
             key: 1,
@@ -56,7 +56,7 @@ export const CartManager: React.FC<PropsType> = ({
             key: 3,
             item: "Discounted: ",
             amount: (
-                <Title type="danger" level={2}>
+                <Title type="danger" level={3}>
                     $ {price}
                 </Title>
             )

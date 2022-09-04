@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import {
-    Carousel,
-    SideMenu,
-    ProductCollection,
-    BusinessPartners
-} from "../components";
 import { Row, Col, Typography, Spin } from "antd";
 import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { recommendProducts } from "../redux/reducers/rcmdProdSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
+import { SideMenu } from "../components/sideMenu";
+import { Carousel } from "../components/carousel";
+import { ProductCollection } from "../components/productCollection";
+import { BusinessPartners } from "../components/businessPartners";
 
 const sideImage1 = "/images/sider_2019_12-09.png";
 const sideImage2 = "/images/sider_2019_02-04.png";
@@ -76,7 +74,7 @@ const Home: React.FC = () => {
                         </Typography.Title>
                     }
                     sideImage={sideImage1}
-                    products={productList[0].touristRoutes}
+                    touristRoute={productList[0].touristRoutes}
                 />
                 <ProductCollection
                     title={
@@ -85,7 +83,7 @@ const Home: React.FC = () => {
                         </Typography.Title>
                     }
                     sideImage={sideImage2}
-                    products={productList[1].touristRoutes}
+                    touristRoute={productList[1].touristRoutes}
                 />
                 <ProductCollection
                     title={
@@ -94,7 +92,7 @@ const Home: React.FC = () => {
                         </Typography.Title>
                     }
                     sideImage={sideImage3}
-                    products={productList[2].touristRoutes}
+                    touristRoute={productList[2].touristRoutes}
                 />
                 <BusinessPartners />
             </MainLayout>

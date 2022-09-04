@@ -1,10 +1,18 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { TouristRoute } from "../../components/productList";
+
+interface Product {
+    id: number;
+    touristRoute: TouristRoute;
+    originalPrice: number;
+    discountPresent: number;
+}
 
 interface ShoppingCartState {
     loading: boolean;
     error: string | null;
-    items: object[];
+    items: Product[];
 }
 
 const initialState: ShoppingCartState = {

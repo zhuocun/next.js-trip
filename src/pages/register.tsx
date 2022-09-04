@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthnLayout } from "../layouts";
-import { RegisterForm } from "../components";
+import { RegisterForm } from "../components/RegisterForm";
 
 const Register = () => {
     return (

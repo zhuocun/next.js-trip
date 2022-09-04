@@ -1,10 +1,11 @@
 import React from "react";
-import { CreditCard, CheckoutCard } from "../components";
 import { MainLayout } from "../layouts";
 import { Row, Col } from "antd";
 import { useReduxSelector, useReduxDispatch } from "../redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
+import { CreditCard } from "../components/creditCard";
+import { CheckoutCard } from "../components/checkoutCard";
 
 const Checkout: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
