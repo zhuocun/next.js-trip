@@ -1,30 +1,31 @@
-import React, {useEffect} from 'react';
-import {Button, Checkbox, Form, Input} from 'antd';
+import React, { useEffect } from "react";
+import { Button, Checkbox, Form, Input } from "antd";
 import styles from "./LoginForm.module.css";
-import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
-import {useNavigate} from "react-router-dom";
-import {login} from "../../redux/authentication/slice";
+import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
+import { login } from "../../redux/authentication/slice";
+import { useRouter } from "next/router";
 
 export const LoginForm = () => {
-
     const loading = useReduxSelector((s) => s.authentication.loading);
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
 
     const dispatch = useReduxDispatch();
-    const navigate = useNavigate();
+    const router = useRouter();
 
     useEffect(() => {
         if (jwtToken !== null) {
-            navigate("/");
+            router.push("/").then();
         }
-    }, [navigate, jwtToken])
+    }, [jwtToken]);
 
     const onFinish = (values) => {
         console.log("Success:", values);
-        dispatch(login({
-            email: values.username,
-            password: values.password
-        }))
+        dispatch(
+            login({
+                email: values.username,
+                password: values.password
+            })
+        );
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -35,13 +36,13 @@ export const LoginForm = () => {
         <Form
             name="basic"
             labelCol={{
-                span: 8,
+                span: 8
             }}
             wrapperCol={{
-                span: 16,
+                span: 16
             }}
             initialValues={{
-                remember: true,
+                remember: true
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -54,11 +55,11 @@ export const LoginForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your username!',
-                    },
+                        message: "Please input your username!"
+                    }
                 ]}
             >
-                <Input/>
+                <Input />
             </Form.Item>
 
             <Form.Item
@@ -67,11 +68,11 @@ export const LoginForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
-                    },
+                        message: "Please input your password!"
+                    }
                 ]}
             >
-                <Input.Password/>
+                <Input.Password />
             </Form.Item>
 
             <Form.Item
@@ -79,7 +80,7 @@ export const LoginForm = () => {
                 valuePropName="checked"
                 wrapperCol={{
                     offset: 8,
-                    span: 16,
+                    span: 16
                 }}
             >
                 <Checkbox>Remember me</Checkbox>
@@ -88,7 +89,7 @@ export const LoginForm = () => {
             <Form.Item
                 wrapperCol={{
                     offset: 8,
-                    span: 16,
+                    span: 16
                 }}
             >
                 <Button type="primary" htmlType="submit" loading={loading}>

@@ -1,11 +1,11 @@
 import React from "react";
-import {MainLayout} from "../../layouts";
+import {MainLayout} from "../layouts";
 import {Affix, Col, Row} from "antd";
-import styles from "./ShoppingCartPage.module.css"
-import {CartMgmtCard, ProductList} from "../../components";
-import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
-import {createOrder, clearShoppingCartItem} from "../../redux/shoppingCart/slice";
-import {useNavigate} from "react-router-dom";
+import styles from "../styles/ShoppingCart.module.css"
+import {CartMgmtCard, ProductList} from "../components";
+import {useReduxDispatch, useReduxSelector} from "../redux/hooks";
+import {createOrder, clearShoppingCartItem} from "../redux/shoppingCart/slice";
+import { useRouter } from "next/router";
 
 export const ShoppingCartPage = () => {
 
@@ -13,7 +13,7 @@ export const ShoppingCartPage = () => {
     const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const dispatch = useReduxDispatch();
-    const navigate = useNavigate();
+    const router = useRouter();
 
     return (
         <MainLayout>
@@ -47,7 +47,7 @@ export const ShoppingCartPage = () => {
                                         return;
                                     } else {
                                         dispatch(createOrder(jwtToken));
-                                        navigate("/placeOrder");
+                                        router.push("/checkout").then();
                                     }
                                 }}
                                 onShoppingCartClear={() => {

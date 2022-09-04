@@ -1,11 +1,11 @@
 import React from "react";
-import {Skeleton, Card, Button, Typography, Table} from "antd";
-import {CheckCircleOutlined, HomeOutlined} from "@ant-design/icons";
-import {ColumnsType} from "antd/es/table";
-import {useNavigate} from "react-router-dom";
+import { Skeleton, Card, Button, Typography, Table } from "antd";
+import { CheckCircleOutlined, HomeOutlined } from "@ant-design/icons";
+import { ColumnsType } from "antd/es/table";
+import { useRouter } from "next/router";
 
-const {Meta} = Card;
-const {Title, Text} = Typography;
+const { Meta } = Card;
+const { Title, Text } = Typography;
 
 interface OrderItem {
     key: number;
@@ -17,13 +17,13 @@ const columns: ColumnsType<OrderItem> = [
     {
         title: "产品",
         dataIndex: "item",
-        key: "item",
+        key: "item"
     },
     {
         title: "价格",
         dataIndex: "amount",
-        key: "amount",
-    },
+        key: "amount"
+    }
 ];
 
 interface PropsType {
@@ -35,9 +35,9 @@ interface PropsType {
 export const CheckoutCard: React.FC<PropsType> = ({
                                                       loading,
                                                       order,
-                                                      onCheckout,
+                                                      onCheckout
                                                   }) => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const paymentData: OrderItem[] = order
         ? order.orderItems.map((i, index) => ({
@@ -50,31 +50,31 @@ export const CheckoutCard: React.FC<PropsType> = ({
                         $ {i.originalPrice * i.discountPresent}
                     </Text>
                 </>
-            ),
+            )
         }))
         : [];
 
     return (
         <Card
-            style={{width: 600, marginTop: 50}}
+            style={{ width: 600, marginTop: 50 }}
             actions={[
                 order && order.state === "Completed" ? (
                     <Button
                         type="primary"
                         onClick={() => {
-                            navigate("/");
+                            router.push("/").then();
                         }}
                         loading={loading}
                     >
-                        <HomeOutlined/>
+                        <HomeOutlined />
                         Home
                     </Button>
                 ) : (
                     <Button type="primary" danger onClick={onCheckout} loading={loading}>
-                        <CheckCircleOutlined/>
+                        <CheckCircleOutlined />
                         Checkout
                     </Button>
-                ),
+                )
             ]}
         >
             <Skeleton loading={loading} active>

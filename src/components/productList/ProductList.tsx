@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {List, Rate, Space, Image, Tag, Typography} from "antd";
-import {LikeOutlined, StarOutlined} from "@ant-design/icons";
+import { List, Rate, Space, Image, Tag, Typography } from "antd";
+import { LikeOutlined, StarOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
-const {Text} = Typography;
+const { Text } = Typography;
 
 interface Product {
     departureCity: string;
@@ -32,7 +32,9 @@ const listData = (productList: Product[]) =>
         description: p.description,
         tags: (
             <>
-                {p.departureCity && <Tag color="#f50">{p.departureCity}出发</Tag>}
+                {p.departureCity && (
+                    <Tag color="#f50">{p.departureCity}出发</Tag>
+                )}
                 {p.travelDays && <Tag color="#108ee9">{p.travelDays} 天 </Tag>}
                 {p.discountPresent && <Tag color="#87d068">超低折扣</Tag>}
                 {p.tripType && <Tag color="#2db7f5">{p.tripType}</Tag>}
@@ -42,10 +44,10 @@ const listData = (productList: Product[]) =>
         price: p.price,
         originalPrice: p.originalPrice,
         discountPresent: p.discountPresent,
-        rating: p.rating,
+        rating: p.rating
     }));
 
-const IconText = ({icon, text}) => (
+const IconText = ({ icon, text }) => (
     <Space>
         {React.createElement(icon)}
         {text}
@@ -53,10 +55,10 @@ const IconText = ({icon, text}) => (
 );
 
 export const ProductList: React.FC<PropsType> = ({
-                                                     data,
-                                                     paging,
-                                                     onPageChange,
-                                                 }) => {
+    data,
+    paging,
+    onPageChange
+}) => {
     const products = listData(data);
     return (
         <List
@@ -65,12 +67,13 @@ export const ProductList: React.FC<PropsType> = ({
             pagination={
                 paging
                     ? {
-                        current: paging.currentPage,
-                        onChange: (page) =>
-                            onPageChange && onPageChange(page, paging.pageSize),
-                        pageSize: paging.pageSize,
-                        total: paging.totalCount,
-                    }
+                          current: paging.currentPage,
+                          onChange: (page) =>
+                              onPageChange &&
+                              onPageChange(page, paging.pageSize),
+                          pageSize: paging.pageSize,
+                          total: paging.totalCount
+                      }
                     : false
             }
             dataSource={products}
@@ -96,14 +99,19 @@ export const ProductList: React.FC<PropsType> = ({
                             key="list-vertical-like-o"
                         />,
                         <>
-                            <Rate defaultValue={3}/>
+                            <Rate defaultValue={3} />
                             <Text strong className="ant-rate-text">
                                 {item.rating}
                             </Text>
-                        </>,
+                        </>
                     ]}
                     extra={
-                        <Image width={272} height={172} alt="image" src={item.imgSrc}/>
+                        <Image
+                            width={272}
+                            height={172}
+                            alt="image"
+                            src={item.imgSrc}
+                        />
                     }
                 >
                     <List.Item.Meta
@@ -111,23 +119,40 @@ export const ProductList: React.FC<PropsType> = ({
                             <>
                                 {item.discountPresent ? (
                                     <>
-                                        <Text style={{fontSize: 20, fontWeight: 400}} delete>
+                                        <Text
+                                            style={{
+                                                fontSize: 20,
+                                                fontWeight: 400
+                                            }}
+                                            delete
+                                        >
                                             ¥ {item.originalPrice}
                                         </Text>
                                         <Text
                                             type="danger"
-                                            style={{fontSize: 20, fontWeight: 400}}
+                                            style={{
+                                                fontSize: 20,
+                                                fontWeight: 400
+                                            }}
                                         >
                                             {" "}
                                             ¥ {item.price}
                                         </Text>
                                     </>
                                 ) : (
-                                    <Text style={{fontSize: 20, fontWeight: 400}}>
+                                    <Text
+                                        style={{
+                                            fontSize: 20,
+                                            fontWeight: 400
+                                        }}
+                                    >
                                         ¥ {item.price}
                                     </Text>
                                 )}
-                                <Link to={"/detail/" + item.id}> {item.title}</Link>
+                                <Link href={"/detail/" + item.id}>
+                                    {" "}
+                                    {item.title}
+                                </Link>
                             </>
                         }
                         description={item.tags}

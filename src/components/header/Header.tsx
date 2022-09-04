@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button } from "antd";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 import { authenticationSlice } from "../../redux/authentication/slice";
+import { useRouter } from "next/router";
 
 interface MyJwtPayload extends JwtPayload {
     username: string;
 }
 
 export const Header: React.FC = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();
 
@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
     const searchHandler = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
             if (keywords[i] !== " ") {
-                navigate(`/search/${keywords}`);
+                router.push(`/search/${keywords}`).then();
                 break;
             }
         }
@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
 
     const onLogout = () => {
         dispatch(authenticationSlice.actions.logout());
-        navigate("/");
+        router.push("/").then();
     };
 
     useEffect(() => {
@@ -82,7 +82,7 @@ export const Header: React.FC = () => {
                                     shape="round"
                                     size="middle"
                                     className={styles.button}
-                                    onClick={() => navigate("/shoppingCart")}
+                                    onClick={() => router.push("/shoppingCart")}
                                     loading={shoppingCartLoading}
                                 >
                                     {t("header.shoppingCart")}(
@@ -107,7 +107,7 @@ export const Header: React.FC = () => {
                                     shape="round"
                                     size="middle"
                                     className={styles.button}
-                                    onClick={() => navigate("/login")}
+                                    onClick={() => router.push("/login")}
                                 >
                                     {t("header.login")}
                                 </Button>
@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
                                     shape="round"
                                     size="middle"
                                     className={styles.button}
-                                    onClick={() => navigate("/register")}
+                                    onClick={() => router.push("/register")}
                                 >
                                     {t("header.register")}
                                 </Button>
@@ -138,7 +138,7 @@ export const Header: React.FC = () => {
                             {
                                 key: "1",
                                 label: t("header.home_page"),
-                                onClick: () => navigate("/")
+                                onClick: () => router.push("/")
                             },
                             { key: "2", label: t("header.stays") },
                             { key: "3", label: t("header.flights") },

@@ -1,33 +1,32 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
     Carousel,
     SideMenu,
     ProductCollection,
-    BusinessPartners,
-} from "../../components";
-import {Row, Col, Typography, Spin} from "antd";
-import sideImage from "../../assets/images/sider_2019_12-09.png";
-import sideImage2 from "../../assets/images/sider_2019_02-04.png";
-import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
-import {useTranslation} from "react-i18next";
-import {MainLayout} from "../../layouts";
-import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
-import {recommendProducts} from "../../redux/recommendProducts/slice";
+    BusinessPartners
+} from "../components";
+import { Row, Col, Typography, Spin } from "antd";
+import sideImage from "../assets/images/sider_2019_12-09.png";
+import sideImage2 from "../assets/images/sider_2019_02-04.png";
+import sideImage3 from "../assets/images/sider_2019_02-04-2.png";
+import { useTranslation } from "react-i18next";
+import { MainLayout } from "../layouts";
+import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
+import { recommendProducts } from "../redux/recommendProducts/slice";
 
-
-export const HomePage: React.FC = () => {
-
+const Home: React.FC = () => {
     const loading = useReduxSelector((s) => s.recommendedProducts.loading);
     const error = useReduxSelector((s) => s.recommendedProducts.error);
-    const productList = useReduxSelector((s) => s.recommendedProducts.productList);
+    const productList = useReduxSelector(
+        (s) => s.recommendedProducts.productList
+    );
 
     const dispatch = useReduxDispatch();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     useEffect(() => {
         dispatch(recommendProducts());
-    }, [dispatch])
-
+    }, [dispatch]);
 
     if (loading) {
         return (
@@ -38,7 +37,7 @@ export const HomePage: React.FC = () => {
                     marginBottom: 200,
                     marginLeft: "auto",
                     marginRight: "auto",
-                    width: "100%",
+                    width: "100%"
                 }}
             />
         );
@@ -52,12 +51,12 @@ export const HomePage: React.FC = () => {
         <>
             <MainLayout>
                 {/* content */}
-                <Row style={{marginTop: 20}}>
+                <Row style={{ marginTop: 20 }}>
                     <Col span={6}>
-                        <SideMenu/>
+                        <SideMenu />
                     </Col>
                     <Col span={18}>
-                        <Carousel/>
+                        <Carousel />
                     </Col>
                 </Row>
                 <ProductCollection
@@ -87,8 +86,10 @@ export const HomePage: React.FC = () => {
                     sideImage={sideImage3}
                     products={productList[2].touristRoutes}
                 />
-                <BusinessPartners/>
+                <BusinessPartners />
             </MainLayout>
         </>
     );
 };
+
+export default Home;

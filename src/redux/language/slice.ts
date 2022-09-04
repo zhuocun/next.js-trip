@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import i18n from "i18next";
 
 export interface LanguageState {
@@ -9,8 +9,8 @@ export interface LanguageState {
 const initialState: LanguageState = {
     currentLanguage: "en",
     languageList: [
-        {code: "en", name: "English"},
-        {code: "zh", name: "简体中文"}
+        { code: "en", name: "English" },
+        { code: "zh", name: "简体中文" }
     ]
 };
 
@@ -23,9 +23,8 @@ export const languageSlice = createSlice({
             state.currentLanguage = action.payload;
         },
         fetchAdd: (state) => {
-            let payload = {code: "New_language", name: "New language"}
+            const payload = { code: "New_language", name: "New language" };
             state.languageList = state.languageList.concat(payload);
         }
-    },
+    }
 });
-

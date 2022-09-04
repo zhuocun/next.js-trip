@@ -1,18 +1,15 @@
-import React, {useEffect} from "react";
-import styles from "./SearchPage.module.css";
-import {Header, Footer, FilterArea, ProductList} from "../../components";
-import {useLocation, useParams} from "react-router-dom";
-import {useReduxDispatch, useReduxSelector} from "../../redux/hooks";
-import {searchProduct} from "../../redux/productSearch/slice";
-import {Spin} from "antd";
-
-type MatchParams = {
-    keywords: string;
-}
+import React, { useEffect } from "react";
+import styles from "../../styles/SearchPage.module.css";
+import { Header, Footer, FilterArea, ProductList } from "../../components";
+import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
+import { searchProduct } from "../../redux/productSearch/slice";
+import { Spin } from "antd";
+import { useRouter } from "next/router";
 
 export const SearchPage: React.FC = () => {
-
-    const {keywords} = useParams<MatchParams>();
+    const router = useRouter();
+    const { keywords } = router.query;
+    const location = router.pathname;
 
     const loading = useReduxSelector((s) => s.productSearch.loading);
     const error = useReduxSelector((s) => s.productSearch.error);
@@ -20,19 +17,18 @@ export const SearchPage: React.FC = () => {
     const productList = useReduxSelector((s) => s.productSearch.searchResult);
 
     const dispatch = useReduxDispatch();
-    const location = useLocation();
 
     useEffect(() => {
         if (keywords) {
-            dispatch(searchProduct({nextPage: 1, pageSize: 10, keywords}));
+            dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
         }
-    }, [dispatch, keywords, location])
+    }, [dispatch, keywords, location]);
 
     const onPageChange = (nextPage, pageSize) => {
         if (keywords) {
-            dispatch(searchProduct({nextPage, pageSize, keywords}));
+            dispatch(searchProduct({ nextPage, pageSize, keywords }));
         }
-    }
+    };
 
     if (loading) {
         return (
@@ -43,7 +39,7 @@ export const SearchPage: React.FC = () => {
                     marginBottom: 200,
                     marginLeft: "auto",
                     marginRight: "auto",
-                    width: "100%",
+                    width: "100%"
                 }}
             />
         );
@@ -55,10 +51,10 @@ export const SearchPage: React.FC = () => {
 
     return (
         <div>
-            <Header/>
+            <Header />
             <div className={styles["page-content"]}>
                 <div className={styles["product-list-container"]}>
-                    <FilterArea/>
+                    <FilterArea />
                 </div>
                 <div className={styles["product-list-container"]}>
                     <ProductList
@@ -68,7 +64,7 @@ export const SearchPage: React.FC = () => {
                     />
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
-    )
-}
+    );
+};

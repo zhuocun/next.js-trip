@@ -2,7 +2,7 @@
     thunk does creators' job more intelligently
     slice does reducer's job more intelligently
  */
-import {createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // state of page
@@ -17,7 +17,7 @@ const initialState: ProductDetailState = {
     loading: true,
     error: null,
     productDetail: null
-}
+};
 
 /*
     thunk does creators' job more intelligently:
@@ -29,7 +29,7 @@ const initialState: ProductDetailState = {
 export const getProductDetail = createAsyncThunk(
     // typePrefix doesn't matter
     "productDetail/getProductDetail",
-    async (touristRouteId: string) => {
+    async (touristRouteId: string | string[]) => {
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
         );
@@ -66,10 +66,12 @@ export const productDetailSlice = createSlice({
             state.productDetail = action.payload;
         },
         // action.type = error
-        [getProductDetail.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [getProductDetail.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         }
     }
 });
-

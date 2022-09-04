@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk, PayloadAction,} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface ProductSearchState {
@@ -13,16 +13,15 @@ const initialState: ProductSearchState = {
     error: null,
     searchResult: null,
     pagination: null
-}
+};
 
 export const searchProduct = createAsyncThunk(
     "productSearch/searchProduct",
-    async (
-        parameters: {
-            keywords: string,
-            nextPage: number | string,
-            pageSize: number | string
-        }) => {
+    async (parameters: {
+        keywords: string | string[],
+        nextPage: number | string,
+        pageSize: number | string
+    }) => {
         let url = `http://123.56.149.216:8080/api/touristRoutes?`;
         url += `pageNumber=${parameters.nextPage}`;
         url += `&pageSize=${parameters.pageSize}`;
@@ -49,10 +48,12 @@ export const productSearchSlice = createSlice({
             state.searchResult = action.payload.searchResult;
             state.pagination = action.payload.pagination;
         },
-        [searchProduct.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [searchProduct.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         }
     }
 });
-

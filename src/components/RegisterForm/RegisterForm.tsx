@@ -2,10 +2,10 @@ import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
 import styles from "./RegisterForm.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export const RegisterForm = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const onFinish = async (values: {
         username: string,
@@ -19,7 +19,7 @@ export const RegisterForm = () => {
                 password: values.password,
                 confirmPassword: values.confirm
             });
-            navigate("/Login/");
+            router.push("/Login/").then();
         } catch (error) {
             alert("Register failed");
         }

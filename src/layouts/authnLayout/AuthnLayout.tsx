@@ -1,28 +1,25 @@
 import React from "react";
 import styles from "./AuthnLayout.module.css";
 import logo from "../../assets/logo.svg";
-import {Link} from "react-router-dom";
-import {Layout} from "antd";
-import {Footer} from "../../components";
+import { Layout } from "antd";
+import { Footer } from "../../components";
+import Link from "next/link";
 
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 
 interface PropsType {
     children: React.ReactNode;
 }
 
 export const AuthnLayout: React.FC<PropsType> = (props) => {
-
     return (
         <Layout className={styles["user-layout-container"]}>
-            <Header className={styles["header"]}>
-
-            </Header>
+            <Header className={styles["header"]}></Header>
             <Content className={styles["content"]}>
                 <div className={styles["top"]}>
                     <div className={styles["content-header"]}>
-                        <Link to="/">
-                            <img alt="logo" className={styles["logo"]} src={logo}/>
+                        <img alt="logo" className={styles["logo"]} src={logo} />
+                        <Link href="/">
                             <span className={styles["title"]}>React Trip</span>
                         </Link>
                     </div>
@@ -32,7 +29,7 @@ export const AuthnLayout: React.FC<PropsType> = (props) => {
                     {props.children}
                 </div>
             </Content>
-            <Footer/>
+            <Footer />
         </Layout>
     );
 };

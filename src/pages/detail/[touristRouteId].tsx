@@ -1,26 +1,22 @@
 import React, {useEffect} from "react"
-import {useParams} from "react-router-dom";
 import {Anchor, Button, Col, Divider, Menu, Row, Spin, Typography} from "antd";
 import {ProductIntro, ProductComments} from "../../components";
-import styles from "./DetailPage.module.css"
+import styles from "../../styles/DetailPage.module.css"
 import {DatePicker} from 'antd';
-import {commentMockData} from "./mockup";
+import {commentMockData} from "../../../mocks/mockupComments";
 import {getProductDetail} from "../../redux/productDetail/slice";
 import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
 import {MainLayout} from "../../layouts";
 import {ShoppingCartOutlined} from "@ant-design/icons";
 import {addShoppingCartItem} from "../../redux/shoppingCart/slice";
-
-type MatchParams = {
-    touristRouteId: string
-};
+import { useRouter } from "next/router";
 
 const {RangePicker} = DatePicker;
 
 
 export const DetailPage: React.FC = () => {
     // get parameter through router
-    const {touristRouteId} = useParams<MatchParams>();
+    const {touristRouteId} = useRouter().query;
 
     // get states from Redux
     const loading = useReduxSelector((s) => s.productDetail.loading);
