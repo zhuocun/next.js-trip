@@ -150,7 +150,6 @@ export const ProductList: React.FC<PropsType> = ({
                                     </Text>
                                 )}
                                 <Link href={"/detail/" + item.id}>
-                                    {" "}
                                     {item.title}
                                 </Link>
                             </>

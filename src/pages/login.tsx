@@ -2,7 +2,7 @@ import React from "react";
 import { AuthnLayout } from "../layouts";
 import { LoginForm } from "../components";
 
-const LoginPage = () => {
+const Login = () => {
     return (
         <AuthnLayout>
             <LoginForm />
@@ -10,4 +10,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default Login;

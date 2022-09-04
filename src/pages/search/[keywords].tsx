@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/SearchPage.module.css";
+import styles from "../../styles/searchResult.css";
 import { Header, Footer, FilterArea, ProductList } from "../../components";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { searchProduct } from "../../redux/productSearch/slice";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 
-export const SearchPage: React.FC = () => {
+const SearchResult: React.FC = () => {
     const router = useRouter();
     const { keywords } = router.query;
     const location = router.pathname;
@@ -68,3 +68,5 @@ export const SearchPage: React.FC = () => {
         </div>
     );
 };
+
+export default SearchResult;

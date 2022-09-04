@@ -1,16 +1,17 @@
 import React from "react";
 import styles from "./Carousel.module.css";
-import {Image, Carousel as AntCarousel} from "antd";
-import carouselImage1 from "../../assets/images/carousel_1.jpg";
-import carouselImage2 from "../../assets/images/carousel_2.jpg";
-import carouselImage3 from "../../assets/images/carousel_3.jpg";
+import { Image as AntImage, Carousel as AntCarousel } from "antd";
 
 export const Carousel: React.FC = () => {
+    const carouselImage1 = "/images/carousel_1.jpg";
+    const carouselImage2 = "/images/carousel_2.jpg";
+    const carouselImage3 = "/images/carousel_3.jpg";
+
     return (
         <AntCarousel autoplay className={styles.slider}>
-            <Image src={carouselImage1}/>
-            <Image src={carouselImage2}/>
-            <Image src={carouselImage3}/>
+            <AntImage src={carouselImage1} />
+            <AntImage src={carouselImage2} />
+            <AntImage src={carouselImage3} />
         </AntCarousel>
-    )
+    );
 };

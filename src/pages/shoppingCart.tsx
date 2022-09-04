@@ -1,13 +1,13 @@
 import React from "react";
 import {MainLayout} from "../layouts";
 import {Affix, Col, Row} from "antd";
-import styles from "../styles/ShoppingCart.module.css"
+import styles from "../styles/shoppingCart.css"
 import {CartMgmtCard, ProductList} from "../components";
 import {useReduxDispatch, useReduxSelector} from "../redux/hooks";
 import {createOrder, clearShoppingCartItem} from "../redux/shoppingCart/slice";
 import { useRouter } from "next/router";
 
-export const ShoppingCartPage = () => {
+const ShoppingCart = () => {
 
     const loading = useReduxSelector((s) => s.shoppingCart.loading);
     const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
@@ -65,4 +65,6 @@ export const ShoppingCartPage = () => {
             </Row>
         </MainLayout>
     )
-}
+};
+
+export default ShoppingCart;

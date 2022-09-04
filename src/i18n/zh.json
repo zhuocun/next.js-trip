@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "React 旅游网",
+    "title": "Next.js 旅游网",
     "register": "注册",
     "login": "登陆",
     "home_page": "网站首页",
@@ -12,7 +12,7 @@
     "bundle_save": "套餐 & 省钱",
     "attractions": "热门景点",
     "gift_cards": "礼品卡",
-    "rewards": "React旅游网奖励",
+    "rewards": "Next.js旅游网奖励",
     "deals": "本周特惠",
     "shoppingCart": "购物车 ",
     "logout": "登出",
@@ -21,7 +21,7 @@
     "welcome": "，欢迎回来！"
   },
   "footer": {
-    "detail": "版权所有 @ React Trip made by zhuocun",
+    "detail": "版权所有 @ Next.js Trip made by zhuocun",
     "add_new_language": "添加新语言"
   },
   "home_page": {

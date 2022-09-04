@@ -2,10 +2,12 @@ import React from "react";
 import { AuthnLayout } from "../layouts";
 import { RegisterForm } from "../components";
 
-export const RegisterPage = () => {
+const Register = () => {
     return (
         <AuthnLayout>
             <RegisterForm />
         </AuthnLayout>
     );
 };
+
+export default Register;

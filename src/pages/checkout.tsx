@@ -6,7 +6,7 @@ import {useReduxSelector, useReduxDispatch} from "../redux/hooks";
 import {checkout} from "../redux/order/slice";
 import {getShoppingCart} from "../redux/shoppingCart/slice";
 
-export const CheckoutPage: React.FC = () => {
+const Checkout: React.FC = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const order = useReduxSelector((s) => s.order.currentOrder);
@@ -35,3 +35,5 @@ export const CheckoutPage: React.FC = () => {
         </MainLayout>
     );
 };
+
+export default Checkout;

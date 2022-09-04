@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "React Trip",
+    "title": "Next.js Trip",
     "register": "Register",
     "login": "Login",
     "home_page": "Home",
@@ -12,7 +12,7 @@
     "bundle_save": "Bundle & Save",
     "attractions": "Attractions",
     "gift_cards": "Gift Cards",
-    "rewards": "React Trip Rewards",
+    "rewards": "Next.js Trip Rewards",
     "deals": "Weekly Deals",
     "shoppingCart": "My cart ",
     "logout": "Logout",
@@ -21,7 +21,7 @@
     "welcome": ", welcome back!"
   },
   "footer": {
-    "detail": "© 2022 React Trip made by zhuocun. All Rights Reserved.",
+    "detail": "© 2022 Next.js Trip made by zhuocun. All Rights Reserved.",
     "add_new_language": "add new language"
   },
   "home_page": {

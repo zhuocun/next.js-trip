@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./SideMenu.module.css";
-import {sideMenuList} from "./mockup";
-import {MenuUnfoldOutlined} from "@ant-design/icons";
-import {Menu} from "antd";
+import { sideMenuList } from "../../../mocks/sideMenu";
+import { MenuUnfoldOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
 
 export const SideMenu: React.FC = () => {
     return (
@@ -12,18 +12,18 @@ export const SideMenu: React.FC = () => {
             items={sideMenuList.map((m) => ({
                 key: m.title,
                 label: m.title,
-                icon: <MenuUnfoldOutlined/>,
+                icon: <MenuUnfoldOutlined />,
                 children: m.subMenu.map((sm) => ({
                     key: sm.title,
                     label: sm.title,
-                    icon: <MenuUnfoldOutlined/>,
+                    icon: <MenuUnfoldOutlined />,
                     children: sm.subMenu.map((sms) => ({
                         key: sms,
                         label: sms,
-                        icon: <MenuUnfoldOutlined/>
+                        icon: <MenuUnfoldOutlined />
                     }))
                 }))
             }))}
         />
-    )
+    );
 };

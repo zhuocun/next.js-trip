@@ -1,22 +1,22 @@
-import React, {useEffect} from "react"
-import {Anchor, Button, Col, Divider, Menu, Row, Spin, Typography} from "antd";
-import {ProductIntro, ProductComments} from "../../components";
-import styles from "../../styles/DetailPage.module.css"
-import {DatePicker} from 'antd';
-import {commentMockData} from "../../../mocks/mockupComments";
-import {getProductDetail} from "../../redux/productDetail/slice";
-import {useReduxSelector, useReduxDispatch} from "../../redux/hooks";
-import {MainLayout} from "../../layouts";
-import {ShoppingCartOutlined} from "@ant-design/icons";
-import {addShoppingCartItem} from "../../redux/shoppingCart/slice";
+import React, { useEffect } from "react";
+import { Anchor, Button, Col, Divider, Menu, Row, Spin, Typography } from "antd";
+import { ProductIntro, ProductComments } from "../../components";
+import styles from "../../styles/productDetail.css";
+import { DatePicker } from "antd";
+import { commentMockData } from "../../../mocks/comments";
+import { getProductDetail } from "../../redux/productDetail/slice";
+import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
+import { MainLayout } from "../../layouts";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { addShoppingCartItem } from "../../redux/shoppingCart/slice";
 import { useRouter } from "next/router";
 
-const {RangePicker} = DatePicker;
+const { RangePicker } = DatePicker;
 
 
-export const DetailPage: React.FC = () => {
+const ProductDetail: React.FC = () => {
     // get parameter through router
-    const {touristRouteId} = useRouter().query;
+    const { touristRouteId } = useRouter().query;
 
     // get states from Redux
     const loading = useReduxSelector((s) => s.productDetail.loading);
@@ -30,9 +30,9 @@ export const DetailPage: React.FC = () => {
 
     useEffect(() => {
         if (touristRouteId) {
-            dispatch(getProductDetail(touristRouteId))
+            dispatch(getProductDetail(touristRouteId));
         }
-    }, [dispatch, touristRouteId])
+    }, [dispatch, touristRouteId]);
 
     if (loading) {
         return (
@@ -43,7 +43,7 @@ export const DetailPage: React.FC = () => {
                     marginBottom: 200,
                     marginLeft: "auto",
                     marginRight: "auto",
-                    width: "100%",
+                    width: "100%"
                 }}
             />
         );
@@ -74,19 +74,19 @@ export const DetailPage: React.FC = () => {
                         <Col span={11}>
                             {/* add to cart button */}
                             <Button
-                                style={{marginTop: 50, marginBottom: 30, display: "block"}}
+                                style={{ marginTop: 50, marginBottom: 30, display: "block" }}
                                 type="primary"
                                 danger
                                 loading={shoppingCartLoading}
                                 onClick={() => {
-                                    dispatch(addShoppingCartItem({jwtToken, touristRouteId: product.id}))
+                                    dispatch(addShoppingCartItem({ jwtToken, touristRouteId: product.id }));
                                 }}
                             >
-                                <ShoppingCartOutlined/>
+                                <ShoppingCartOutlined />
                                 Add to cart
                             </Button>
                             {/* date */}
-                            <RangePicker open style={{marginTop: 20}}/>
+                            <RangePicker open style={{ marginTop: 20 }} />
                         </Col>
                     </Row>
                 </div>
@@ -117,7 +117,7 @@ export const DetailPage: React.FC = () => {
                             Features
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.features}} style={{margin: 50}}/>
+                    <div dangerouslySetInnerHTML={{ __html: product.features }} style={{ margin: 50 }} />
                 </div>
                 {/* fees */}
                 <div id="fees" className={styles["product-detail-container"]}>
@@ -126,7 +126,7 @@ export const DetailPage: React.FC = () => {
                             Fees
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.fees}} style={{margin: 50}}/>
+                    <div dangerouslySetInnerHTML={{ __html: product.fees }} style={{ margin: 50 }} />
                 </div>
                 {/* notes */}
                 <div id="notes" className={styles["product-detail-container"]}>
@@ -135,7 +135,7 @@ export const DetailPage: React.FC = () => {
                             Notes
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{__html: product.notes}} style={{margin: 50}}/>
+                    <div dangerouslySetInnerHTML={{ __html: product.notes }} style={{ margin: 50 }} />
                 </div>
                 {/* comments */}
                 <div id="comments" className={styles["product-detail-container"]}>
@@ -144,11 +144,13 @@ export const DetailPage: React.FC = () => {
                             Comments
                         </Typography.Title>
                     </Divider>
-                    <div style={{margin: 40}}>
-                        <ProductComments data={commentMockData}/>
+                    <div style={{ margin: 40 }}>
+                        <ProductComments data={commentMockData} />
                     </div>
                 </div>
             </MainLayout>
         </>
     );
 };
+
+export default ProductDetail;
