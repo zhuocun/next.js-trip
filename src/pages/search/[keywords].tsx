@@ -58,7 +58,7 @@ const SearchResult: React.FC = () => {
                 <div className={"product-list-container"}>
                     <ProductList
                         data={productList}
-                        paging={pagination}
+                        pagination={pagination}
                         onPageChange={onPageChange}
                     />
                 </div>

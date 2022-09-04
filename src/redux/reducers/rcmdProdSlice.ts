@@ -1,11 +1,12 @@
-import {createSlice, createAsyncThunk, PayloadAction,} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Product } from "../../components";
 
 // define state
 interface RecommendedProductsState {
     loading: boolean;
     error: string | null;
-    productList: any[];
+    productList: Product[];
 }
 
 // define default state
@@ -38,10 +39,12 @@ export const recommendedProductsSlice = createSlice({
             state.error = null;
             state.productList = action.payload;
         },
-        [recommendProducts.rejected.type]: (state, action: PayloadAction<string | null>) => {
+        [recommendProducts.rejected.type]: (
+            state,
+            action: PayloadAction<string | null>
+        ) => {
             state.loading = false;
             state.error = action.payload;
         }
     }
-})
-
+});

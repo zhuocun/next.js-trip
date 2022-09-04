@@ -4,7 +4,7 @@ import {Typography, Carousel, Image, Rate, Table} from "antd";
 import {ColumnsType} from "antd/es/table"
 
 
-interface PropsType {
+export interface ProductDetail {
     title: string;
     shortDescription: string;
     price: string | number;
@@ -37,7 +37,7 @@ interface RowType {
     description: string | number | JSX.Element;
 }
 
-export const ProductIntro: React.FC<PropsType> = ({
+export const ProductIntro: React.FC<ProductDetail> = ({
                                                       title,
                                                       shortDescription,
                                                       price,

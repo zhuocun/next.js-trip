@@ -1,16 +1,16 @@
-import {createSlice, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface ShoppingCartState {
     loading: boolean;
     error: string | null;
-    items: any[];
+    items: object[];
 }
 
 const initialState: ShoppingCartState = {
     loading: true,
     error: null,
-    items: [],
+    items: []
 };
 
 export const getShoppingCart = createAsyncThunk(
@@ -20,8 +20,8 @@ export const getShoppingCart = createAsyncThunk(
             `http://123.56.149.216:8080/api/shoppingCart`,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`,
-                },
+                    Authorization: `bearer ${jwtToken}`
+                }
             }
         );
         return axiosResponse.data.shoppingCartItems;
@@ -30,16 +30,16 @@ export const getShoppingCart = createAsyncThunk(
 
 export const addShoppingCartItem = createAsyncThunk(
     "shoppingCart/addShoppingCartItem",
-    async (parameters: { jwtToken: string; touristRouteId: string }) => {
+    async (parameters: { jwtToken: string, touristRouteId: string }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
-                touristRouteId: parameters.touristRouteId,
+                touristRouteId: parameters.touristRouteId
             },
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`,
-                },
+                    Authorization: `bearer ${parameters.jwtToken}`
+                }
             }
         );
         return axiosResponse.data.shoppingCartItems;
@@ -55,8 +55,8 @@ export const createOrder = createAsyncThunk(
             null,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`,
-                },
+                    Authorization: `bearer ${jwtToken}`
+                }
             }
         );
         return axiosResponse.data;
@@ -65,15 +65,14 @@ export const createOrder = createAsyncThunk(
 
 export const clearShoppingCartItem = createAsyncThunk(
     "shoppingCart/clearShoppingCartItem",
-    async (parameters: { jwtToken: string; itemIds: number[] }) => {
+    async (parameters: { jwtToken: string, itemIds: number[] }) => {
         let url = `http://123.56.149.216:8080/api/shoppingCart/items/`;
         url += `(${parameters.itemIds.join(",")})`;
         return await axios.delete(url, {
-                headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`,
-                },
+            headers: {
+                Authorization: `bearer ${parameters.jwtToken}`
             }
-        );
+        });
     }
 );
 
@@ -130,5 +129,5 @@ export const shoppingCartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         }
-    },
+    }
 });
