@@ -6,13 +6,7 @@ import { ColumnsType } from "antd/es/table";
 const { Meta } = Card;
 const { Title, Text } = Typography;
 
-interface Item {
-    key: number;
-    item: string;
-    amount: string | number | JSX.Element;
-}
-
-const columns: ColumnsType<Item> = [
+const columns: ColumnsType<CartItem> = [
     {
         title: "Item",
         dataIndex: "item",
@@ -25,22 +19,14 @@ const columns: ColumnsType<Item> = [
     }
 ];
 
-interface PropsType {
-    loading: boolean;
-    originalPrice: number;
-    price: number;
-    onShoppingCartClear: () => void;
-    onCreateOrder: () => void;
-}
-
-export const CartManager: React.FC<PropsType> = ({
-                                                     loading,
-                                                     originalPrice,
-                                                     price,
-                                                     onShoppingCartClear,
-                                                     onCreateOrder
-                                                 }) => {
-    const orderData: Item[] = [
+export const CartManager: React.FC<CartManagerProps> = ({
+                                                            loading,
+                                                            originalPrice,
+                                                            price,
+                                                            onShoppingCartClear,
+                                                            onCreateOrder
+                                                        }) => {
+    const orderData: CartItem[] = [
         {
             key: 1,
             item: "Full price: ",
@@ -82,7 +68,7 @@ export const CartManager: React.FC<PropsType> = ({
                 <Meta
                     title={<Title level={2}>Total</Title>}
                     description={
-                        <Table<Item>
+                        <Table<CartItem>
                             columns={columns}
                             dataSource={orderData}
                             showHeader={false}

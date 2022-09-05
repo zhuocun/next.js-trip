@@ -1,37 +1,8 @@
 import React from "react";
-import { List, Rate, Space, Image, Tag, Typography } from "antd";
+import { Image, List, Rate, Space, Tag, Typography } from "antd";
 import { LikeOutlined, StarOutlined } from "@ant-design/icons";
 import Link from "next/link";
-
-interface TouristRoutePictures {
-    url: string;
-}
-
-export interface Pagination {
-    currentPage: number;
-    pageSize: number | undefined;
-    totalCount: number | undefined;
-}
-
-export interface TouristRoute {
-    departureCity: string;
-    description: string;
-    discountPresent: number;
-    id: string;
-    originalPrice: number;
-    price: number;
-    rating: number;
-    title: string;
-    touristRoutePictures: TouristRoutePictures[];
-    travelDays: string;
-    tripType: string;
-}
-
-interface PropsType {
-    data: TouristRoute[] | null;
-    pagination?: Pagination;
-    onPageChange?: (nextPage, pageSize) => void;
-}
+import { ProductListProps, TouristRoute } from "../../interfaces/productList";
 
 const listData = (productList: TouristRoute[] | null) =>
     productList?.map((p) => ({
@@ -57,7 +28,10 @@ const listData = (productList: TouristRoute[] | null) =>
 
 const { Text } = Typography;
 
-export const ProductList: React.FC<PropsType> = ({ data, pagination }) => {
+export const ProductList: React.FC<ProductListProps> = ({
+    data,
+    pagination
+}) => {
     const products = listData(data);
     return (
         <List

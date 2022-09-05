@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { Carousel, Image, Rate, Table, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { MainProductDetail } from "../../interfaces/productDetail";
+import { MainProductDetail } from "../../interfaces/productDetails";
 
 const columns: ColumnsType<RowType> = [
     {

@@ -1,16 +1,9 @@
 import React from "react";
 import { Image, Typography } from "antd";
 import Link from "next/link";
+import { ProductImageProps } from "../../interfaces/productCollections";
 
-interface PropsType {
-    id: string | number;
-    size: "large" | "small";
-    imageSrc: string;
-    price: string | number;
-    title: string;
-}
-
-export const ProductImage: React.FC<PropsType> = ({
+export const ProductImage: React.FC<ProductImageProps> = ({
     id,
     size,
     imageSrc,

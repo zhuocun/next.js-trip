@@ -1,31 +1,12 @@
 import React from "react";
-import {Skeleton, Card, Button, Typography, Table} from "antd";
-import {CheckCircleOutlined, HomeOutlined} from "@ant-design/icons";
-import {ColumnsType} from "antd/es/table";
-import {useRouter} from "next/router";
+import { Button, Card, Skeleton, Table, Typography } from "antd";
+import { CheckCircleOutlined, HomeOutlined } from "@ant-design/icons";
+import { ColumnsType } from "antd/es/table";
+import { useRouter } from "next/router";
+import { CheckoutCardProps, Order } from "../../interfaces/orders";
 
-const {Meta} = Card;
-const {Title} = Typography;
-
-interface Order {
-    key: number;
-    item: string;
-    amount: string | number | JSX.Element;
-}
-
-interface OrderItems {
-    touristRoute: {
-        title: string
-    };
-    originalPrice: number;
-    discountPresent: number;
-}
-
-export interface OrderSet {
-    id: string;
-    state: string;
-    orderItems: OrderItems[];
-}
+const { Meta } = Card;
+const { Title } = Typography;
 
 const columns: ColumnsType<Order> = [
     {
@@ -40,17 +21,12 @@ const columns: ColumnsType<Order> = [
     }
 ];
 
-interface PropsType {
-    loading: boolean;
-    orderSet: OrderSet | null;
-    onCheckout: () => void;
-}
 
-export const CheckoutCard: React.FC<PropsType> = ({
-                                                      loading,
-                                                      orderSet,
-                                                      onCheckout
-                                                  }) => {
+export const CheckoutCard: React.FC<CheckoutCardProps> = ({
+                                                              loading,
+                                                              orderSet,
+                                                              onCheckout
+                                                          }) => {
     const router = useRouter();
 
     const paymentData: Order[] = orderSet
@@ -70,7 +46,7 @@ export const CheckoutCard: React.FC<PropsType> = ({
 
     return (
         <Card
-            style={{width: 500, marginTop: 50}}
+            style={{ width: 500, marginTop: 50 }}
             actions={[
                 orderSet && orderSet.state === "Completed" ? (
                     <Button
@@ -80,12 +56,12 @@ export const CheckoutCard: React.FC<PropsType> = ({
                         }}
                         loading={loading}
                     >
-                        <HomeOutlined/>
+                        <HomeOutlined />
                         Home
                     </Button>
                 ) : (
                     <Button type="primary" danger onClick={onCheckout} loading={loading}>
-                        <CheckCircleOutlined/>
+                        <CheckCircleOutlined />
                         Checkout
                     </Button>
                 )

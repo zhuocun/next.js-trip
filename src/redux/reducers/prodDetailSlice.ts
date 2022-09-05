@@ -4,7 +4,7 @@
  */
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { FullProductDetail } from "../../interfaces/productDetail";
+import { FullProductDetail } from "../../interfaces/productDetails";
 
 // state of page
 interface ProductDetailState {

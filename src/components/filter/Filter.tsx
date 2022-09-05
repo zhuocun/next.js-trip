@@ -1,15 +1,11 @@
 import React from "react";
 import { FilterTag } from "./FilterTag";
-import { Typography, Divider } from "antd";
+import { Divider, Typography } from "antd";
+import { FilterProps } from "../../interfaces/filters";
 
 const { Text } = Typography;
 
-interface PropsType {
-    title: string;
-    tags: string[];
-}
-
-export const Filter: React.FC<PropsType> = ({ title, tags }) => {
+export const Filter: React.FC<FilterProps> = ({ title, tags }) => {
     return (
         <div>
             <Text style={{ marginRight: 40, fontSize: 15, fontWeight: 500 }}>

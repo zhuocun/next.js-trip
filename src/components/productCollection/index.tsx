@@ -1,16 +1,10 @@
 import React from "react";
 import styles from "./index.module.css";
-import { Row, Col, Divider } from "antd";
+import { Col, Divider, Row } from "antd";
 import { ProductImage } from "./ProductImage";
-import { TouristRoute } from "../productList";
+import { ProductCollectionProps } from "../../interfaces/productCollections";
 
-interface PropsType {
-    title: JSX.Element;
-    sideImage: string;
-    touristRoute: TouristRoute[];
-}
-
-export const ProductCollection: React.FC<PropsType> = ({
+export const ProductCollection: React.FC<ProductCollectionProps> = ({
     title,
     sideImage,
     touristRoute

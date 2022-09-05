@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
-import { Layout, Typography, Input, Menu, Button } from "antd";
+import { Button, Input, Layout, Menu, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import jwt_decode, { JwtPayload } from "jwt-decode";
@@ -11,8 +11,9 @@ interface MyJwtPayload extends JwtPayload {
     username: string;
 }
 
+const logo = "/logo.svg";
+
 export const Header: React.FC = () => {
-    const logo = "/logo.svg";
     const router = useRouter();
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();

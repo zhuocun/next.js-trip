@@ -1,16 +1,7 @@
 import React from "react";
-import {Comment, List} from "antd";
+import { Comment, List } from "antd";
 
-interface PropsType {
-    data: {
-        author: string;
-        avatar: string;
-        content: string;
-        createDate: string;
-    }[];
-}
-
-export const ProductComments: React.FC<PropsType> = ({data}) => {
+export const ProductComments: React.FC<ProductCommentsProps> = ({ data }) => {
     return (
         <List
             dataSource={data}
@@ -25,8 +16,8 @@ export const ProductComments: React.FC<PropsType> = ({data}) => {
                             datetime={item.createDate}
                         />
                     </li>
-                )
+                );
             }}
         />
-    )
-}
+    );
+};
