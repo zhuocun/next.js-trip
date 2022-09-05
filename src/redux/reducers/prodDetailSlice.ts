@@ -2,15 +2,15 @@
     thunk does creators' job more intelligently
     slice does reducer's job more intelligently
  */
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ProductDetail } from "../../components";
+import { FullProductDetail } from "../../interfaces/productDetail";
 
 // state of page
 interface ProductDetailState {
     loading: boolean;
     error: string | null;
-    productDetail: ProductDetail | null;
+    productDetail: FullProductDetail | null;
 }
 
 // initial state of page

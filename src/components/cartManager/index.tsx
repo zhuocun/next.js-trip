@@ -1,12 +1,6 @@
 import React from "react";
-import {
-    Skeleton,
-    Card,
-    Button,
-    Typography,
-    Table, Row, Col
-} from "antd";
-import { DeleteOutlined, CheckCircleOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Row, Skeleton, Table, Typography } from "antd";
+import { CheckCircleOutlined, DeleteOutlined } from "@ant-design/icons";
 import { ColumnsType } from "antd/es/table";
 
 const { Meta } = Card;
@@ -67,8 +61,8 @@ export const CartManager: React.FC<PropsType> = ({
         <Card
             style={{ width: 320, marginTop: 16 }}
             actions={[
-                // eslint-disable-next-line react/jsx-key
-                <Row>
+
+                <Row key="">
                     <Col span={14}>
                         <Button type="primary" danger onClick={onCreateOrder} loading={loading}>
                             <CheckCircleOutlined />

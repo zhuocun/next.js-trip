@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Anchor, Button, Col, Divider, Menu, Row, Spin, Typography } from "antd";
-import { DatePicker } from "antd";
+import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Spin, Typography } from "antd";
 import { commentMockData } from "../../../mocks/comments";
 import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
-import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
+import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { addShoppingCartItem } from "../../redux/reducers/shoppingCartSlice";
@@ -12,7 +11,6 @@ import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
 
 const { RangePicker } = DatePicker;
-
 
 const ProductDetail: React.FC = () => {
     // get parameter through router
@@ -60,16 +58,17 @@ const ProductDetail: React.FC = () => {
                     <Row>
                         {/* intro */}
                         <Col span={13}>
-                            <ProductIntro
-                                title={product.title}
-                                shortDescription={product.description}
-                                price={product.originalPrice}
-                                coupons={product.coupons}
-                                points={product.points}
-                                discount={product.price}
-                                rating={product.rating}
-                                pictures={product.touristRoutePictures.map((p) => p.url)}
-                            />
+                            {product ?
+                                (<ProductIntro
+                                    title={product.title}
+                                    description={product.description}
+                                    originalPrice={product.originalPrice}
+                                    coupons={product.coupons}
+                                    points={product.points}
+                                    price={product.price}
+                                    rating={product.rating}
+                                    touristRoutePictures={product.touristRoutePictures.map((p) => p.url)}
+                                />) : ""}
                         </Col>
                         <Col span={11}>
                             {/* add to cart button */}
@@ -79,7 +78,7 @@ const ProductDetail: React.FC = () => {
                                 danger
                                 loading={shoppingCartLoading}
                                 onClick={() => {
-                                    dispatch(addShoppingCartItem({ jwtToken, touristRouteId: product.id }));
+                                    dispatch(addShoppingCartItem({ jwtToken, touristRouteId: product?.id }));
                                 }}
                             >
                                 <ShoppingCartOutlined />
@@ -117,7 +116,8 @@ const ProductDetail: React.FC = () => {
                             Features
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{ __html: product.features }} style={{ margin: 50 }} />
+                    {product ?
+                        (<div dangerouslySetInnerHTML={{ __html: product.features }} style={{ margin: 50 }} />) : ""}
                 </div>
                 {/* fees */}
                 <div id="fees" className={"product-detail-container"}>
@@ -126,7 +126,8 @@ const ProductDetail: React.FC = () => {
                             Fees
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{ __html: product.fees }} style={{ margin: 50 }} />
+                    {product ?
+                        (<div dangerouslySetInnerHTML={{ __html: product?.fees }} style={{ margin: 50 }} />) : ""}
                 </div>
                 {/* notes */}
                 <div id="notes" className={"product-detail-container"}>
@@ -135,7 +136,8 @@ const ProductDetail: React.FC = () => {
                             Notes
                         </Typography.Title>
                     </Divider>
-                    <div dangerouslySetInnerHTML={{ __html: product.notes }} style={{ margin: 50 }} />
+                    {product ?
+                        (<div dangerouslySetInnerHTML={{ __html: product?.notes }} style={{ margin: 50 }} />) : ""}
                 </div>
                 {/* comments */}
                 <div id="comments" className={"product-detail-container"}>

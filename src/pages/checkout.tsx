@@ -1,7 +1,7 @@
 import React from "react";
 import { MainLayout } from "../layouts";
-import { Row, Col } from "antd";
-import { useReduxSelector, useReduxDispatch } from "../redux/hooks";
+import { Col, Row } from "antd";
+import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 import { CreditCard } from "../components/creditCard";
@@ -23,7 +23,6 @@ const Checkout: React.FC = () => {
                     <CheckoutCard
                         loading={loading}
                         orderSet={orderSet}
-                        // call redux
                         onCheckout={() => {
                             // checkout
                             dispatch(checkout({ jwtToken, orderId: orderSet?.id }));

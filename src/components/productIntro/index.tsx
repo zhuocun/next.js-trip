@@ -1,19 +1,8 @@
 import React from "react";
 import styles from "./index.module.css";
-import {Typography, Carousel, Image, Rate, Table} from "antd";
-import {ColumnsType} from "antd/es/table"
-
-
-export interface ProductDetail {
-    title: string;
-    shortDescription: string;
-    price: string | number;
-    coupons: string;
-    points: string;
-    discount: string;
-    rating: string;
-    pictures: string[];
-}
+import { Carousel, Image, Rate, Table, Typography } from "antd";
+import { ColumnsType } from "antd/es/table";
+import { MainProductDetail } from "../../interfaces/productDetail";
 
 const columns: ColumnsType<RowType> = [
     {
@@ -34,23 +23,23 @@ const columns: ColumnsType<RowType> = [
 interface RowType {
     key: number;
     title: string;
-    description: string | number | JSX.Element;
+    description: string | number | JSX.Element | undefined;
 }
 
-export const ProductIntro: React.FC<ProductDetail> = ({
-                                                      title,
-                                                      shortDescription,
-                                                      price,
-                                                      coupons,
-                                                      discount,
-                                                      rating,
-                                                      pictures
-                                                  }) => {
+export const ProductIntro: React.FC<MainProductDetail> = ({
+                                                              title,
+                                                              description,
+                                                              originalPrice,
+                                                              coupons,
+                                                              price,
+                                                              rating,
+                                                              touristRoutePictures
+                                                          }) => {
     const tableDataSource: RowType[] = [
         {
             key: 0,
             title: "Route name",
-            description: title,
+            description: title
         },
         {
             key: 1,
@@ -59,61 +48,61 @@ export const ProductIntro: React.FC<ProductDetail> = ({
                 <>
                     $
                     <Typography.Text type="danger" strong>
-                        {price}
+                        {originalPrice}
                     </Typography.Text>
                 </>
-            ),
+            )
         },
         {
             key: 2,
             title: "Discount",
-            description: discount ? (
+            description: price ? (
                 <>
-                    $<Typography.Text delete>{price}</Typography.Text>{" "}
+                    $<Typography.Text delete>{originalPrice}</Typography.Text>{" "}
                     <Typography.Text type="danger" strong>
-                        ${discount}
+                        ${price}
                     </Typography.Text>
                 </>
             ) : (
                 "Full price"
-            ),
+            )
         },
         {
             key: 3,
             title: "Get coupons",
-            description: coupons ? discount : "No coupons",
+            description: coupons ? price : "No coupons"
         },
         {
             key: 4,
             title: "Ratings",
             description: (
                 <>
-                    <Rate allowHalf defaultValue={+rating}/>
-                    <Typography.Text style={{marginLeft: 10}}>
+                    <Rate allowHalf defaultValue={+rating} />
+                    <Typography.Text style={{ marginLeft: 10 }}>
                         {rating} / 5
                     </Typography.Text>
                 </>
-            ),
+            )
         }
-    ]
+    ];
 
     return (
         <div className={styles["intro-container"]}>
             {/* product title */}
             <Typography.Title level={4}>{title}</Typography.Title>
-            {/* product short description */}
-            <Typography.Text>{shortDescription}</Typography.Text>
+            {/* product description */}
+            <Typography.Text>{description}</Typography.Text>
             {/* price */}
             <div className={styles["intro-detail-content"]}>
-                <Typography.Text style={{marginLeft: 20}}>
+                <Typography.Text style={{ marginLeft: 20 }}>
                     $
                     <span className={styles["intro-detail-strong-text"]}>
-                        {price}
+                        {originalPrice}
                     </span>
                     {""} / person
                 </Typography.Text>
                 {/* rating */}
-                <Typography.Text style={{marginLeft: 50}}>
+                <Typography.Text style={{ marginLeft: 50 }}>
                     rating: {" "}
                     <span className={styles["intro-detail-strong-text"]}>
                         {rating}
@@ -122,7 +111,7 @@ export const ProductIntro: React.FC<ProductDetail> = ({
             </div>
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
-                {pictures.map((p, index) => <Image key={index} height={150} src={p}/>)}
+                {touristRoutePictures.map((p, index) => <Image key={index} height={150} src={p} />)}
             </Carousel>
             {/* product detail in table */}
             <Table<RowType>
@@ -133,5 +122,5 @@ export const ProductIntro: React.FC<ProductDetail> = ({
                 pagination={false}
             />
         </div>
-    )
-}
+    );
+};

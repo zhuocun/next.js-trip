@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { TouristRoute } from "../../components/productList";
 
@@ -38,7 +38,10 @@ export const getShoppingCart = createAsyncThunk(
 
 export const addShoppingCartItem = createAsyncThunk(
     "shoppingCart/addShoppingCartItem",
-    async (parameters: { jwtToken: string, touristRouteId: string }) => {
+    async (parameters: {
+        jwtToken: string,
+        touristRouteId: string | undefined
+    }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
