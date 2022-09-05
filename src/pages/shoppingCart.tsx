@@ -2,7 +2,7 @@ import React from "react";
 import { MainLayout } from "../layouts";
 import { Affix, Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { createOrder, clearShoppingCartItem } from "../redux/reducers/shoppingCartSlice";
+import { clearShoppingCartItem, createOrder } from "../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 import { ProductList } from "../components/productList";
 import { CartManager } from "../components/cartManager";
@@ -22,6 +22,7 @@ const ShoppingCart = () => {
                     <div className={"product-list-container"}>
                         <ProductList
                             data={shoppingCartItems.map((s) => s.touristRoute)}
+                            pagination={null}
                         />
                     </div>
                 </Col>

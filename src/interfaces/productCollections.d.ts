@@ -3,7 +3,7 @@ import { TouristRoute } from "../components/productList";
 interface ProductCollectionProps {
     title: JSX.Element;
     sideImage: string;
-    touristRoute: TouristRoute[];
+    touristRoute: TouristRoute[] | TouristRoute;
 }
 
 interface ProductImageProps {

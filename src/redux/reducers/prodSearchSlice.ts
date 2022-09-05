@@ -1,11 +1,11 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Pagination, Product } from "../../components";
+import { Pagination, TouristRoute } from "../../interfaces/productList";
 
 interface ProductSearchState {
     loading: boolean;
     error: string | null;
-    searchResult: Product[] | null;
+    searchResult: TouristRoute[] | null;
     pagination: Pagination | null;
 }
 

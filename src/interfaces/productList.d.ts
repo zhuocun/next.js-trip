@@ -22,6 +22,6 @@ export interface TouristRoute {
 
 export interface ProductListProps {
     data: TouristRoute[] | null;
-    pagination?: Pagination;
+    pagination: Pagination | null;
     onPageChange?: (nextPage, pageSize) => void;
 }

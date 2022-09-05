@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createOrder } from "./shoppingCartSlice";
-import {OrderSet} from "../../components/checkoutCard";
+import { OrderSet } from "../../interfaces/orders";
 
 interface OrderState {
     loading: boolean;

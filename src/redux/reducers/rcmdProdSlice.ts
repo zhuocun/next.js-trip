@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Product } from "../../components";
+import { TouristRoute } from "../../interfaces/productList";
 
 // define state
 interface RecommendedProductsState {
     loading: boolean;
     error: string | null;
-    productList: Product[];
+    productList: { touristRoutes: TouristRoute }[];
 }
 
 // define default state
