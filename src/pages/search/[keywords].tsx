@@ -7,8 +7,9 @@ import { Header } from "../../components/header";
 import { FilterArea } from "../../components/filter";
 import { ProductList } from "../../components/productList";
 import { Footer } from "../../components/footer";
+import { NextPage } from "next";
 
-const SearchResult: React.FC = () => {
+const SearchResult: NextPage = () => {
     const router = useRouter();
     const { keywords } = router.query;
     const location = router.pathname;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col, Typography, Spin } from "antd";
+import { Col, Row, Spin, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
@@ -9,12 +9,13 @@ import { SideMenu } from "../components/sideMenu";
 import { Carousel } from "../components/carousel";
 import { ProductCollection } from "../components/productCollection";
 import { BusinessPartners } from "../components/businessPartners";
+import { NextPage } from "next";
 
 const sideImage1 = "/images/sider_2019_12-09.png";
 const sideImage2 = "/images/sider_2019_02-04.png";
 const sideImage3 = "/images/sider_2019_02-04-2.png";
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
 
     useEffect(() => {

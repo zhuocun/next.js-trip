@@ -1,12 +1,13 @@
 import React from "react";
-import { AuthnLayout } from "../layouts";
-import { RegisterForm } from "../components/RegisterForm";
+import { AuthLayout } from "../layouts";
+import { RegisterForm } from "../components/registerForm";
+import { NextPage } from "next";
 
-const Register = () => {
+const Register: NextPage = () => {
     return (
-        <AuthnLayout>
+        <AuthLayout>
             <RegisterForm />
-        </AuthnLayout>
+        </AuthLayout>
     );
 };
 

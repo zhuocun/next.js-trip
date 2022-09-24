@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import styles from "./index.module.css";
-import { useReduxSelector, useReduxDispatch } from "../../redux/hooks";
-import { login } from "../../redux/reducers/authnSlice";
+import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
+import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 
-export const LoginForm = () => {
+export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.authentication.loading);
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
 

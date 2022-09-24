@@ -1,6 +1,7 @@
 import React from "react";
+import { NextPage } from "next";
 
-const error = () => {
+const error: NextPage = () => {
     return <h1>Error: 404</h1>;
 };
 

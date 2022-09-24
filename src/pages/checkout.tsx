@@ -6,8 +6,9 @@ import { checkout } from "../redux/reducers/orderSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 import { CreditCard } from "../components/creditCard";
 import { CheckoutCard } from "../components/checkoutCard";
+import { NextPage } from "next";
 
-const Checkout: React.FC = () => {
+const Checkout: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const orderSet = useReduxSelector((s) => s.order.currentOrder);

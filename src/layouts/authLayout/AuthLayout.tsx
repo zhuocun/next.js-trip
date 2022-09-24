@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./AuthnLayout.module.css";
+import styles from "./AuthLayout.module.css";
 import { Layout } from "antd";
 import Link from "next/link";
 import { Footer } from "../../components/footer";
@@ -10,7 +10,7 @@ interface PropsType {
     children: React.ReactNode;
 }
 
-export const AuthnLayout: React.FC<PropsType> = (props) => {
+export const AuthLayout: React.FC<PropsType> = (props) => {
     const logo = "/logo.svg";
     return (
         <Layout className={styles["user-layout-container"]}>

@@ -1,12 +1,13 @@
 import React from "react";
-import { AuthnLayout } from "../layouts";
+import { AuthLayout } from "../layouts";
 import { LoginForm } from "../components/loginForm";
+import { NextPage } from "next";
 
-const Login = () => {
+const Login: NextPage = () => {
     return (
-        <AuthnLayout>
+        <AuthLayout>
             <LoginForm />
-        </AuthnLayout>
+        </AuthLayout>
     );
 };
 

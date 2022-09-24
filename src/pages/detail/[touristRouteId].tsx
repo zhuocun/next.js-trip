@@ -9,10 +9,11 @@ import { addShoppingCartItem } from "../../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
+import { NextPage } from "next";
 
 const { RangePicker } = DatePicker;
 
-const ProductDetail: React.FC = () => {
+const ProductDetail: NextPage = () => {
     // get parameter through router
     const { touristRouteId } = useRouter().query;
 

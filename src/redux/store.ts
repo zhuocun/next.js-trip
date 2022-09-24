@@ -3,11 +3,11 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { recommendedProductsSlice } from "./reducers/rcmdProdSlice";
 import { prodDetailSlice } from "./reducers/prodDetailSlice";
 import { prodSearchSlice } from "./reducers/prodSearchSlice";
-import { authenticationSlice } from "./reducers/authnSlice";
+import { authenticationSlice } from "./reducers/authSlice";
 import { shoppingCartSlice } from "./reducers/shoppingCartSlice";
 import { orderSlice } from "./reducers/orderSlice";
 import { languageSlice } from "./reducers/langSlice";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
