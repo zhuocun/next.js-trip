@@ -3,24 +3,21 @@ import { Button, Card, Skeleton, Table, Typography } from "antd";
 import { CheckCircleOutlined, HomeOutlined } from "@ant-design/icons";
 import { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
-import { CheckoutCardProps, Order } from "../../interfaces/orders";
 
 const { Meta } = Card;
 const { Title } = Typography;
 
-const columns: ColumnsType<Order> = [
-    {
-        title: "Product",
-        dataIndex: "item",
-        key: "item"
-    },
-    {
-        title: "Price",
-        dataIndex: "amount",
-        key: "amount"
-    }
-];
+export interface OrderInfo {
+    key: number;
+    item: string;
+    amount: string | number | JSX.Element;
+}
 
+interface CheckoutCardProps {
+    loading: boolean;
+    orderSet: IOrderSet | null;
+    onCheckout: () => void;
+}
 
 export const CheckoutCard: React.FC<CheckoutCardProps> = ({
                                                               loading,
@@ -29,7 +26,20 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
                                                           }) => {
     const router = useRouter();
 
-    const paymentData: Order[] = orderSet
+    const columns: ColumnsType<OrderInfo> = [
+        {
+            title: "Product",
+            dataIndex: "item",
+            key: "item"
+        },
+        {
+            title: "Price",
+            dataIndex: "amount",
+            key: "amount"
+        }
+    ];
+
+    const paymentData: OrderInfo[] = orderSet
         ? orderSet.orderItems.map((i, index) => ({
             key: index,
             item: i.touristRoute.title.slice(0, 25),
@@ -75,7 +85,7 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
                         </Title>
                     }
                     description={
-                        <Table<Order>
+                        <Table<OrderInfo>
                             columns={columns}
                             dataSource={paymentData}
                             showHeader={false}

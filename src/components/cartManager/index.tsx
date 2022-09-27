@@ -6,18 +6,19 @@ import { ColumnsType } from "antd/es/table";
 const { Meta } = Card;
 const { Title, Text } = Typography;
 
-const columns: ColumnsType<CartItem> = [
-    {
-        title: "Item",
-        dataIndex: "item",
-        key: "item"
-    },
-    {
-        title: "Amount",
-        dataIndex: "amount",
-        key: "amount"
-    }
-];
+interface CartIntro {
+    key: number;
+    item: string;
+    amount: string | number | JSX.Element;
+}
+
+interface CartManagerProps {
+    loading: boolean;
+    originalPrice: number;
+    price: number;
+    onShoppingCartClear: () => void;
+    onCreateOrder: () => void;
+}
 
 export const CartManager: React.FC<CartManagerProps> = ({
                                                             loading,
@@ -26,7 +27,21 @@ export const CartManager: React.FC<CartManagerProps> = ({
                                                             onShoppingCartClear,
                                                             onCreateOrder
                                                         }) => {
-    const orderData: CartItem[] = [
+
+    const columns: ColumnsType<CartIntro> = [
+        {
+            title: "Item",
+            dataIndex: "item",
+            key: "item"
+        },
+        {
+            title: "Amount",
+            dataIndex: "amount",
+            key: "amount"
+        }
+    ];
+
+    const orderData: CartIntro[] = [
         {
             key: 1,
             item: "Full price: ",
@@ -68,7 +83,7 @@ export const CartManager: React.FC<CartManagerProps> = ({
                 <Meta
                     title={<Title level={2}>Total</Title>}
                     description={
-                        <Table<CartItem>
+                        <Table<CartIntro>
                             columns={columns}
                             dataSource={orderData}
                             showHeader={false}

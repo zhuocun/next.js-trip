@@ -4,13 +4,12 @@
  */
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { FullProductDetail } from "../../interfaces/productDetails";
 
 // state of page
 interface ProductDetailState {
     loading: boolean;
     error: string | null;
-    productDetail: FullProductDetail | null;
+    productDetail: IProduct | null;
 }
 
 // initial state of page

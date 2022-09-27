@@ -1,9 +1,13 @@
 import React from "react";
 import { FilterTag } from "./FilterTag";
 import { Divider, Typography } from "antd";
-import { FilterProps } from "../../interfaces/filters";
 
 const { Text } = Typography;
+
+interface FilterProps {
+    title: string;
+    tags: string[];
+}
 
 export const Filter: React.FC<FilterProps> = ({ title, tags }) => {
     return (

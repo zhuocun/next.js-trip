@@ -1,6 +1,15 @@
 import React from "react";
 import { Comment, List } from "antd";
 
+interface ProductCommentsProps {
+    data: {
+        author: string,
+        avatar: string,
+        content: string,
+        createDate: string
+    }[];
+}
+
 export const ProductComments: React.FC<ProductCommentsProps> = ({ data }) => {
     return (
         <List

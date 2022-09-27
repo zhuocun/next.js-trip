@@ -2,28 +2,22 @@ import React from "react";
 import styles from "./index.module.css";
 import { Carousel, Image, Rate, Table, Typography } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { MainProductDetail } from "../../interfaces/productDetails";
 
-const columns: ColumnsType<RowType> = [
-    {
-        key: "",
-        title: "",
-        dataIndex: "title",
-        align: "left",
-        width: "center"
-    },
-    {
-        key: "",
-        title: "",
-        dataIndex: "description",
-        align: "center"
-    }
-];
-
-interface RowType {
+interface ProductDescription {
     key: number;
     title: string;
     description: string | number | JSX.Element | undefined;
+}
+
+interface MainProductDetail {
+    title: string;
+    description: string;
+    originalPrice: string;
+    coupons: string;
+    points: string;
+    price: string;
+    rating: string;
+    touristRoutePictures: string[];
 }
 
 export const ProductIntro: React.FC<MainProductDetail> = ({
@@ -35,7 +29,25 @@ export const ProductIntro: React.FC<MainProductDetail> = ({
                                                               rating,
                                                               touristRoutePictures
                                                           }) => {
-    const tableDataSource: RowType[] = [
+
+
+    const columns: ColumnsType<ProductDescription> = [
+        {
+            key: "",
+            title: "",
+            dataIndex: "title",
+            align: "left",
+            width: "center"
+        },
+        {
+            key: "",
+            title: "",
+            dataIndex: "description",
+            align: "center"
+        }
+    ];
+
+    const tableDataSource: ProductDescription[] = [
         {
             key: 0,
             title: "Route name",
@@ -114,7 +126,7 @@ export const ProductIntro: React.FC<MainProductDetail> = ({
                 {touristRoutePictures.map((p, index) => <Image key={index} height={150} src={p} />)}
             </Carousel>
             {/* product detail in table */}
-            <Table<RowType>
+            <Table<ProductDescription>
                 columns={columns}
                 dataSource={tableDataSource}
                 size="small"

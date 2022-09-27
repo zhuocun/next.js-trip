@@ -2,9 +2,8 @@ import React from "react";
 import { Image, List, Rate, Space, Tag, Typography } from "antd";
 import { LikeOutlined, StarOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { ProductListProps, TouristRoute } from "../../interfaces/productList";
 
-const listData = (productList: TouristRoute[] | null) =>
+const listData = (productList: ITouristRoute[] | null) =>
     productList?.map((p) => ({
         id: p.id,
         title: p.title,
@@ -27,6 +26,12 @@ const listData = (productList: TouristRoute[] | null) =>
     }));
 
 const { Text } = Typography;
+
+export interface ProductListProps {
+    data: ITouristRoute[] | null;
+    pagination: IPagination | null;
+    onPageChange?: (nextPage, pageSize) => void;
+}
 
 export const ProductList: React.FC<ProductListProps> = ({
     data,

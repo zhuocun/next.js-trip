@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { TouristRoute } from "../../interfaces/productList";
 
 interface Product {
     id: number;
-    touristRoute: TouristRoute;
+    touristRoute: ITouristRoute;
     originalPrice: number;
     discountPresent: number;
 }

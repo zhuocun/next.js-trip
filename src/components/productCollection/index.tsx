@@ -2,7 +2,12 @@ import React from "react";
 import styles from "./index.module.css";
 import { Col, Divider, Row } from "antd";
 import { ProductImage } from "./ProductImage";
-import { ProductCollectionProps } from "../../interfaces/productCollections";
+
+interface ProductCollectionProps {
+    title: JSX.Element;
+    sideImage: string;
+    touristRoute: ITouristRoute[] | ITouristRoute;
+}
 
 export const ProductCollection: React.FC<ProductCollectionProps> = ({
     title,

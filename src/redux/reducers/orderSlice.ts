@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createOrder } from "./shoppingCartSlice";
-import { OrderSet } from "../../interfaces/orders";
 
 interface OrderState {
     loading: boolean;
     error: string | null;
-    currentOrder: OrderSet | null;
+    currentOrder: IOrderSet | null;
 }
 
 const initialState: OrderState = {
