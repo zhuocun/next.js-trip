@@ -22,19 +22,6 @@ body {
     min-height: 75vh;
 }
 
-.product-list-container {
-    padding: 20px;
-    margin-top: 20px;
-    background: white;
-}
-
-.page-content {
-    width: 1230px;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 75vh;
-}
-
 .product-intro-container {
     margin-top: 20px;
     background-color: white;

@@ -7,7 +7,7 @@ import axios from "axios";
 import { PersistGate } from "redux-persist/integration/react";
 import { AppProps } from "next/app";
 
-axios.defaults.headers["x-icode"] = "5AFFC4226F716869";
+axios.defaults.headers["x-icode"] = "4D56BAB3D7F283C2";
 
 const NextJSTrip = ({ Component, pageProps }: AppProps) => {
     return (

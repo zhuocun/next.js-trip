@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
 import { NextPage } from "next";
+import styles from "../../styles/ProductDetail.module.css";
 
 const { RangePicker } = DatePicker;
 
@@ -55,7 +56,7 @@ const ProductDetail: NextPage = () => {
     return (
         <>
             <MainLayout>
-                <div className={"product-intro-container"}>
+                <div className={styles["product-intro-container"]}>
                     <Row>
                         {/* intro */}
                         <Col span={13}>

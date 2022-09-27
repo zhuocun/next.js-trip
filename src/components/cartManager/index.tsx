@@ -52,7 +52,7 @@ export const CartManager: React.FC<CartManagerProps> = ({
             item: "Discounted: ",
             amount: (
                 <Title type="danger" level={3}>
-                    $ {price}
+                    $ {price.toFixed(2)}
                 </Title>
             )
         }

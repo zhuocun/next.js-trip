@@ -10,7 +10,8 @@ const { Title } = Typography;
 export interface OrderInfo {
     key: number;
     item: string;
-    amount: string | number | JSX.Element;
+    originalPrice: string | number | JSX.Element;
+    currentPrice: string | number | JSX.Element;
 }
 
 interface CheckoutCardProps {
@@ -33,9 +34,14 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
             key: "item"
         },
         {
-            title: "Price",
-            dataIndex: "amount",
-            key: "amount"
+            title: "Original Price",
+            dataIndex: "originalPrice",
+            key: "originalPrice"
+        },
+        {
+            title: "Current Price",
+            dataIndex: "currentPrice",
+            key: "currentPrice"
         }
     ];
 
@@ -43,13 +49,13 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
         ? orderSet.orderItems.map((i, index) => ({
             key: index,
             item: i.touristRoute.title.slice(0, 25),
-            amount: (
-                <>
-                    <Title level={5} delete>$ {i.originalPrice} </Title>
-                    <Title type="danger" level={5}>
-                        $ {i.originalPrice * i.discountPresent}
-                    </Title>
-                </>
+            originalPrice: (
+                <Title level={5} delete>$ {i.originalPrice} </Title>
+            ),
+            currentPrice: (
+                <Title type="danger" level={5}>
+                    $ {(i.originalPrice * i.discountPresent).toFixed(2)}
+                </Title>
             )
         }))
         : [];
