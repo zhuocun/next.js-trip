@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
 import { NextPage } from "next";
-import styles from "../../styles/ProductDetail.module.css";
+import styles from "../../styles/productDetail.module.css";
 
 const { RangePicker } = DatePicker;
 
