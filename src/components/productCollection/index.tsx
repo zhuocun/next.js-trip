@@ -2,18 +2,32 @@ import React from "react";
 import styles from "./index.module.css";
 import { Col, Divider, Row } from "antd";
 import { ProductImage } from "./ProductImage";
+import productGroup from "./productGroup";
 
-interface ProductCollectionProps {
+interface Props {
     title: JSX.Element;
     sideImage: string;
-    touristRoute: ITouristRoute[] | ITouristRoute;
+    touristRoute: ITouristRoute[];
 }
 
-export const ProductCollection: React.FC<ProductCollectionProps> = ({
+export const ProductCollection: React.FC<Props> = ({
     title,
     sideImage,
     touristRoute
 }) => {
+    const productGroup1: ITouristRoute[] = [];
+    const productGroup2: ITouristRoute[] = [];
+    const productGroup3: ITouristRoute[] = [];
+    touristRoute.slice(1).forEach(function (t, index) {
+        if (index <= 1) {
+            productGroup1.push(t);
+        } else if (index >= 2 && index <= 3) {
+            productGroup2.push(t);
+        } else {
+            productGroup3.push(t);
+        }
+    });
+
     return (
         <div className={styles.content}>
             <Divider orientation="left">{title}</Divider>
@@ -35,62 +49,11 @@ export const ProductCollection: React.FC<ProductCollectionProps> = ({
                             />
                         </Col>
                         <Col span={12}>
-                            <Row>
-                                <Col span={12}>
-                                    <ProductImage
-                                        touristRoute={touristRoute[1]}
-                                        size={"small"}
-                                    />
-                                </Col>
-                                <Col span={12}>
-                                    <ProductImage
-                                        touristRoute={touristRoute[2]}
-                                        size={"small"}
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col span={12}>
-                                    <ProductImage
-                                        touristRoute={touristRoute[3]}
-                                        size={"small"}
-                                    />
-                                </Col>
-                                <Col span={12}>
-                                    <ProductImage
-                                        touristRoute={touristRoute[4]}
-                                        size={"small"}
-                                    />
-                                </Col>
-                            </Row>
+                            <Row>{productGroup(productGroup1, 12)}</Row>
+                            <Row>{productGroup(productGroup2, 12)}</Row>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col span={6}>
-                            <ProductImage
-                                touristRoute={touristRoute[5]}
-                                size={"small"}
-                            />
-                        </Col>
-                        <Col span={6}>
-                            <ProductImage
-                                touristRoute={touristRoute[6]}
-                                size={"small"}
-                            />
-                        </Col>
-                        <Col span={6}>
-                            <ProductImage
-                                touristRoute={touristRoute[7]}
-                                size={"small"}
-                            />
-                        </Col>
-                        <Col span={6}>
-                            <ProductImage
-                                touristRoute={touristRoute[8]}
-                                size={"small"}
-                            />
-                        </Col>
-                    </Row>
+                    <Row>{productGroup(productGroup3, 6)}</Row>
                 </Col>
             </Row>
         </div>
