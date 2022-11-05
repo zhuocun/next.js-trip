@@ -75,7 +75,7 @@ export const clearCart = createAsyncThunk(
     }
 );
 
-export const shoppingCartSlice = createSlice({
+export const cartSlice = createSlice({
     name: "shoppingCart",
     initialState,
     reducers: {},

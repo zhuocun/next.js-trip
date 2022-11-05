@@ -3,13 +3,13 @@ import { MainLayout } from "../layouts";
 import { Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
-import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
+import { getShoppingCart } from "../redux/reducers/cartSlice";
 import { CreditCard } from "../components/creditCard";
 import { CheckoutCard } from "../components/checkoutCard";
 import { NextPage } from "next";
 
 const Checkout: NextPage = () => {
-    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
+    const jwtToken = useReduxSelector((s) => s.auth.jwt) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const orderSet = useReduxSelector((s) => s.order.currentOrder);
     const dispatch = useReduxDispatch();
@@ -25,9 +25,7 @@ const Checkout: NextPage = () => {
                         loading={loading}
                         orderSet={orderSet}
                         onCheckout={() => {
-                            // checkout
-                            dispatch(checkout({ jwtToken, orderId: orderSet?.id }));
-                            // refresh shopping cart to update header
+                            dispatch(checkout({ jwt: jwtToken, orderId: orderSet?.id }));
                             dispatch(getShoppingCart(jwtToken));
                         }}
                     />

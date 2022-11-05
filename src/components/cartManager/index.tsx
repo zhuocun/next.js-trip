@@ -12,21 +12,21 @@ interface CartIntro {
     amount: string | number | JSX.Element;
 }
 
-interface CartManagerProps {
+interface Props {
     loading: boolean;
     originalPrice: number;
-    price: number;
-    onShoppingCartClear: () => void;
+    currentPrice: number;
+    onClearCart: () => void;
     onCreateOrder: () => void;
 }
 
-export const CartManager: React.FC<CartManagerProps> = ({
-                                                            loading,
-                                                            originalPrice,
-                                                            price,
-                                                            onShoppingCartClear,
-                                                            onCreateOrder
-                                                        }) => {
+export const CartManager: React.FC<Props> = ({
+                                                 loading,
+                                                 originalPrice,
+                                                 currentPrice,
+                                                 onClearCart,
+                                                 onCreateOrder
+                                             }) => {
 
     const columns: ColumnsType<CartIntro> = [
         {
@@ -52,7 +52,7 @@ export const CartManager: React.FC<CartManagerProps> = ({
             item: "Discounted: ",
             amount: (
                 <Title type="danger" level={3}>
-                    $ {price.toFixed(2)}
+                    $ {currentPrice.toFixed(2)}
                 </Title>
             )
         }
@@ -71,7 +71,7 @@ export const CartManager: React.FC<CartManagerProps> = ({
                         </Button>
                     </Col>
                     <Col span={10}>
-                        <Button onClick={onShoppingCartClear} loading={loading}>
+                        <Button onClick={onClearCart} loading={loading}>
                             <DeleteOutlined />
                             Clear
                         </Button>

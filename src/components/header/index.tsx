@@ -18,11 +18,11 @@ export const Header: React.FC = () => {
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();
 
-    const jwt = useReduxSelector((s) => s.authentication.jwt);
+    const jwt = useReduxSelector((s) => s.auth.jwt);
     const [username, setUsername] = useState("");
 
-    const cartItems = useReduxSelector((s) => s.shoppingCart.cartItems);
-    const loading = useReduxSelector((s) => s.shoppingCart.loading);
+    const cartItems = useReduxSelector((s) => s.cart.cartItems);
+    const loading = useReduxSelector((s) => s.cart.loading);
 
     const searchHandler = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {

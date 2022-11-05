@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { collectionSlice } from "./reducers/collectionSlice";
 import { prodDetailSlice } from "./reducers/prodDetailSlice";
-import { prodSearchSlice } from "./reducers/prodSearchSlice";
+import { searchSlice } from "./reducers/searchSlice";
 import { authenticationSlice } from "./reducers/authSlice";
-import { shoppingCartSlice } from "./reducers/shoppingCartSlice";
+import { cartSlice } from "./reducers/cartSlice";
 import { orderSlice } from "./reducers/orderSlice";
 import { languageSlice } from "./reducers/langSlice";
 import { persistReducer, persistStore } from "redux-persist";
@@ -19,9 +19,9 @@ const rootReducer = combineReducers({
     language: languageSlice.reducer,
     collections: collectionSlice.reducer,
     productDetail: prodDetailSlice.reducer,
-    productSearch: prodSearchSlice.reducer,
-    authentication: authenticationSlice.reducer,
-    shoppingCart: shoppingCartSlice.reducer,
+    search: searchSlice.reducer,
+    auth: authenticationSlice.reducer,
+    cart: cartSlice.reducer,
     order: orderSlice.reducer
 });
 

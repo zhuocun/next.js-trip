@@ -26,7 +26,6 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
                                                               onCheckout
                                                           }) => {
     const router = useRouter();
-
     const columns: ColumnsType<OrderInfo> = [
         {
             title: "Product",
@@ -62,7 +61,7 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
 
     return (
         <Card
-            style={{ width: 500, marginTop: 50 }}
+            style={{ width: 550, marginTop: 50 }}
             actions={[
                 orderSet && orderSet.state === "Completed" ? (
                     <Button

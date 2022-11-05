@@ -6,8 +6,8 @@ import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 
 export const LoginForm: React.FC = () => {
-    const loading = useReduxSelector((s) => s.authentication.loading);
-    const jwt = useReduxSelector((s) => s.authentication.jwt);
+    const loading = useReduxSelector((s) => s.auth.loading);
+    const jwt = useReduxSelector((s) => s.auth.jwt);
 
     const dispatch = useReduxDispatch();
     const router = useRouter();

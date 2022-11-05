@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { createOrder } from "./shoppingCartSlice";
+import { createOrder } from "./cartSlice";
 
 interface OrderState {
     loading: boolean;
@@ -16,13 +16,13 @@ const initialState: OrderState = {
 
 export const checkout = createAsyncThunk(
     "order/checkout",
-    async (parameters: { jwtToken: string, orderId: string | undefined }) => {
+    async (parameters: { jwt: string, orderId: string | undefined }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
             null,
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`
+                    Authorization: `bearer ${parameters.jwt}`
                 }
             }
         );
@@ -35,7 +35,6 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        // create order, save response data from backend
         [createOrder.pending.type]: (state) => {
             state.loading = true;
         },

@@ -5,7 +5,7 @@ import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { addToCart } from "../../redux/reducers/shoppingCartSlice";
+import { addToCart } from "../../redux/reducers/cartSlice";
 import { useRouter } from "next/router";
 import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
@@ -20,8 +20,8 @@ const ProductDetail: NextPage = () => {
     const loading = useReduxSelector((s) => s.productDetail.loading);
     const error = useReduxSelector((s) => s.productDetail.error);
     const product = useReduxSelector((s) => s.productDetail.productDetail);
-    const jwt = useReduxSelector((s) => s.authentication.jwt) as string;
-    const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
+    const jwt = useReduxSelector((s) => s.auth.jwt) as string;
+    const cartLoading = useReduxSelector((s) => s.cart.loading);
 
     const dispatch = useReduxDispatch();
 
@@ -32,9 +32,7 @@ const ProductDetail: NextPage = () => {
     }, [dispatch, touristRouteId]);
 
     if (loading) {
-        return (
-            <PageSpin />
-        );
+        return <PageSpin />;
     }
 
     if (error) {
@@ -62,18 +60,20 @@ const ProductDetail: NextPage = () => {
                         </Col>
                         <Col span={11}>
                             {/* add to cart button */}
-                            <Button
-                                style={{ marginTop: 50, marginBottom: 30, display: "block" }}
-                                type="primary"
-                                danger
-                                loading={shoppingCartLoading}
-                                onClick={() => {
-                                    dispatch(addToCart({ jwt: jwt, touristRouteId: product?.id }));
-                                }}
-                            >
-                                <ShoppingCartOutlined />
-                                Add to cart
-                            </Button>
+                            {jwt ?
+                                <Button
+                                    style={{ marginTop: 50, marginBottom: 30, display: "block" }}
+                                    type="primary"
+                                    danger
+                                    loading={cartLoading}
+                                    onClick={() => {
+                                        dispatch(addToCart({ jwt: jwt, touristRouteId: product?.id }));
+                                    }}
+                                >
+                                    <ShoppingCartOutlined />
+                                    Add to cart
+                                </Button> : null
+                            }
                             {/* date */}
                             <RangePicker open style={{ marginTop: 20 }} />
                         </Col>

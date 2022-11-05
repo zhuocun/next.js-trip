@@ -2,18 +2,46 @@ import React from "react";
 import { MainLayout } from "../layouts";
 import { Affix, Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { clearCart, createOrder } from "../redux/reducers/shoppingCartSlice";
+import { clearCart, createOrder } from "../redux/reducers/cartSlice";
 import { useRouter } from "next/router";
 import { ProductList } from "../components/productList";
 import { CartManager } from "../components/cartManager";
 import { NextPage } from "next";
 
 const ShoppingCart: NextPage = () => {
-    const loading = useReduxSelector((s) => s.shoppingCart.loading);
-    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.cartItems);
-    const jwt = useReduxSelector((s) => s.authentication.jwt);
+    const loading = useReduxSelector((s) => s.cart.loading);
+    const cartItems = useReduxSelector((s) => s.cart.cartItems);
+    const jwt = useReduxSelector((s) => s.auth.jwt);
     const dispatch = useReduxDispatch();
     const router = useRouter();
+
+    const onCreateOrder = () => {
+        if (cartItems.length < 1) {
+            return;
+        } else {
+            dispatch(createOrder(jwt));
+            router.push("/checkout").then();
+        }
+    };
+
+    const onClearCart = () => {
+        dispatch(
+            clearCart({
+                jwt: jwt,
+                itemIds: cartItems.map((i) => i.id)
+            })
+        );
+    };
+
+    const originalPrice = cartItems
+        .map((i) => i.originalPrice)
+        .reduce((a, b) => a + b, 0);
+
+    const currentPrice = cartItems
+        .map(
+            (i) => i.originalPrice * (i.discountPresent ? i.discountPresent : 1)
+        )
+        .reduce((a, b) => a + b, 0);
 
     return (
         <MainLayout>
@@ -21,7 +49,7 @@ const ShoppingCart: NextPage = () => {
                 <Col span={16}>
                     <div className={"product-list-container"}>
                         <ProductList
-                            data={shoppingCartItems.map((s) => s.touristRoute)}
+                            data={cartItems.map((s) => s.touristRoute)}
                             pagination={null}
                         />
                     </div>
@@ -29,42 +57,12 @@ const ShoppingCart: NextPage = () => {
                 <Col span={8}>
                     <Affix>
                         <div className={"payment-card-container"}>
-                            {/* cart management card */}
                             <CartManager
                                 loading={loading}
-                                // calculate full original price
-                                originalPrice={shoppingCartItems
-                                    .map((s) => s.originalPrice)
-                                    .reduce((a, b) => a + b, 0)}
-                                // calculate discount price if needed
-                                price={shoppingCartItems
-                                    .map(
-                                        (s) =>
-                                            s.originalPrice *
-                                            (s.discountPresent
-                                                ? s.discountPresent
-                                                : 1)
-                                    )
-                                    .reduce((a, b) => a + b, 0)}
-                                // call redux, create order
-                                onCreateOrder={() => {
-                                    if (shoppingCartItems.length < 1) {
-                                        return;
-                                    } else {
-                                        dispatch(createOrder(jwt));
-                                        router.push("/checkout").then();
-                                    }
-                                }}
-                                onShoppingCartClear={() => {
-                                    dispatch(
-                                        clearCart({
-                                            jwt: jwt,
-                                            itemIds: shoppingCartItems.map(
-                                                (s) => s.id
-                                            )
-                                        })
-                                    );
-                                }}
+                                originalPrice={originalPrice}
+                                currentPrice={currentPrice}
+                                onCreateOrder={onCreateOrder}
+                                onClearCart={onClearCart}
                             />
                         </div>
                     </Affix>

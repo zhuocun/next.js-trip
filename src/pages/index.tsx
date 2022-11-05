@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { getCollection } from "../redux/reducers/collectionSlice";
-import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
+import { getShoppingCart } from "../redux/reducers/cartSlice";
 import { SideMenu } from "../components/sideMenu";
 import { Carousel } from "../components/carousel";
 import { ProductCollection } from "../components/productCollection";
-import { BusinessPartners } from "../components/businessPartners";
+import { BusinessPartners } from "../components/partners";
 import { NextPage } from "next";
 import PageSpin from "../components/spin";
 
@@ -17,7 +17,7 @@ const sideImage2 = "/images/sider_2019_02-04.png";
 const sideImage3 = "/images/sider_2019_02-04-2.png";
 
 const Home: NextPage = () => {
-    const jwt = useReduxSelector((s) => s.authentication.jwt);
+    const jwt = useReduxSelector((s) => s.auth.jwt);
 
     useEffect(() => {
         dispatch(getCollection());

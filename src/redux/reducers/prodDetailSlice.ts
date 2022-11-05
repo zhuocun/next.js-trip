@@ -14,7 +14,6 @@ const initialState: ProductDetailState = {
 };
 
 export const getProductDetail = createAsyncThunk(
-    // typePrefix doesn't matter
     "productDetail/getProductDetail",
     async (touristRouteId: string | string[]) => {
         const axiosResponse = await axios.get(
@@ -25,7 +24,6 @@ export const getProductDetail = createAsyncThunk(
 );
 
 export const prodDetailSlice = createSlice({
-    // name doesn't matter
     name: "productDetail",
     initialState,
     reducers: {},

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { search } from "../../redux/reducers/prodSearchSlice";
+import { search } from "../../redux/reducers/searchSlice";
 import { useRouter } from "next/router";
 import { Header } from "../../components/header";
 import { FilterArea } from "../../components/filter";
@@ -14,10 +14,10 @@ const SearchResult: NextPage = () => {
     const { keywords } = router.query;
     const location = router.pathname;
 
-    const loading = useReduxSelector((s) => s.productSearch.loading);
-    const error = useReduxSelector((s) => s.productSearch.error);
-    const pagination = useReduxSelector((s) => s.productSearch.pagination);
-    const productList = useReduxSelector((s) => s.productSearch.searchResult);
+    const loading = useReduxSelector((s) => s.search.loading);
+    const error = useReduxSelector((s) => s.search.error);
+    const pagination = useReduxSelector((s) => s.search.pagination);
+    const productList = useReduxSelector((s) => s.search.searchResult);
 
     const dispatch = useReduxDispatch();
 
