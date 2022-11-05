@@ -27,7 +27,7 @@ export const login = createAsyncThunk(
     }
 );
 
-export const authenticationSlice = createSlice({
+export const authSlice = createSlice({
     name: "authentication",
     initialState,
     reducers: {

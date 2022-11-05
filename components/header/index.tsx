@@ -4,7 +4,7 @@ import { Button, Input, Layout, Menu, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import jwt_decode, { JwtPayload } from "jwt-decode";
-import { authenticationSlice } from "../../redux/reducers/authSlice";
+import { authSlice } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 
 interface MyJwtPayload extends JwtPayload {
@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
     };
 
     const onLogout = () => {
-        dispatch(authenticationSlice.actions.logout());
+        dispatch(authSlice.actions.logout());
         router.push("/").then();
     };
 

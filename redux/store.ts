@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { collectionSlice } from "./reducers/collectionSlice";
 import { prodDetailSlice } from "./reducers/prodDetailSlice";
 import { searchSlice } from "./reducers/searchSlice";
-import { authenticationSlice } from "./reducers/authSlice";
+import { authSlice } from "./reducers/authSlice";
 import { cartSlice } from "./reducers/cartSlice";
 import { orderSlice } from "./reducers/orderSlice";
 import { languageSlice } from "./reducers/langSlice";
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
     collections: collectionSlice.reducer,
     productDetail: prodDetailSlice.reducer,
     search: searchSlice.reducer,
-    auth: authenticationSlice.reducer,
+    auth: authSlice.reducer,
     cart: cartSlice.reducer,
     order: orderSlice.reducer
 });
