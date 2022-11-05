@@ -2,17 +2,16 @@ import React from "react";
 import { MainLayout } from "../layouts";
 import { Affix, Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { clearShoppingCartItem, createOrder } from "../redux/reducers/shoppingCartSlice";
+import { clearCart, createOrder } from "../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 import { ProductList } from "../components/productList";
 import { CartManager } from "../components/cartManager";
 import { NextPage } from "next";
 
 const ShoppingCart: NextPage = () => {
-
     const loading = useReduxSelector((s) => s.shoppingCart.loading);
-    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
+    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.cartItems);
+    const jwt = useReduxSelector((s) => s.authentication.jwt);
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
@@ -39,24 +38,30 @@ const ShoppingCart: NextPage = () => {
                                     .reduce((a, b) => a + b, 0)}
                                 // calculate discount price if needed
                                 price={shoppingCartItems
-                                    .map((s) =>
-                                        s.originalPrice *
-                                        (s.discountPresent ? s.discountPresent : 1))
+                                    .map(
+                                        (s) =>
+                                            s.originalPrice *
+                                            (s.discountPresent
+                                                ? s.discountPresent
+                                                : 1)
+                                    )
                                     .reduce((a, b) => a + b, 0)}
                                 // call redux, create order
                                 onCreateOrder={() => {
                                     if (shoppingCartItems.length < 1) {
                                         return;
                                     } else {
-                                        dispatch(createOrder(jwtToken));
+                                        dispatch(createOrder(jwt));
                                         router.push("/checkout").then();
                                     }
                                 }}
                                 onShoppingCartClear={() => {
                                     dispatch(
-                                        clearShoppingCartItem({
-                                            jwtToken,
-                                            itemIds: shoppingCartItems.map((s) => s.id)
+                                        clearCart({
+                                            jwt: jwt,
+                                            itemIds: shoppingCartItems.map(
+                                                (s) => s.id
+                                            )
                                         })
                                     );
                                 }}

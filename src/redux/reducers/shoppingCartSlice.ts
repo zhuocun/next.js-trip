@@ -1,33 +1,26 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface Product {
-    id: number;
-    touristRoute: ITouristRoute;
-    originalPrice: number;
-    discountPresent: number;
-}
-
 interface ShoppingCartState {
     loading: boolean;
     error: string | null;
-    items: Product[];
+    cartItems: CartItem[];
 }
 
 const initialState: ShoppingCartState = {
     loading: true,
     error: null,
-    items: []
+    cartItems: []
 };
 
 export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
-    async (jwtToken: string) => {
+    async (jwt: string) => {
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/shoppingCart`,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`
+                    Authorization: `bearer ${jwt}`
                 }
             }
         );
@@ -35,12 +28,9 @@ export const getShoppingCart = createAsyncThunk(
     }
 );
 
-export const addShoppingCartItem = createAsyncThunk(
-    "shoppingCart/addShoppingCartItem",
-    async (parameters: {
-        jwtToken: string,
-        touristRouteId: string | undefined
-    }) => {
+export const addToCart = createAsyncThunk(
+    "shoppingCart/addToCart",
+    async (parameters: { jwt: string, touristRouteId: string | undefined }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
@@ -48,7 +38,7 @@ export const addShoppingCartItem = createAsyncThunk(
             },
             {
                 headers: {
-                    Authorization: `bearer ${parameters.jwtToken}`
+                    Authorization: `bearer ${parameters.jwt}`
                 }
             }
         );
@@ -56,16 +46,15 @@ export const addShoppingCartItem = createAsyncThunk(
     }
 );
 
-// the response data will be saved in order's slice
 export const createOrder = createAsyncThunk(
     "shoppingCart/createOrder",
-    async (jwtToken: string) => {
+    async (jwt: string | null) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/checkout`,
             null,
             {
                 headers: {
-                    Authorization: `bearer ${jwtToken}`
+                    Authorization: `bearer ${jwt}`
                 }
             }
         );
@@ -73,14 +62,14 @@ export const createOrder = createAsyncThunk(
     }
 );
 
-export const clearShoppingCartItem = createAsyncThunk(
-    "shoppingCart/clearShoppingCartItem",
-    async (parameters: { jwtToken: string, itemIds: number[] }) => {
+export const clearCart = createAsyncThunk(
+    "shoppingCart/clearCart",
+    async (parameters: { jwt: string | null, itemIds: number[] }) => {
         let url = `http://123.56.149.216:8080/api/shoppingCart/items/`;
         url += `(${parameters.itemIds.join(",")})`;
         return await axios.delete(url, {
             headers: {
-                Authorization: `bearer ${parameters.jwtToken}`
+                Authorization: `bearer ${parameters.jwt}`
             }
         });
     }
@@ -98,7 +87,7 @@ export const shoppingCartSlice = createSlice({
         [getShoppingCart.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.items = action.payload;
+            state.cartItems = action.payload;
         },
         [getShoppingCart.rejected.type]: (
             state,
@@ -108,15 +97,15 @@ export const shoppingCartSlice = createSlice({
             state.error = action.payload;
         },
         // add item to shopping cart
-        [addShoppingCartItem.pending.type]: (state) => {
+        [addToCart.pending.type]: (state) => {
             state.loading = true;
         },
-        [addShoppingCartItem.fulfilled.type]: (state, action) => {
+        [addToCart.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.items = action.payload;
+            state.cartItems = action.payload;
         },
-        [addShoppingCartItem.rejected.type]: (
+        [addToCart.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {
@@ -124,15 +113,15 @@ export const shoppingCartSlice = createSlice({
             state.error = action.payload;
         },
         // clear shopping cart
-        [clearShoppingCartItem.pending.type]: (state) => {
+        [clearCart.pending.type]: (state) => {
             state.loading = true;
         },
-        [clearShoppingCartItem.fulfilled.type]: (state) => {
+        [clearCart.fulfilled.type]: (state) => {
             state.loading = false;
             state.error = null;
-            state.items = [];
+            state.cartItems = [];
         },
-        [clearShoppingCartItem.rejected.type]: (
+        [clearCart.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {

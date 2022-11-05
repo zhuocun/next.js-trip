@@ -18,11 +18,11 @@ export const Header: React.FC = () => {
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();
 
-    const jwtToken = useReduxSelector((s) => s.authentication.jwt);
+    const jwt = useReduxSelector((s) => s.authentication.jwt);
     const [username, setUsername] = useState("");
 
-    const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
-    const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
+    const cartItems = useReduxSelector((s) => s.shoppingCart.cartItems);
+    const loading = useReduxSelector((s) => s.shoppingCart.loading);
 
     const searchHandler = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
@@ -39,12 +39,12 @@ export const Header: React.FC = () => {
     };
 
     useEffect(() => {
-        if (jwtToken) {
+        if (jwt) {
             // prettier-ignore
-            const token = jwt_decode<MyJwtPayload>(jwtToken);
+            const token = jwt_decode<MyJwtPayload>(jwt);
             setUsername(token.username);
         }
-    }, [dispatch, jwtToken]);
+    }, [dispatch, jwt]);
 
     return (
         <div>
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
                             onSearch={(keywords) => searchHandler(keywords)}
                         />
                         {/* buttons and welcome */}
-                        {jwtToken ? (
+                        {jwt ? (
                             <>
                                 <Button
                                     type="default"
@@ -86,10 +86,10 @@ export const Header: React.FC = () => {
                                     size="middle"
                                     className={styles.button}
                                     onClick={() => router.push("/shoppingCart")}
-                                    loading={shoppingCartLoading}
+                                    loading={loading}
                                 >
                                     {t("header.shoppingCart")}(
-                                    {shoppingCartItems.length})
+                                    {cartItems ? cartItems.length : 0})
                                 </Button>
                                 {/* welcome */}
                                 <span className={styles.hail}>

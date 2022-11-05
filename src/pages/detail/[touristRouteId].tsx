@@ -1,32 +1,29 @@
 import React, { useEffect } from "react";
-import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Spin, Typography } from "antd";
+import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Typography } from "antd";
 import { commentMockData } from "../../../mocks/comments";
 import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { addShoppingCartItem } from "../../redux/reducers/shoppingCartSlice";
+import { addToCart } from "../../redux/reducers/shoppingCartSlice";
 import { useRouter } from "next/router";
 import { ProductIntro } from "../../components/productIntro";
 import { ProductComments } from "../../components/productComments";
 import { NextPage } from "next";
 import styles from "../../styles/productDetail.module.css";
+import PageSpin from "../../components/spin";
 
 const { RangePicker } = DatePicker;
 
 const ProductDetail: NextPage = () => {
-    // get parameter through router
     const { touristRouteId } = useRouter().query;
-
-    // get states from Redux
     const loading = useReduxSelector((s) => s.productDetail.loading);
     const error = useReduxSelector((s) => s.productDetail.error);
     const product = useReduxSelector((s) => s.productDetail.productDetail);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
+    const jwt = useReduxSelector((s) => s.authentication.jwt) as string;
     const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
 
     const dispatch = useReduxDispatch();
-
 
     useEffect(() => {
         if (touristRouteId) {
@@ -36,16 +33,7 @@ const ProductDetail: NextPage = () => {
 
     if (loading) {
         return (
-            <Spin
-                size="large"
-                style={{
-                    marginTop: 200,
-                    marginBottom: 200,
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: "100%"
-                }}
-            />
+            <PageSpin />
         );
     }
 
@@ -80,7 +68,7 @@ const ProductDetail: NextPage = () => {
                                 danger
                                 loading={shoppingCartLoading}
                                 onClick={() => {
-                                    dispatch(addShoppingCartItem({ jwtToken, touristRouteId: product?.id }));
+                                    dispatch(addToCart({ jwt: jwt, touristRouteId: product?.id }));
                                 }}
                             >
                                 <ShoppingCartOutlined />

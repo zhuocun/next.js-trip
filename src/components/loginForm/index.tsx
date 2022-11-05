@@ -7,19 +7,18 @@ import { useRouter } from "next/router";
 
 export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.authentication.loading);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwt);
+    const jwt = useReduxSelector((s) => s.authentication.jwt);
 
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
     useEffect(() => {
-        if (jwtToken !== null) {
+        if (jwt) {
             router.push("/").then();
         }
-    }, [jwtToken]);
+    }, [jwt]);
 
     const onFinish = (values) => {
-        console.log("Success:", values);
         dispatch(
             login({
                 email: values.username,
