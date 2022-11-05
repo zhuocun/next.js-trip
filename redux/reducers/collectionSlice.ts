@@ -1,14 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// define state
 interface CollectionState {
     loading: boolean;
     error: string | null;
     collections: IProductCollection[];
 }
 
-// define default state
 const initialState: CollectionState = {
     loading: true,
     error: null,
@@ -21,7 +19,6 @@ export const getCollection = createAsyncThunk(
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/productCollections`
         );
-        console.log(axiosResponse.data);
         return axiosResponse.data;
     }
 );
