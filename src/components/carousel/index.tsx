@@ -3,8 +3,8 @@ import styles from "./index.module.css";
 import { Carousel as AntCarousel, Image } from "antd";
 
 export const Carousel: React.FC = () => {
-    const carouselImage1 = "/images/carousel_1.jpg";
-    const carouselImage2 = "/images/carousel_2.jpg";
+    const carouselImage1 = "/carousel/carousel_1.jpg";
+    const carouselImage2 = "/carousel/carousel_2.jpg";
 
     return (
         <AntCarousel autoplay className={styles.slider}>

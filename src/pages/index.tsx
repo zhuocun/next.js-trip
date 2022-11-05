@@ -12,9 +12,9 @@ import { BusinessPartners } from "../components/partners";
 import { NextPage } from "next";
 import PageSpin from "../components/spin";
 
-const sideImage1 = "/images/sider_2019_12-09.png";
-const sideImage2 = "/images/sider_2019_02-04.png";
-const sideImage3 = "/images/sider_2019_02-04-2.png";
+const sider1 = "/sider/sider_1.png";
+const sider2 = "/sider/sider_2.png";
+const sider3 = "/sider/sider_3.png";
 
 const Home: NextPage = () => {
     const jwt = useReduxSelector((s) => s.auth.jwt);
@@ -58,7 +58,7 @@ const Home: NextPage = () => {
                             {t("home_page.hot_recommended")}
                         </Typography.Title>
                     }
-                    sideImg={sideImage1}
+                    sideImg={sider1}
                     touristRoutes={collections[0].touristRoutes}
                 />
                 <ProductCollection
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                             New Trips
                         </Typography.Title>
                     }
-                    sideImg={sideImage2}
+                    sideImg={sider2}
                     touristRoutes={collections[1].touristRoutes}
                 />
                 <ProductCollection
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
                             Domestic Trip
                         </Typography.Title>
                     }
-                    sideImg={sideImage3}
+                    sideImg={sider3}
                     touristRoutes={collections[2].touristRoutes}
                 />
                 <BusinessPartners />

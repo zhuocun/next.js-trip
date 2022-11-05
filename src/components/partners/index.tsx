@@ -1,17 +1,17 @@
 import React from "react";
-import { Row, Col, Typography, Divider } from "antd";
+import { Col, Divider, Row, Typography } from "antd";
 import styles from "./index.module.css";
 
-const image1 = "/images/microsoft-80658_640.png";
-const image2 = "/images/icon-720944_640.png";
-const image3 = "/images/follow-826033_640.png";
-const image4 = "/images/facebook-807588_640.png";
+const img1 = "/partner/microsoft.png";
+const img2 = "/partner/youtube.png";
+const img3 = "/partner/instagram.png";
+const img4 = "/partner/facebook.png";
 
 const companies = [
-    { src: image1, title: "Microsoft" },
-    { src: image2, title: "Youtube" },
-    { src: image3, title: "Ins" },
-    { src: image4, title: "Facebook" }
+    { src: img1, title: "Microsoft" },
+    { src: img2, title: "Youtube" },
+    { src: img3, title: "Ins" },
+    { src: img4, title: "Facebook" }
 ];
 
 export const BusinessPartners: React.FC = () => {

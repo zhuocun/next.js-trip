@@ -17,7 +17,7 @@ export const SideMenu: React.FC = () => {
                     key: sm.title,
                     label: sm.title,
                     icon: <MenuUnfoldOutlined />,
-                    children: sm.subMenu.map((sms) => ({
+                    children: sm.subMenu?.map((sms) => ({
                         key: sms,
                         label: sms,
                         icon: <MenuUnfoldOutlined />
