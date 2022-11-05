@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.css";
-import { sideMenuList } from "../../../mocks/sideMenu";
+import { sideMenuList } from "../../mocks/sideMenu";
 import { MenuUnfoldOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 

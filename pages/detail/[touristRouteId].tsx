@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Typography } from "antd";
-import { commentMockData } from "../../../mocks/comments";
+import { commentMockData } from "../../mocks/comments";
 import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { MainLayout } from "../../layouts";
