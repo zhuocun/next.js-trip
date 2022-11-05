@@ -1,55 +1,39 @@
 import React, { useEffect } from "react";
-import { Col, Row, Spin, Typography } from "antd";
+import { Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { getRecommendedProducts } from "../redux/reducers/rcmdProdSlice";
+import { getCollection } from "../redux/reducers/collectionSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 import { SideMenu } from "../components/sideMenu";
 import { Carousel } from "../components/carousel";
 import { ProductCollection } from "../components/productCollection";
 import { BusinessPartners } from "../components/businessPartners";
 import { NextPage } from "next";
+import PageSpin from "../components/spin";
 
 const sideImage1 = "/images/sider_2019_12-09.png";
 const sideImage2 = "/images/sider_2019_02-04.png";
 const sideImage3 = "/images/sider_2019_02-04-2.png";
 
 const Home: NextPage = () => {
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+    const jwt = useReduxSelector((s) => s.authentication.jwt);
 
     useEffect(() => {
-        if (jwtToken) {
-            dispatch(getShoppingCart(jwtToken));
+        dispatch(getCollection());
+        if (jwt) {
+            dispatch(getShoppingCart(jwt));
         }
-    }, [jwtToken]);
+    }, [jwt]);
 
-    const loading = useReduxSelector((s) => s.recommendedProducts.loading);
-    const error = useReduxSelector((s) => s.recommendedProducts.error);
-    const productList = useReduxSelector(
-        (s) => s.recommendedProducts.productList
-    );
-
+    const loading = useReduxSelector((s) => s.collections.loading);
+    const error = useReduxSelector((s) => s.collections.error);
+    const collections = useReduxSelector((s) => s.collections.collections);
     const dispatch = useReduxDispatch();
     const { t } = useTranslation();
 
-    useEffect(() => {
-        dispatch(getRecommendedProducts());
-    }, [dispatch]);
-
     if (loading) {
-        return (
-            <Spin
-                size="large"
-                style={{
-                    marginTop: 200,
-                    marginBottom: 200,
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: "100%"
-                }}
-            />
-        );
+        return <PageSpin />;
     }
 
     if (error) {
@@ -74,8 +58,8 @@ const Home: NextPage = () => {
                             {t("home_page.hot_recommended")}
                         </Typography.Title>
                     }
-                    sideImage={sideImage1}
-                    touristRoute={productList[0].touristRoutes}
+                    sideImg={sideImage1}
+                    touristRoutes={collections[0].touristRoutes}
                 />
                 <ProductCollection
                     title={
@@ -83,8 +67,8 @@ const Home: NextPage = () => {
                             New Trips
                         </Typography.Title>
                     }
-                    sideImage={sideImage2}
-                    touristRoute={productList[1].touristRoutes}
+                    sideImg={sideImage2}
+                    touristRoutes={collections[1].touristRoutes}
                 />
                 <ProductCollection
                     title={
@@ -92,8 +76,8 @@ const Home: NextPage = () => {
                             Domestic Trip
                         </Typography.Title>
                     }
-                    sideImage={sideImage3}
-                    touristRoute={productList[2].touristRoutes}
+                    sideImg={sideImage3}
+                    touristRoutes={collections[2].touristRoutes}
                 />
                 <BusinessPartners />
             </MainLayout>

@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();
 
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwt);
     const [username, setUsername] = useState("");
 
     const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);

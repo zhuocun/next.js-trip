@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { recommendedProductsSlice } from "./reducers/rcmdProdSlice";
+import { collectionSlice } from "./reducers/collectionSlice";
 import { prodDetailSlice } from "./reducers/prodDetailSlice";
 import { prodSearchSlice } from "./reducers/prodSearchSlice";
 import { authenticationSlice } from "./reducers/authSlice";
@@ -17,7 +17,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     language: languageSlice.reducer,
-    recommendedProducts: recommendedProductsSlice.reducer,
+    collections: collectionSlice.reducer,
     productDetail: prodDetailSlice.reducer,
     productSearch: prodSearchSlice.reducer,
     authentication: authenticationSlice.reducer,

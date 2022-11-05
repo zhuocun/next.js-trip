@@ -9,7 +9,7 @@ import { CheckoutCard } from "../components/checkoutCard";
 import { NextPage } from "next";
 
 const Checkout: NextPage = () => {
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
+    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
     const loading = useReduxSelector((s) => s.order.loading);
     const orderSet = useReduxSelector((s) => s.order.currentOrder);
     const dispatch = useReduxDispatch();

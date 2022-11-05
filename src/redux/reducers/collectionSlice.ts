@@ -2,21 +2,21 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // define state
-interface RecommendedProductsState {
+interface CollectionState {
     loading: boolean;
     error: string | null;
-    productList: { touristRoutes: ITouristRoute }[];
+    collections: IProductCollection[];
 }
 
 // define default state
-const initialState: RecommendedProductsState = {
+const initialState: CollectionState = {
     loading: true,
     error: null,
-    productList: []
+    collections: []
 };
 
-export const getRecommendedProducts = createAsyncThunk(
-    "recommendedProducts/getRecommendedProducts",
+export const getCollection = createAsyncThunk(
+    "collection/getCollection",
     async () => {
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/productCollections`
@@ -26,20 +26,20 @@ export const getRecommendedProducts = createAsyncThunk(
     }
 );
 
-export const recommendedProductsSlice = createSlice({
-    name: "recommendedProducts",
+export const collectionSlice = createSlice({
+    name: "collection",
     initialState,
     reducers: {},
     extraReducers: {
-        [getRecommendedProducts.pending.type]: (state) => {
+        [getCollection.pending.type]: (state) => {
             state.loading = true;
         },
-        [getRecommendedProducts.fulfilled.type]: (state, action) => {
+        [getCollection.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.productList = action.payload;
+            state.collections = action.payload;
         },
-        [getRecommendedProducts.rejected.type]: (
+        [getCollection.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {

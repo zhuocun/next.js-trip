@@ -6,19 +6,19 @@ import productGroup from "./productGroup";
 
 interface Props {
     title: JSX.Element;
-    sideImage: string;
-    touristRoute: ITouristRoute[];
+    sideImg: string;
+    touristRoutes: ITouristRoute[];
 }
 
 export const ProductCollection: React.FC<Props> = ({
     title,
-    sideImage,
-    touristRoute
+    sideImg,
+    touristRoutes
 }) => {
     const productGroup1: ITouristRoute[] = [];
     const productGroup2: ITouristRoute[] = [];
     const productGroup3: ITouristRoute[] = [];
-    touristRoute.slice(1).forEach(function (t, index) {
+    touristRoutes.slice(1).forEach(function (t, index) {
         if (index <= 1) {
             productGroup1.push(t);
         } else if (index >= 2 && index <= 3) {
@@ -34,8 +34,8 @@ export const ProductCollection: React.FC<Props> = ({
             <Row>
                 <Col span={4}>
                     <img
-                        src={sideImage}
-                        alt="sideImage"
+                        src={sideImg}
+                        alt="side image"
                         className={styles["side-image"]}
                     />
                 </Col>
@@ -44,7 +44,7 @@ export const ProductCollection: React.FC<Props> = ({
                     <Row>
                         <Col span={12}>
                             <ProductImage
-                                touristRoute={touristRoute[0]}
+                                touristRoute={touristRoutes[0]}
                                 size={"large"}
                             />
                         </Col>

@@ -22,7 +22,7 @@ const ProductDetail: NextPage = () => {
     const loading = useReduxSelector((s) => s.productDetail.loading);
     const error = useReduxSelector((s) => s.productDetail.error);
     const product = useReduxSelector((s) => s.productDetail.productDetail);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
+    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
     const shoppingCartLoading = useReduxSelector((s) => s.shoppingCart.loading);
 
     const dispatch = useReduxDispatch();

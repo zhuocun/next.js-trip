@@ -1,16 +1,16 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface AuthenticationState {
     loading: boolean;
     error: string | null;
-    jwtToken: string | null;
+    jwt: string | null;
 }
 
 const initialState: AuthenticationState = {
     loading: false,
     error: null,
-    jwtToken: null
+    jwt: null
 };
 
 export const login = createAsyncThunk(
@@ -34,7 +34,7 @@ export const authenticationSlice = createSlice({
         logout: (state) => {
             state.loading = false;
             state.error = null;
-            state.jwtToken = null;
+            state.jwt = null;
         }
     },
     extraReducers: {
@@ -44,14 +44,14 @@ export const authenticationSlice = createSlice({
         [login.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.jwtToken = action.payload;
+            state.jwt = action.payload;
         },
         [login.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {
             state.loading = false;
-            state.jwtToken = action.payload;
+            state.jwt = action.payload;
         }
     }
 });

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.authentication.loading);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwt);
 
     const dispatch = useReduxDispatch();
     const router = useRouter();

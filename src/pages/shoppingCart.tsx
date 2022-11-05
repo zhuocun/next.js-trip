@@ -12,7 +12,7 @@ const ShoppingCart: NextPage = () => {
 
     const loading = useReduxSelector((s) => s.shoppingCart.loading);
     const shoppingCartItems = useReduxSelector((s) => s.shoppingCart.items);
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken) as string;
+    const jwtToken = useReduxSelector((s) => s.authentication.jwt) as string;
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
