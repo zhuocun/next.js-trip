@@ -4,12 +4,12 @@ import { Divider, Typography } from "antd";
 
 const { Text } = Typography;
 
-interface FilterProps {
+interface Props {
     title: string;
     tags: string[];
 }
 
-export const Filter: React.FC<FilterProps> = ({ title, tags }) => {
+export const Filter: React.FC<Props> = ({ title, tags }) => {
     return (
         <div>
             <Text style={{ marginRight: 40, fontSize: 15, fontWeight: 500 }}>

@@ -20,7 +20,9 @@ export const AuthLayout: React.FC<PropsType> = (props) => {
                     <div className={styles["content-header"]}>
                         <img alt="logo" className={styles["logo"]} src={logo} />
                         <Link href="/">
-                            <span className={styles["title"]}>React Trip</span>
+                            <span className={styles["title"]}>
+                                Next.js Trip
+                            </span>
                         </Link>
                     </div>
                     <div className={styles["desc"]}>

@@ -16,6 +16,11 @@ export const FilterTag: React.FC<FilterTagProps> = (props) => {
     };
 
     return (
-        <CheckableTag {...props} checked={checked} onChange={handleChange} />
+        <CheckableTag
+            style={{ fontSize: 14 }}
+            {...props}
+            checked={checked}
+            onChange={handleChange}
+        />
     );
 };

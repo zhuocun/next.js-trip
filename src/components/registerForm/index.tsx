@@ -33,7 +33,7 @@ export const RegisterForm: React.FC = () => {
         <Form
             name="basic"
             labelCol={{
-                span: 8
+                span: 5
             }}
             wrapperCol={{
                 span: 16
@@ -73,7 +73,7 @@ export const RegisterForm: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-                label="Confirm Password"
+                label="Confirm"
                 name="confirm"
                 hasFeedback
                 rules={[
@@ -99,7 +99,7 @@ export const RegisterForm: React.FC = () => {
                 name="remember"
                 valuePropName="checked"
                 wrapperCol={{
-                    offset: 8,
+                    offset: 4,
                     span: 16
                 }}
             >
@@ -108,7 +108,7 @@ export const RegisterForm: React.FC = () => {
 
             <Form.Item
                 wrapperCol={{
-                    offset: 8,
+                    offset: 4,
                     span: 16
                 }}
             >

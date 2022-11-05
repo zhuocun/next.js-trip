@@ -123,7 +123,7 @@ export const ProductIntro: React.FC<MainProductDetail> = ({
             </div>
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
-                {touristRoutePictures.map((p, index) => <Image key={index} height={150} src={p} />)}
+                {touristRoutePictures.map((p, index) => <Image preview={false} key={index} height={150} src={p} />)}
             </Carousel>
             {/* product detail in table */}
             <Table<ProductDescription>

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import styles from "./index.module.css";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
+import styles from "./index.module.css";
 
 export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.auth.loading);
@@ -35,7 +35,7 @@ export const LoginForm: React.FC = () => {
         <Form
             name="basic"
             labelCol={{
-                span: 8
+                span: 5
             }}
             wrapperCol={{
                 span: 16
@@ -78,7 +78,7 @@ export const LoginForm: React.FC = () => {
                 name="remember"
                 valuePropName="checked"
                 wrapperCol={{
-                    offset: 8,
+                    offset: 4,
                     span: 16
                 }}
             >
@@ -87,7 +87,7 @@ export const LoginForm: React.FC = () => {
 
             <Form.Item
                 wrapperCol={{
-                    offset: 8,
+                    offset: 4,
                     span: 16
                 }}
             >

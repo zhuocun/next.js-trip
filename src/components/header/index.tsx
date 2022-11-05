@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
                             {t("header.title")}
                         </Typography.Title>
                         <Input.Search
-                            placeholder={"Destination, attraction, etc."}
+                            placeholder={"Destinations, attractions, etc."}
                             className={styles["search-input"]}
                             onSearch={(keywords) => searchHandler(keywords)}
                         />

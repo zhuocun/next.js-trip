@@ -54,9 +54,9 @@ export const ProductList: React.FC<ProductListProps> = ({
             dataSource={products}
             footer={
                 pagination && (
-                    <div>
-                        搜索总路线: <Text strong>{pagination.totalCount}</Text>{" "}
-                        条
+                    <div style={{ fontSize: 17, marginLeft: 23 }}>
+                        Searching results:{" "}
+                        <Text strong>{pagination.totalCount}</Text>
                     </div>
                 )
             }

@@ -7,23 +7,24 @@ export const FilterArea: React.FC = () => {
     return (
         <>
             <Filter
-                title="路线评价"
-                tags={["1星", "2星", "3星", "4星", "5星"]}
+                title="Route Rating"
+                tags={["1 star", "2 star", "3 star", "4 star", "5 star"]}
             />
             <Divider dashed className={styles["filter-divider"]} />
-            <Filter title="出发城市" tags={["北京", "上海", "广州", "深圳"]} />
+            <Filter
+                title="Destination"
+                tags={["Sydney", "New York", "Beijing", "Tokyo"]}
+            />
             <Divider dashed className={styles["filter-divider"]} />
             <Filter
-                title="行程天数"
-                tags={["2日", "3日", "4日", "5日", "6日"]}
+                title="Travel Days"
+                tags={["2 days", "3 days", "4 days", "5 days", "6 days"]}
             />
-            <Divider dashed />
+            <Divider dashed className={styles["filter-divider"]} />
             <Filter
-                title="旅程类型"
-                tags={["跟团游", "自由行", "自驾游", "高端定制"]}
+                title="Holiday"
+                tags={["Christmas", "National Day", "Lunar New Year"]}
             />
-            <Divider dashed />
-            <Filter title="出发时间" tags={["春节", "清明", "劳动节"]} />
         </>
     );
 };

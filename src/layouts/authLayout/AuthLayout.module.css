@@ -34,7 +34,6 @@
 
 .content .top .content-header .logo {
     height: 44px;
-    margin-right: 16px;
     vertical-align: top;
     float: none;
 }
@@ -46,9 +45,11 @@
     font-weight: 600;
     font-size: 33px;
     font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin-right: 48px;
 }
 
 .content .top .desc {
     margin-top: 16px;
     margin-bottom: 40px;
+    margin-left: auto;
 }
