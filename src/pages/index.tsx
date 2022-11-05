@@ -8,7 +8,7 @@ import { getShoppingCart } from "../redux/reducers/cartSlice";
 import { SideMenu } from "../components/sideMenu";
 import { Carousel } from "../components/carousel";
 import { ProductCollection } from "../components/productCollection";
-import { BusinessPartners } from "../components/partners";
+import { Partners } from "../components/partners";
 import { NextPage } from "next";
 import PageSpin from "../components/spin";
 
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
                     sideImg={sider3}
                     touristRoutes={collections[2].touristRoutes}
                 />
-                <BusinessPartners />
+                <Partners />
             </MainLayout>
         </>
     );
