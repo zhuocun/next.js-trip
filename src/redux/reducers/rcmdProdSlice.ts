@@ -15,12 +15,13 @@ const initialState: RecommendedProductsState = {
     productList: []
 };
 
-export const recommendProducts = createAsyncThunk(
-    "recommendedProducts/recommendProducts",
+export const getRecommendedProducts = createAsyncThunk(
+    "recommendedProducts/getRecommendedProducts",
     async () => {
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/productCollections`
         );
+        console.log(axiosResponse.data);
         return axiosResponse.data;
     }
 );
@@ -30,15 +31,15 @@ export const recommendedProductsSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [recommendProducts.pending.type]: (state) => {
+        [getRecommendedProducts.pending.type]: (state) => {
             state.loading = true;
         },
-        [recommendProducts.fulfilled.type]: (state, action) => {
+        [getRecommendedProducts.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
             state.productList = action.payload;
         },
-        [recommendProducts.rejected.type]: (
+        [getRecommendedProducts.rejected.type]: (
             state,
             action: PayloadAction<string | null>
         ) => {

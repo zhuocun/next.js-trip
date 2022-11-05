@@ -3,7 +3,7 @@ import { Col, Row, Spin, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { recommendProducts } from "../redux/reducers/rcmdProdSlice";
+import { getRecommendedProducts } from "../redux/reducers/rcmdProdSlice";
 import { getShoppingCart } from "../redux/reducers/shoppingCartSlice";
 import { SideMenu } from "../components/sideMenu";
 import { Carousel } from "../components/carousel";
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        dispatch(recommendProducts());
+        dispatch(getRecommendedProducts());
     }, [dispatch]);
 
     if (loading) {

@@ -2,33 +2,36 @@ import React from "react";
 import { Image, Typography } from "antd";
 import Link from "next/link";
 
-interface ProductImageProps {
-    id: string | number;
+interface Props {
     size: "large" | "small";
-    imageSrc: string;
-    price: string | number;
-    title: string;
+    touristRoute: ITouristRoute;
 }
 
-export const ProductImage: React.FC<ProductImageProps> = ({
-    id,
-    size,
-    imageSrc,
-    price,
-    title
-}) => {
+export const ProductImage: React.FC<Props> = ({ size, touristRoute }) => {
     return (
         <>
             {size === "large" ? (
-                <Image src={imageSrc} height={285} width={488} />
+                <Image
+                    preview={false}
+                    src={touristRoute.touristRoutePictures[0].url}
+                    height={285}
+                    width={488}
+                />
             ) : (
-                <Image src={imageSrc} height={120} width={240} />
+                <Image
+                    preview={false}
+                    src={touristRoute.touristRoutePictures[0].url}
+                    height={120}
+                    width={240}
+                />
             )}
 
             <div>
-                <Link href={`./detail/${id}`}>{title.slice(0, 25)}</Link>{" "}
+                <Link href={`./detail/${touristRoute.id}`}>
+                    {touristRoute.title.slice(0, 25) + " "}
+                </Link>
                 <Typography.Text type="danger" strong>
-                    from ${price}
+                    from ${touristRoute.price}
                 </Typography.Text>
             </div>
         </>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { searchProduct } from "../../redux/reducers/prodSearchSlice";
+import { search } from "../../redux/reducers/prodSearchSlice";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
 import { Header } from "../../components/header";
@@ -23,13 +23,13 @@ const SearchResult: NextPage = () => {
 
     useEffect(() => {
         if (keywords) {
-            dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
+            dispatch(search({ nextPage: 1, pageSize: 10, keywords }));
         }
     }, [dispatch, keywords, location]);
 
     const onPageChange = (nextPage, pageSize) => {
         if (keywords) {
-            dispatch(searchProduct({ nextPage, pageSize, keywords }));
+            dispatch(search({ nextPage, pageSize, keywords }));
         }
     };
 

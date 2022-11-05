@@ -1,4 +1,3 @@
-import { actionLog } from "./middlewares/actionLog";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { recommendedProductsSlice } from "./reducers/rcmdProdSlice";
 import { prodDetailSlice } from "./reducers/prodDetailSlice";
@@ -31,8 +30,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // reducers are saved in store
 const store = configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(actionLog),
+    // middleware: (getDefaultMiddleware) =>
+    //     getDefaultMiddleware().concat(actionLog),
     devTools: true
 });
 
