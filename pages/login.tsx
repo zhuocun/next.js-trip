@@ -1,7 +1,7 @@
 import React from "react";
-import { AuthLayout } from "../layouts";
 import { LoginForm } from "../components/loginForm";
 import { NextPage } from "next";
+import AuthLayout from "../layouts/authLayout";
 
 const Login: NextPage = () => {
     return (

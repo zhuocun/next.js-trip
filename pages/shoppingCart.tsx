@@ -1,5 +1,4 @@
 import React from "react";
-import { MainLayout } from "../layouts";
 import { Affix, Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { clearCart, createOrder } from "../redux/reducers/cartSlice";
@@ -8,6 +7,7 @@ import { ProductList } from "../components/productList";
 import { CartManager } from "../components/cartManager";
 import { NextPage } from "next";
 import styles from "../styles/shoppingCart.module.css";
+import MainLayout from "../layouts/mainLayout";
 
 const ShoppingCart: NextPage = () => {
     const loading = useReduxSelector((s) => s.cart.loading);

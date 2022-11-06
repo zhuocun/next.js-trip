@@ -3,7 +3,6 @@ import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Typography } from 
 import { commentMockData } from "../../mocks/comments";
 import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { MainLayout } from "../../layouts";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { addToCart } from "../../redux/reducers/cartSlice";
 import { useRouter } from "next/router";
@@ -12,6 +11,7 @@ import { ProductComments } from "../../components/productComments";
 import { NextPage } from "next";
 import styles from "../../styles/productDetail.module.css";
 import PageSpin from "../../components/spin";
+import MainLayout from "../../layouts/mainLayout";
 
 const { RangePicker } = DatePicker;
 

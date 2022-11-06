@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { MainLayout } from "../layouts";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { getCollection } from "../redux/reducers/collectionSlice";
 import { getShoppingCart } from "../redux/reducers/cartSlice";
@@ -11,6 +10,7 @@ import { ProductCollection } from "../components/productCollection";
 import { Partners } from "../components/partners";
 import { NextPage } from "next";
 import PageSpin from "../components/spin";
+import MainLayout from "../layouts/mainLayout";
 
 const sider1 = "/sider/sider_1.png";
 const sider2 = "/sider/sider_2.png";

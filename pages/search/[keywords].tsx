@@ -45,7 +45,7 @@ const SearchResult: NextPage = () => {
     return (
         <div>
             <Header />
-            <div className={styles["page-content"]}>
+            <div className={"page-content"}>
                 <div className={styles["filter-container"]}>
                     <FilterArea />
                 </div>

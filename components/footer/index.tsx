@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const menuClickHandler = (e) => {
+    const onClick = (e) => {
         if (e.key === "add-lang") {
             dispatch(languageSlice.actions.fetchAdd());
         } else {
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
                     <div className={styles.lang}>
                         <Dropdown.Button
                             overlay={
-                                <Menu onClick={menuClickHandler}>
+                                <Menu onClick={onClick}>
                                     {languageList.map((l) => {
                                         return (
                                             <Menu.Item key={l.code}>

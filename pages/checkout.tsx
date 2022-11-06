@@ -1,5 +1,4 @@
 import React from "react";
-import { MainLayout } from "../layouts";
 import { Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
@@ -7,6 +6,7 @@ import { getShoppingCart } from "../redux/reducers/cartSlice";
 import { CreditCard } from "../components/creditCard";
 import { CheckoutCard } from "../components/checkoutCard";
 import { NextPage } from "next";
+import MainLayout from "../layouts/mainLayout";
 
 const Checkout: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.auth.jwt) as string;
