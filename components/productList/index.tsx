@@ -65,7 +65,7 @@ export const ProductList: React.FC<Props> = ({ data, pagination }) => {
                         <>
                             <Rate defaultValue={item.rating} allowHalf />
                             <Text strong className="ant-rate-text">
-                                {item.rating ? item.rating : "no rating data"}
+                                {item.rating ? item.rating : null}
                             </Text>
                         </>
                     ]}

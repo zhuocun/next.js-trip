@@ -25,6 +25,10 @@ const ProductDetail: NextPage = () => {
 
     const dispatch = useReduxDispatch();
 
+    const onAddToCart = () => {
+        dispatch(addToCart({ jwt, touristRouteId: productDetail?.id }));
+    };
+
     useEffect(() => {
         if (touristRouteId) {
             dispatch(getProductDetail(touristRouteId));
@@ -52,20 +56,18 @@ const ProductDetail: NextPage = () => {
                         {/* add to cart button */}
                         {jwt ?
                             <Button
-                                style={{ marginTop: 50, marginBottom: 30, display: "block" }}
+                                style={{ marginTop: 50, display: "block" }}
                                 type="primary"
                                 danger
                                 loading={cartLoading}
-                                onClick={() => {
-                                    dispatch(addToCart({ jwt: jwt, touristRouteId: productDetail?.id }));
-                                }}
+                                onClick={onAddToCart}
                             >
                                 <ShoppingCartOutlined />
                                 Add to cart
                             </Button> : null
                         }
                         {/* date */}
-                        <RangePicker open style={{ marginTop: 20 }} />
+                        <RangePicker open style={{ marginTop: 29 }} />
                     </Col>
                 </Row>
             </div>
