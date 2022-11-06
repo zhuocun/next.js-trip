@@ -4,7 +4,7 @@ import axios from "axios";
 interface ProductDetailState {
     loading: boolean;
     error: string | null;
-    productDetail: IProduct | null;
+    productDetail: IProductDetail | null;
 }
 
 const initialState: ProductDetailState = {

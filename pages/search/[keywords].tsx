@@ -8,6 +8,7 @@ import { ProductList } from "../../components/productList";
 import { Footer } from "../../components/footer";
 import { NextPage } from "next";
 import PageSpin from "../../components/spin";
+import styles from "../../styles/searchResult.module.css";
 
 const SearchResult: NextPage = () => {
     const router = useRouter();
@@ -44,8 +45,8 @@ const SearchResult: NextPage = () => {
     return (
         <div>
             <Header />
-            <div className={"page-content"}>
-                <div className={"product-list-container"}>
+            <div className={styles["page-content"]}>
+                <div className={styles["filter-container"]}>
                     <FilterArea />
                 </div>
                 <div className={"product-list-container"}>

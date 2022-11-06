@@ -1,4 +1,4 @@
-interface IProduct {
+interface IProductDetail {
     id: string;
     title: string;
     description: string;

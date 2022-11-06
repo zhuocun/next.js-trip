@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { ProductList } from "../components/productList";
 import { CartManager } from "../components/cartManager";
 import { NextPage } from "next";
+import styles from "../styles/shoppingCart.module.css";
 
 const ShoppingCart: NextPage = () => {
     const loading = useReduxSelector((s) => s.cart.loading);
@@ -56,7 +57,7 @@ const ShoppingCart: NextPage = () => {
                 </Col>
                 <Col span={8}>
                     <Affix>
-                        <div className={"payment-card-container"}>
+                        <div className={styles["payment-card-container"]}>
                             <CartManager
                                 loading={loading}
                                 originalPrice={originalPrice}

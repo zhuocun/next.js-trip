@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 import { Carousel, Image, Rate, Table, Typography } from "antd";
-import { ColumnsType } from "antd/es/table";
+import { ColumnsType } from "antd/lib/table";
 
 interface ProductDescription {
     key: number;
@@ -9,7 +9,7 @@ interface ProductDescription {
     description: string | number | JSX.Element | undefined;
 }
 
-interface MainProductDetail {
+interface Props {
     title: string;
     description: string;
     originalPrice: string;
@@ -20,28 +20,24 @@ interface MainProductDetail {
     touristRoutePictures: string[];
 }
 
-export const ProductIntro: React.FC<MainProductDetail> = ({
-                                                              title,
-                                                              description,
-                                                              originalPrice,
-                                                              coupons,
-                                                              price,
-                                                              rating,
-                                                              touristRoutePictures
-                                                          }) => {
-
+export const ProductIntro: React.FC<Props> = ({
+                                                  title,
+                                                  description,
+                                                  originalPrice,
+                                                  coupons,
+                                                  price,
+                                                  rating,
+                                                  touristRoutePictures
+                                              }) => {
 
     const columns: ColumnsType<ProductDescription> = [
         {
-            key: "",
-            title: "",
+            key: "title",
             dataIndex: "title",
-            align: "left",
-            width: "center"
+            align: "left"
         },
         {
-            key: "",
-            title: "",
+            key: "description",
             dataIndex: "description",
             align: "center"
         }
@@ -86,15 +82,8 @@ export const ProductIntro: React.FC<MainProductDetail> = ({
         },
         {
             key: 4,
-            title: "Ratings",
-            description: (
-                <>
-                    <Rate allowHalf defaultValue={+rating} />
-                    <Typography.Text style={{ marginLeft: 10 }}>
-                        {rating} / 5
-                    </Typography.Text>
-                </>
-            )
+            title: "Rating",
+            description: <Rate allowHalf defaultValue={+rating} />
         }
     ];
 
@@ -109,15 +98,15 @@ export const ProductIntro: React.FC<MainProductDetail> = ({
                 <Typography.Text style={{ marginLeft: 20 }}>
                     $
                     <span className={styles["intro-detail-strong-text"]}>
-                        {originalPrice}
+                        {originalPrice + " "}
                     </span>
-                    {""} / person
+                    / Person
                 </Typography.Text>
                 {/* rating */}
                 <Typography.Text style={{ marginLeft: 50 }}>
-                    rating: {" "}
+                    {"Rating: "}
                     <span className={styles["intro-detail-strong-text"]}>
-                        {rating}
+                        {rating + " / 5"}
                     </span>
                 </Typography.Text>
             </div>

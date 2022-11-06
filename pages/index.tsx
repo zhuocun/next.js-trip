@@ -41,47 +41,45 @@ const Home: NextPage = () => {
     }
 
     return (
-        <>
-            <MainLayout>
-                {/* content */}
-                <Row style={{ marginTop: 20 }}>
-                    <Col span={6}>
-                        <SideMenu />
-                    </Col>
-                    <Col span={18}>
-                        <Carousel />
-                    </Col>
-                </Row>
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="warning">
-                            {t("home_page.hot_recommended")}
-                        </Typography.Title>
-                    }
-                    sideImg={sider1}
-                    touristRoutes={collections[0].touristRoutes}
-                />
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="danger">
-                            New Trips
-                        </Typography.Title>
-                    }
-                    sideImg={sider2}
-                    touristRoutes={collections[1].touristRoutes}
-                />
-                <ProductCollection
-                    title={
-                        <Typography.Title level={3} type="success">
-                            Domestic Trip
-                        </Typography.Title>
-                    }
-                    sideImg={sider3}
-                    touristRoutes={collections[2].touristRoutes}
-                />
-                <Partners />
-            </MainLayout>
-        </>
+        <MainLayout>
+            {/* content */}
+            <Row style={{ marginTop: 20 }}>
+                <Col span={6}>
+                    <SideMenu />
+                </Col>
+                <Col span={18}>
+                    <Carousel />
+                </Col>
+            </Row>
+            <ProductCollection
+                title={
+                    <Typography.Title level={3} type="warning">
+                        {t("home_page.hot_recommended")}
+                    </Typography.Title>
+                }
+                sideImg={sider1}
+                touristRoutes={collections[0].touristRoutes}
+            />
+            <ProductCollection
+                title={
+                    <Typography.Title level={3} type="danger">
+                        New Trips
+                    </Typography.Title>
+                }
+                sideImg={sider2}
+                touristRoutes={collections[1].touristRoutes}
+            />
+            <ProductCollection
+                title={
+                    <Typography.Title level={3} type="success">
+                        Domestic Trip
+                    </Typography.Title>
+                }
+                sideImg={sider3}
+                touristRoutes={collections[2].touristRoutes}
+            />
+            <Partners />
+        </MainLayout>
     );
 };
 

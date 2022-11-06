@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
     const cartItems = useReduxSelector((s) => s.cart.cartItems);
     const loading = useReduxSelector((s) => s.cart.loading);
 
-    const searchHandler = (keywords) => {
+    const onSearch = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
             if (keywords[i] !== " ") {
                 router.push(`/search/${keywords}`).then();
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
     }, [dispatch, jwt]);
 
     return (
-        <div>
+        <>
             {/* app header */}
             <div className={styles["app-header"]}>
                 {/* main header */}
@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
                         <Input.Search
                             placeholder={"Destinations, attractions, etc."}
                             className={styles["search-input"]}
-                            onSearch={(keywords) => searchHandler(keywords)}
+                            onSearch={(keywords) => onSearch(keywords)}
                         />
                         {/* buttons and welcome */}
                         {jwt ? (
@@ -157,6 +157,6 @@ export const Header: React.FC = () => {
                     />
                 </div>
             </div>
-        </div>
+        </>
     );
 };
