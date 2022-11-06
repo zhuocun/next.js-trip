@@ -31,7 +31,10 @@ export const Footer: React.FC = () => {
                 <div className={styles.inner}>
                     <Typography.Title
                         level={5}
-                        style={{ textAlign: "center", color: "white" }}
+                        style={{
+                            textAlign: "center",
+                            color: "white"
+                        }}
                     >
                         {t("footer.detail")}
                     </Typography.Title>
