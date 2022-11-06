@@ -71,6 +71,7 @@ export const ProductList: React.FC<Props> = ({ data, pagination }) => {
                     ]}
                     extra={
                         <Image
+                            preview={false}
                             width={272}
                             height={172}
                             alt="image"
