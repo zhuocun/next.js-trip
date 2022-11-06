@@ -83,7 +83,7 @@ export const ProductIntro: React.FC<Props> = ({
         {
             key: 4,
             title: "Rating",
-            description: <Rate allowHalf defaultValue={+rating} />
+            description: rating ? <Rate allowHalf defaultValue={+rating} /> : "No data"
         }
     ];
 
@@ -104,9 +104,9 @@ export const ProductIntro: React.FC<Props> = ({
                 </Typography.Text>
                 {/* rating */}
                 <Typography.Text style={{ marginLeft: 50 }}>
-                    {"Rating: "}
+                    {rating ? "Rating: " : null}
                     <span className={styles["intro-detail-strong-text"]}>
-                        {rating + " / 5"}
+                        {rating ? rating + " / 5" : null}
                     </span>
                 </Typography.Text>
             </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import { Image, List, Rate, Space, Tag, Typography } from "antd";
-import { LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { Image, List, Rate, Tag, Typography } from "antd";
 import Link from "next/link";
 
 const listData = (productList: ITouristRoute[] | null) =>
@@ -55,7 +54,7 @@ export const ProductList: React.FC<ProductListProps> = ({
             footer={
                 pagination && (
                     <div style={{ fontSize: 17, marginLeft: 23 }}>
-                        Searching results:{" "}
+                        {"Searching results: "}
                         <Text strong>{pagination.totalCount}</Text>
                     </div>
                 )
@@ -64,18 +63,10 @@ export const ProductList: React.FC<ProductListProps> = ({
                 <List.Item
                     key={item.title}
                     actions={[
-                        <Space key="list-vertical-star-o">
-                            {React.createElement(StarOutlined)}
-                            {156}
-                        </Space>,
-                        <Space key="list-vertical-like-o">
-                            {React.createElement(LikeOutlined)}
-                            {156}
-                        </Space>,
                         <>
-                            <Rate defaultValue={3} />
+                            <Rate defaultValue={item.rating} allowHalf />
                             <Text strong className="ant-rate-text">
-                                {item.rating}
+                                {item.rating ? item.rating : "no rating data"}
                             </Text>
                         </>
                     ]}
@@ -100,7 +91,7 @@ export const ProductList: React.FC<ProductListProps> = ({
                                             }}
                                             delete
                                         >
-                                            ¥ {item.originalPrice}
+                                            $ {item.originalPrice}
                                         </Text>
                                         <Text
                                             type="danger"
@@ -109,8 +100,7 @@ export const ProductList: React.FC<ProductListProps> = ({
                                                 fontWeight: 400
                                             }}
                                         >
-                                            {" "}
-                                            ¥ {item.price}
+                                            {" $" + item.price + " "}
                                         </Text>
                                     </>
                                 ) : (
@@ -120,9 +110,9 @@ export const ProductList: React.FC<ProductListProps> = ({
                                             fontWeight: 400
                                         }}
                                     >
-                                        ¥ {item.price}
+                                        {"$" + item.price + " "}
                                     </Text>
-                                )}{" "}
+                                )}
                                 <Link href={"/detail/" + item.id}>
                                     {item.title}
                                 </Link>
