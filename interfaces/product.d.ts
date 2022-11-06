@@ -3,7 +3,6 @@ interface IProductDetail {
     title: string;
     description: string;
     originalPrice: string;
-    coupons: string;
     points: string;
     price: string;
     rating: string;

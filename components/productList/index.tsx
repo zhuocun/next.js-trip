@@ -10,10 +10,12 @@ const listData = (productList: ITouristRoute[] | null) =>
         tags: (
             <>
                 {p.departureCity && (
-                    <Tag color="#f50">{p.departureCity}出发</Tag>
+                    <Tag color="#f50">From {p.departureCity}</Tag>
                 )}
-                {p.travelDays && <Tag color="#108ee9">{p.travelDays} 天 </Tag>}
-                {p.discountPresent && <Tag color="#87d068">超低折扣</Tag>}
+                {p.travelDays && (
+                    <Tag color="#108ee9">{p.travelDays} Days </Tag>
+                )}
+                {p.discountPresent && <Tag color="#87d068">Discount</Tag>}
                 {p.tripType && <Tag color="#2db7f5">{p.tripType}</Tag>}
             </>
         ),
@@ -26,16 +28,13 @@ const listData = (productList: ITouristRoute[] | null) =>
 
 const { Text } = Typography;
 
-export interface ProductListProps {
+export interface Props {
     data: ITouristRoute[] | null;
     pagination: IPagination | null;
     onPageChange?: (nextPage, pageSize) => void;
 }
 
-export const ProductList: React.FC<ProductListProps> = ({
-    data,
-    pagination
-}) => {
+export const ProductList: React.FC<Props> = ({ data, pagination }) => {
     const products = listData(data);
     return (
         <List

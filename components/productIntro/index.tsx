@@ -10,24 +10,11 @@ interface ProductDescription {
 }
 
 interface Props {
-    title: string;
-    description: string;
-    originalPrice: string;
-    coupons: string;
-    points: string;
-    price: string;
-    rating: string;
-    touristRoutePictures: string[];
+    productDetail: IProductDetail;
 }
 
 export const ProductIntro: React.FC<Props> = ({
-                                                  title,
-                                                  description,
-                                                  originalPrice,
-                                                  coupons,
-                                                  price,
-                                                  rating,
-                                                  touristRoutePictures
+                                                  productDetail
                                               }) => {
 
     const columns: ColumnsType<ProductDescription> = [
@@ -47,7 +34,7 @@ export const ProductIntro: React.FC<Props> = ({
         {
             key: 0,
             title: "Route name",
-            description: title
+            description: productDetail.title
         },
         {
             key: 1,
@@ -56,7 +43,7 @@ export const ProductIntro: React.FC<Props> = ({
                 <>
                     $
                     <Typography.Text type="danger" strong>
-                        {originalPrice}
+                        {productDetail.originalPrice}
                     </Typography.Text>
                 </>
             )
@@ -64,11 +51,11 @@ export const ProductIntro: React.FC<Props> = ({
         {
             key: 2,
             title: "Discount",
-            description: price ? (
+            description: productDetail.price ? (
                 <>
-                    $<Typography.Text delete>{originalPrice}</Typography.Text>{" "}
+                    $<Typography.Text delete>{productDetail.originalPrice}</Typography.Text>{" "}
                     <Typography.Text type="danger" strong>
-                        ${price}
+                        ${productDetail.price}
                     </Typography.Text>
                 </>
             ) : (
@@ -77,42 +64,38 @@ export const ProductIntro: React.FC<Props> = ({
         },
         {
             key: 3,
-            title: "Get coupons",
-            description: coupons ? price : "No coupons"
-        },
-        {
-            key: 4,
             title: "Rating",
-            description: rating ? <Rate allowHalf defaultValue={+rating} /> : "No data"
+            description: productDetail.rating ? <Rate allowHalf defaultValue={+productDetail.rating} /> : "No data"
         }
     ];
 
     return (
         <div className={styles["intro-container"]}>
             {/* product title */}
-            <Typography.Title level={4}>{title}</Typography.Title>
+            <Typography.Title level={4}>{productDetail.title}</Typography.Title>
             {/* product description */}
-            <Typography.Text>{description}</Typography.Text>
+            <Typography.Text>{productDetail.description}</Typography.Text>
             {/* price */}
             <div className={styles["intro-detail-content"]}>
                 <Typography.Text style={{ marginLeft: 20 }}>
                     $
                     <span className={styles["intro-detail-strong-text"]}>
-                        {originalPrice + " "}
+                        {productDetail.originalPrice + " "}
                     </span>
                     / Person
                 </Typography.Text>
                 {/* rating */}
                 <Typography.Text style={{ marginLeft: 50 }}>
-                    {rating ? "Rating: " : null}
+                    {productDetail.rating ? "Rating: " : null}
                     <span className={styles["intro-detail-strong-text"]}>
-                        {rating ? rating + " / 5" : null}
+                        {productDetail.rating ? productDetail.rating + " / 5" : null}
                     </span>
                 </Typography.Text>
             </div>
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
-                {touristRoutePictures.map((p, index) => <Image preview={false} key={index} height={150} src={p} />)}
+                {productDetail.touristRoutePictures.map((p, index) => <Image preview={false} key={index} height={150}
+                                                                             src={p.url} />)}
             </Carousel>
             {/* product detail in table */}
             <Table<ProductDescription>

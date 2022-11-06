@@ -46,16 +46,7 @@ const ProductDetail: NextPage = () => {
                     {/* intro */}
                     <Col span={13}>
                         {productDetail ?
-                            (<ProductIntro
-                                title={productDetail.title}
-                                description={productDetail.description}
-                                originalPrice={productDetail.originalPrice}
-                                coupons={productDetail.coupons}
-                                points={productDetail.points}
-                                price={productDetail.price}
-                                rating={productDetail.rating}
-                                touristRoutePictures={productDetail.touristRoutePictures.map((p) => p.url)}
-                            />) : null}
+                            <ProductIntro productDetail={productDetail} /> : null}
                     </Col>
                     <Col span={11}>
                         {/* add to cart button */}
