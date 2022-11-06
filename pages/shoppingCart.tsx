@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Affix, Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { clearCart, createOrder } from "../redux/reducers/cartSlice";
@@ -24,6 +24,12 @@ const ShoppingCart: NextPage = () => {
             router.push("/checkout").then();
         }
     };
+
+    useEffect(() => {
+        if (!jwt) {
+            router.push("/").then();
+        }
+    }, [jwt]);
 
     const onClearCart = () => {
         dispatch(

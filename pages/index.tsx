@@ -43,7 +43,7 @@ const Home: NextPage = () => {
     return (
         <MainLayout>
             {/* content */}
-            <Row style={{ marginTop: 22 }}>
+            <Row style={{ marginTop: 24 }}>
                 <Col span={6}>
                     <SideMenu />
                 </Col>
