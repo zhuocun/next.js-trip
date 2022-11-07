@@ -1,5 +1,5 @@
 import { Col } from "antd";
-import { ProductImage } from "./ProductImage";
+import ProductImage from "./ProductImage";
 import React from "react";
 
 const productGroup = (touristRoutes: ITouristRoute[], span: number) => {

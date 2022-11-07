@@ -1,9 +1,9 @@
 import React from "react";
 import { Divider } from "antd";
-import { Filter } from "./Filter";
+import Filter from "./Filter";
 import styles from "./index.module.css";
 
-export const FilterArea: React.FC = () => {
+const FilterArea: React.FC = () => {
     return (
         <>
             <Filter
@@ -28,3 +28,5 @@ export const FilterArea: React.FC = () => {
         </>
     );
 };
+
+export default FilterArea;

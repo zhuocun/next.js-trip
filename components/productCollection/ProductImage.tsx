@@ -7,7 +7,7 @@ interface Props {
     touristRoute: ITouristRoute;
 }
 
-export const ProductImage: React.FC<Props> = ({ size, touristRoute }) => {
+const ProductImage: React.FC<Props> = ({ size, touristRoute }) => {
     return (
         <>
             {size === "large" ? (
@@ -37,3 +37,5 @@ export const ProductImage: React.FC<Props> = ({ size, touristRoute }) => {
         </>
     );
 };
+
+export default ProductImage;

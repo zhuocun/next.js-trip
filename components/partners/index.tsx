@@ -14,7 +14,7 @@ const companies = [
     { src: img4, title: "Facebook" }
 ];
 
-export const Partners: React.FC = () => {
+const Partners: React.FC = () => {
     return (
         <div className={styles.content}>
             <Divider orientation="left">
@@ -34,3 +34,5 @@ export const Partners: React.FC = () => {
         </div>
     );
 };
+
+export default Partners;

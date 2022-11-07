@@ -20,13 +20,13 @@ interface Props {
     onCreateOrder: () => void;
 }
 
-export const CartManager: React.FC<Props> = ({
-                                                 loading,
-                                                 originalPrice,
-                                                 currentPrice,
-                                                 onClearCart,
-                                                 onCreateOrder
-                                             }) => {
+const CartManager: React.FC<Props> = ({
+                                          loading,
+                                          originalPrice,
+                                          currentPrice,
+                                          onClearCart,
+                                          onCreateOrder
+                                      }) => {
 
     const columns: ColumnsType<CartIntro> = [
         {
@@ -97,3 +97,5 @@ export const CartManager: React.FC<Props> = ({
         </Card>
     );
 };
+
+export default CartManager;

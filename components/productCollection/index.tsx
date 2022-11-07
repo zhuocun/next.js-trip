@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 import { Col, Divider, Row } from "antd";
-import { ProductImage } from "./ProductImage";
+import ProductImage from "./ProductImage";
 import productGroup from "./productGroup";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
     touristRoutes: ITouristRoute[];
 }
 
-export const ProductCollection: React.FC<Props> = ({
+const ProductCollection: React.FC<Props> = ({
     title,
     sideImg,
     touristRoutes
@@ -59,3 +59,5 @@ export const ProductCollection: React.FC<Props> = ({
         </div>
     );
 };
+
+export default ProductCollection;

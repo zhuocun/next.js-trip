@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { Layout } from "antd";
 import Link from "next/link";
-import { Footer } from "../../components/footer";
+import Footer from "../../components/footer";
 
 const { Content } = Layout;
 

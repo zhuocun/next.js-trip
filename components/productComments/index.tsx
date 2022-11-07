@@ -1,7 +1,7 @@
 import React from "react";
 import { Comment, List } from "antd";
 
-interface ProductCommentsProps {
+interface Props {
     data: {
         author: string,
         avatar: string,
@@ -10,7 +10,7 @@ interface ProductCommentsProps {
     }[];
 }
 
-export const ProductComments: React.FC<ProductCommentsProps> = ({ data }) => {
+const ProductComments: React.FC<Props> = ({ data }) => {
     return (
         <List
             dataSource={data}
@@ -30,3 +30,5 @@ export const ProductComments: React.FC<ProductCommentsProps> = ({ data }) => {
         />
     );
 };
+
+export default ProductComments;

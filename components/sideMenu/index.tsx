@@ -4,7 +4,7 @@ import { sideMenuList } from "../../mocks/sideMenu";
 import { MenuUnfoldOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 
-export const SideMenu: React.FC = () => {
+const SideMenu: React.FC = () => {
     return (
         <Menu
             mode={"vertical"}
@@ -27,3 +27,5 @@ export const SideMenu: React.FC = () => {
         />
     );
 };
+
+export default SideMenu;

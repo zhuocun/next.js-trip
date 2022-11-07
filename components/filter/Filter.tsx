@@ -1,5 +1,5 @@
 import React from "react";
-import { FilterTag } from "./FilterTag";
+import FilterTag from "./FilterTag";
 import { Divider, Typography } from "antd";
 
 const { Text } = Typography;
@@ -9,7 +9,7 @@ interface Props {
     tags: string[];
 }
 
-export const Filter: React.FC<Props> = ({ title, tags }) => {
+const Filter: React.FC<Props> = ({ title, tags }) => {
     return (
         <div>
             <Text style={{ marginRight: 40, fontSize: 15, fontWeight: 500 }}>
@@ -28,3 +28,5 @@ export const Filter: React.FC<Props> = ({ title, tags }) => {
         </div>
     );
 };
+
+export default Filter;

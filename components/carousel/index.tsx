@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { Carousel as AntCarousel, Image } from "antd";
 
-export const Carousel: React.FC = () => {
+const Carousel: React.FC = () => {
     const carouselImage1 = "/carousel/carousel_1.jpg";
     const carouselImage2 = "/carousel/carousel_2.jpg";
 
@@ -13,3 +13,5 @@ export const Carousel: React.FC = () => {
         </AntCarousel>
     );
 };
+
+export default Carousel;

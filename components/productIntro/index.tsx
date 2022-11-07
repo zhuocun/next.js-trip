@@ -13,9 +13,9 @@ interface Props {
     productDetail: IProductDetail;
 }
 
-export const ProductIntro: React.FC<Props> = ({
-                                                  productDetail
-                                              }) => {
+const ProductIntro: React.FC<Props> = ({
+                                           productDetail
+                                       }) => {
 
     const columns: ColumnsType<ProductDescription> = [
         {
@@ -108,3 +108,5 @@ export const ProductIntro: React.FC<Props> = ({
         </div>
     );
 };
+
+export default ProductIntro;

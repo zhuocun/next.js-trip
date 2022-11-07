@@ -13,7 +13,7 @@ interface MyJwtPayload extends JwtPayload {
 
 const logo = "/logo.svg";
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
     const router = useRouter();
     const { t } = useTranslation();
     const dispatch = useReduxDispatch();
@@ -160,3 +160,5 @@ export const Header: React.FC = () => {
         </>
     );
 };
+
+export default Header;

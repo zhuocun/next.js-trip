@@ -20,11 +20,11 @@ interface CheckoutCardProps {
     onCheckout: () => void;
 }
 
-export const CheckoutCard: React.FC<CheckoutCardProps> = ({
-                                                              loading,
-                                                              orderSet,
-                                                              onCheckout
-                                                          }) => {
+const CheckoutCard: React.FC<CheckoutCardProps> = ({
+                                                       loading,
+                                                       orderSet,
+                                                       onCheckout
+                                                   }) => {
     const router = useRouter();
     const columns: ColumnsType<OrderInfo> = [
         {
@@ -104,3 +104,5 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({
         </Card>
     );
 };
+
+export default CheckoutCard;

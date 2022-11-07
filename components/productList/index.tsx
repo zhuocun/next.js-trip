@@ -34,7 +34,7 @@ export interface Props {
     onPageChange?: (nextPage, pageSize) => void;
 }
 
-export const ProductList: React.FC<Props> = ({ data, pagination }) => {
+const ProductList: React.FC<Props> = ({ data, pagination }) => {
     const products = listData(data);
     return (
         <List
@@ -126,3 +126,5 @@ export const ProductList: React.FC<Props> = ({ data, pagination }) => {
         />
     );
 };
+
+export default ProductList;

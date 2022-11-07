@@ -5,7 +5,7 @@ import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
 
-export const LoginForm: React.FC = () => {
+const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.auth.loading);
     const jwt = useReduxSelector((s) => s.auth.jwt);
 
@@ -98,3 +98,5 @@ export const LoginForm: React.FC = () => {
         </Form>
     );
 };
+
+export default LoginForm;

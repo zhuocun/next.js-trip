@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export const RegisterForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
     const router = useRouter();
 
     const onFinish = async (values: {
@@ -119,3 +119,5 @@ export const RegisterForm: React.FC = () => {
         </Form>
     );
 };
+
+export default RegisterForm;

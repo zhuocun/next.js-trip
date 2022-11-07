@@ -7,7 +7,7 @@ import { useReduxSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
 import { languageSlice } from "../../redux/reducers/langSlice";
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
     const currentLanguage = useReduxSelector((s) => s.language.currentLanguage);
     const languageList = useReduxSelector((s) => s.language.languageList);
 
@@ -65,3 +65,5 @@ export const Footer: React.FC = () => {
         </div>
     );
 };
+
+export default Footer;

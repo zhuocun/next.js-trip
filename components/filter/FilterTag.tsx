@@ -8,7 +8,7 @@ interface FilterTagProps {
     children?: React.ReactNode;
 }
 
-export const FilterTag: React.FC<FilterTagProps> = (props) => {
+const FilterTag: React.FC<FilterTagProps> = (props) => {
     const [checked, setChecked] = useState(false);
 
     const handleChange = (checked) => {
@@ -24,3 +24,5 @@ export const FilterTag: React.FC<FilterTagProps> = (props) => {
         />
     );
 };
+
+export default FilterTag;

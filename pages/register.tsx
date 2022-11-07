@@ -1,5 +1,5 @@
 import React from "react";
-import { RegisterForm } from "../components/registerForm";
+import RegisterForm from "../components/registerForm";
 import { NextPage } from "next";
 import AuthLayout from "../layouts/authLayout";
 

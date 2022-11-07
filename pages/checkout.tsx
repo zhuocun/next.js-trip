@@ -3,8 +3,8 @@ import { Col, Row } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
 import { getShoppingCart } from "../redux/reducers/cartSlice";
-import { CreditCard } from "../components/creditCard";
-import { CheckoutCard } from "../components/checkoutCard";
+import CreditCard from "../components/creditCard";
+import CheckoutCard from "../components/checkoutCard";
 import { NextPage } from "next";
 import MainLayout from "../layouts/mainLayout";
 

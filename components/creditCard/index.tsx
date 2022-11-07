@@ -4,7 +4,7 @@ import images from "react-payment-inputs/images";
 import { Card } from "antd";
 import styles from "./index.module.css";
 
-export const CreditCard = () => {
+const CreditCard = () => {
     const {
         wrapperProps,
         getCardImageProps,
@@ -28,3 +28,5 @@ export const CreditCard = () => {
         </Card>
     );
 };
+
+export default CreditCard;
