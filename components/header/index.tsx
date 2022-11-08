@@ -84,7 +84,13 @@ const Header: React.FC = () => {
                                     shape="round"
                                     size="middle"
                                     className={styles.button}
-                                    onClick={() => router.push("/shoppingCart")}
+                                    onClick={
+                                        cartItems.length
+                                            ? () => router.push("/shoppingCart")
+                                            : () => {
+                                                  return;
+                                              }
+                                    }
                                     loading={loading}
                                 >
                                     {t("header.shoppingCart")}(

@@ -10,7 +10,8 @@ import styles from "../styles/shoppingCart.module.css";
 import MainLayout from "../layouts/mainLayout";
 
 const ShoppingCart: NextPage = () => {
-    const loading = useReduxSelector((s) => s.cart.loading);
+    const cartLoading = useReduxSelector((s) => s.cart.loading);
+    const orderLoading = useReduxSelector((s) => s.order.loading);
     const cartItems = useReduxSelector((s) => s.cart.cartItems);
     const jwt = useReduxSelector((s) => s.auth.jwt);
     const dispatch = useReduxDispatch();
@@ -20,8 +21,9 @@ const ShoppingCart: NextPage = () => {
         if (cartItems.length < 1) {
             return;
         } else {
-            dispatch(createOrder(jwt));
-            router.push("/checkout").then();
+            dispatch(createOrder(jwt)).then(() => {
+                router.push("/checkout").then();
+            });
         }
     };
 
@@ -60,7 +62,7 @@ const ShoppingCart: NextPage = () => {
                         <ProductList
                             data={cartItems.map((s) => s.touristRoute)}
                             pagination={null}
-                            loading={loading}
+                            loading={cartLoading}
                         />
                     </div>
                 </Col>
@@ -68,7 +70,8 @@ const ShoppingCart: NextPage = () => {
                     <Affix>
                         <div className={styles["payment-card-container"]}>
                             <CartManager
-                                loading={loading}
+                                cartLoading={cartLoading}
+                                orderLoading={orderLoading}
                                 originalPrice={originalPrice}
                                 currentPrice={currentPrice}
                                 onCreateOrder={onCreateOrder}

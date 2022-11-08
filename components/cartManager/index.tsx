@@ -13,7 +13,8 @@ interface CartIntro {
 }
 
 interface Props {
-    loading: boolean;
+    cartLoading: boolean;
+    orderLoading: boolean;
     originalPrice: number;
     currentPrice: number;
     onClearCart: () => void;
@@ -21,7 +22,8 @@ interface Props {
 }
 
 const CartManager: React.FC<Props> = ({
-                                          loading,
+                                          cartLoading,
+                                          orderLoading,
                                           originalPrice,
                                           currentPrice,
                                           onClearCart,
@@ -64,13 +66,14 @@ const CartManager: React.FC<Props> = ({
             actions={[
                 <Row key={"buttons"}>
                     <Col span={14}>
-                        <Button style={{ marginLeft: 20 }} type="primary" danger onClick={onCreateOrder}>
+                        <Button style={{ marginLeft: 20 }} type="primary" danger onClick={onCreateOrder}
+                                loading={orderLoading}>
                             <CheckCircleOutlined />
                             Create Order
                         </Button>
                     </Col>
                     <Col span={10}>
-                        <Button style={{ marginRight: 20 }} onClick={onClearCart} loading={loading}>
+                        <Button style={{ marginRight: 20 }} onClick={onClearCart}>
                             <DeleteOutlined />
                             Clear
                         </Button>
@@ -78,7 +81,7 @@ const CartManager: React.FC<Props> = ({
                 </Row>
             ]}
         >
-            <Skeleton loading={loading} active>
+            <Skeleton loading={cartLoading} active>
                 <Meta
                     title={<Title level={2}>Total</Title>}
                     description={
