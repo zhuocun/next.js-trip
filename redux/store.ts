@@ -1,6 +1,4 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { collectionSlice } from "./reducers/collectionSlice";
-import { prodDetailSlice } from "./reducers/prodDetailSlice";
 import { searchSlice } from "./reducers/searchSlice";
 import { authSlice } from "./reducers/authSlice";
 import { cartSlice } from "./reducers/cartSlice";
@@ -17,8 +15,6 @@ import { languageSlice } from "./reducers/langSlice";
 
 const rootReducer = combineReducers({
     language: languageSlice.reducer,
-    collections: collectionSlice.reducer,
-    productDetail: prodDetailSlice.reducer,
     search: searchSlice.reducer,
     auth: authSlice.reducer,
     cart: cartSlice.reducer,

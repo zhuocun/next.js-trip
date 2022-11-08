@@ -1,25 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Typography } from "antd";
 import { commentMockData } from "../../mocks/comments";
-import { getProductDetail } from "../../redux/reducers/prodDetailSlice";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { addToCart } from "../../redux/reducers/cartSlice";
-import { useRouter } from "next/router";
 import ProductIntro from "../../components/productIntro";
 import ProductComments from "../../components/productComments";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import styles from "../../styles/productDetail.module.css";
-import PageSpin from "../../components/spin";
 import MainLayout from "../../layouts/mainLayout";
+import axios from "axios";
 
 const { RangePicker } = DatePicker;
 
-const ProductDetail: NextPage = () => {
-    const { touristRouteId } = useRouter().query;
-    const loading = useReduxSelector((s) => s.productDetail.loading);
-    const error = useReduxSelector((s) => s.productDetail.error);
-    const productDetail = useReduxSelector((s) => s.productDetail.productDetail);
+interface Props {
+    productDetail: IProductDetail;
+}
+
+const ProductDetail: NextPage<Props> = (Props) => {
+    const productDetail = Props.productDetail;
     const jwt = useReduxSelector((s) => s.auth.jwt) as string;
     const cartLoading = useReduxSelector((s) => s.cart.loading);
 
@@ -28,20 +27,6 @@ const ProductDetail: NextPage = () => {
     const onAddToCart = () => {
         dispatch(addToCart({ jwt, touristRouteId: productDetail?.id }));
     };
-
-    useEffect(() => {
-        if (touristRouteId) {
-            dispatch(getProductDetail(touristRouteId));
-        }
-    }, [dispatch, touristRouteId]);
-
-    if (loading) {
-        return <PageSpin />;
-    }
-
-    if (error) {
-        return <div>error：{error}</div>;
-    }
 
     return (
         <MainLayout>
@@ -135,6 +120,19 @@ const ProductDetail: NextPage = () => {
             </div>
         </MainLayout>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    productDetail: IProductDetail
+}> = async (context) => {
+    try {
+        const productDetail = (
+            await axios.get(`http://123.56.149.216:8080/api/touristRoutes/${context.params?.touristRouteId}`)
+        ).data;
+        return { props: { productDetail } };
+    } catch (err) {
+        return { notFound: true };
+    }
 };
 
 export default ProductDetail;

@@ -2,47 +2,36 @@ import React, { useEffect } from "react";
 import { Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { getCollection } from "../redux/reducers/collectionSlice";
 import { getShoppingCart } from "../redux/reducers/cartSlice";
 import SideMenu from "../components/sideMenu";
 import Carousel from "../components/carousel";
 import ProductCollection from "../components/productCollection";
 import Partners from "../components/partners";
-import { NextPage } from "next";
-import PageSpin from "../components/spin";
+import { GetStaticProps, NextPage } from "next";
 import MainLayout from "../layouts/mainLayout";
+import axios from "axios";
 
 const sider1 = "/sider/sider_1.png";
 const sider2 = "/sider/sider_2.png";
 const sider3 = "/sider/sider_3.png";
 
-const Home: NextPage = () => {
-    const jwt = useReduxSelector((s) => s.auth.jwt);
+interface Props {
+    collections: ICollection[];
+}
 
+const Home: NextPage<Props> = (Props) => {
+    const collections = Props.collections;
+    const dispatch = useReduxDispatch();
+    const { t } = useTranslation();
+    const jwt = useReduxSelector((s) => s.auth.jwt);
     useEffect(() => {
-        dispatch(getCollection());
         if (jwt) {
             dispatch(getShoppingCart(jwt));
         }
     }, [jwt]);
 
-    const loading = useReduxSelector((s) => s.collections.loading);
-    const error = useReduxSelector((s) => s.collections.error);
-    const collections = useReduxSelector((s) => s.collections.collections);
-    const dispatch = useReduxDispatch();
-    const { t } = useTranslation();
-
-    if (loading) {
-        return <PageSpin />;
-    }
-
-    if (error) {
-        return <div>error：{error}</div>;
-    }
-
     return (
         <MainLayout>
-            {/* content */}
             <Row style={{ marginTop: 24 }}>
                 <Col span={6}>
                     <SideMenu />
@@ -81,6 +70,19 @@ const Home: NextPage = () => {
             <Partners />
         </MainLayout>
     );
+};
+
+export const getStaticProps: GetStaticProps<{
+    collections: ICollection[]
+}> = async () => {
+    try {
+        const collections = (
+            await axios.get("http://123.56.149.216:8080/api/productCollections")
+        ).data;
+        return { props: { collections }, revalidate: 1000 * 60 };
+    } catch (err) {
+        return { notFound: true };
+    }
 };
 
 export default Home;
