@@ -32,12 +32,19 @@ export interface Props {
     data: ITouristRoute[] | null;
     pagination: IPagination | null;
     onPageChange?: (nextPage, pageSize) => void;
+    loading: boolean;
 }
 
-const ProductList: React.FC<Props> = ({ data, pagination, onPageChange }) => {
+const ProductList: React.FC<Props> = ({
+    data,
+    pagination,
+    onPageChange,
+    loading
+}) => {
     const products = listData(data);
     return (
         <List
+            loading={loading}
             itemLayout="vertical"
             size="large"
             pagination={
@@ -59,9 +66,9 @@ const ProductList: React.FC<Props> = ({ data, pagination, onPageChange }) => {
                     </div>
                 )
             }
-            renderItem={(item) => (
+            renderItem={(item, index) => (
                 <List.Item
-                    key={item.title}
+                    key={index}
                     actions={[
                         <>
                             <Rate defaultValue={item.rating} allowHalf />

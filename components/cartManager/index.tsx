@@ -45,7 +45,7 @@ const CartManager: React.FC<Props> = ({
         {
             key: 1,
             item: "Full price: ",
-            amount: <Text delete>$ {originalPrice}</Text>
+            amount: <Text delete>$ {originalPrice.toString().slice(0, 10)}</Text>
         },
         {
             key: 3,
@@ -62,16 +62,15 @@ const CartManager: React.FC<Props> = ({
         <Card
             style={{ width: 320, marginTop: 16 }}
             actions={[
-
-                <Row key="">
+                <Row key={"buttons"}>
                     <Col span={14}>
-                        <Button type="primary" danger onClick={onCreateOrder} loading={loading}>
+                        <Button style={{ marginLeft: 20 }} type="primary" danger onClick={onCreateOrder}>
                             <CheckCircleOutlined />
                             Create Order
                         </Button>
                     </Col>
                     <Col span={10}>
-                        <Button onClick={onClearCart} loading={loading}>
+                        <Button style={{ marginRight: 20 }} onClick={onClearCart} loading={loading}>
                             <DeleteOutlined />
                             Clear
                         </Button>

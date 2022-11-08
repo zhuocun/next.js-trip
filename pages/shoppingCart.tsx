@@ -37,7 +37,9 @@ const ShoppingCart: NextPage = () => {
                 jwt: jwt,
                 itemIds: cartItems.map((i) => i.id)
             })
-        );
+        ).then(() => {
+            router.push("/").then();
+        });
     };
 
     const originalPrice = cartItems
@@ -53,15 +55,16 @@ const ShoppingCart: NextPage = () => {
     return (
         <MainLayout>
             <Row>
-                <Col span={16}>
+                <Col span={17}>
                     <div className={"product-list-container"}>
                         <ProductList
                             data={cartItems.map((s) => s.touristRoute)}
                             pagination={null}
+                            loading={loading}
                         />
                     </div>
                 </Col>
-                <Col span={8}>
+                <Col span={7}>
                     <Affix>
                         <div className={styles["payment-card-container"]}>
                             <CartManager

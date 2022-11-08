@@ -61,7 +61,7 @@ const CheckoutCard: React.FC<CheckoutCardProps> = ({
 
     return (
         <Card
-            style={{ width: 650, marginTop: 50 }}
+            style={{ width: 650, marginTop: 50, float: "right" }}
             actions={[
                 orderSet && orderSet.state === "Completed" ? (
                     <Button

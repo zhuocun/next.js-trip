@@ -34,8 +34,7 @@ const Header: React.FC = () => {
     };
 
     const onLogout = () => {
-        dispatch(authSlice.actions.logout());
-        router.push("/").then();
+        router.push("/").then(() => dispatch(authSlice.actions.logout()));
     };
 
     useEffect(() => {

@@ -52,7 +52,7 @@ const ProductDetail: NextPage<Props> = (Props) => {
                             </Button> : null
                         }
                         {/* date */}
-                        <RangePicker open style={{ marginTop: 29 }} />
+                        <RangePicker open style={{ marginTop: 25 }} />
                     </Col>
                 </Row>
             </div>

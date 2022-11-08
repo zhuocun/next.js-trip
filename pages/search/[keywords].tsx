@@ -7,7 +7,6 @@ import FilterArea from "../../components/filter";
 import ProductList from "../../components/productList";
 import Footer from "../../components/footer";
 import { NextPage } from "next";
-import PageSpin from "../../components/spin";
 import styles from "../../styles/searchResult.module.css";
 
 const SearchResult: NextPage = () => {
@@ -34,9 +33,9 @@ const SearchResult: NextPage = () => {
         }
     };
 
-    if (loading) {
-        return <PageSpin />;
-    }
+    // if (loading) {
+    //     return <PageSpin />;
+    // }
 
     if (error) {
         return <div>error：{error}</div>;
@@ -51,6 +50,7 @@ const SearchResult: NextPage = () => {
                 </div>
                 <div className={"product-list-container"}>
                     <ProductList
+                        loading={loading}
                         data={productList}
                         pagination={pagination}
                         onPageChange={onPageChange}
