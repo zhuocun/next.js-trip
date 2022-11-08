@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { getShoppingCart } from "../redux/reducers/cartSlice";
 import SideMenu from "../components/sideMenu";
 import Carousel from "../components/carousel";
 import ProductCollection from "../components/productCollection";
@@ -21,14 +19,7 @@ interface Props {
 
 const Home: NextPage<Props> = (Props) => {
     const collections = Props.collections;
-    const dispatch = useReduxDispatch();
     const { t } = useTranslation();
-    const jwt = useReduxSelector((s) => s.auth.jwt);
-    useEffect(() => {
-        if (jwt) {
-            dispatch(getShoppingCart(jwt));
-        }
-    }, [jwt]);
 
     return (
         <MainLayout>

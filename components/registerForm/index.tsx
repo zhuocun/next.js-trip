@@ -1,32 +1,54 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, notification } from "antd";
 import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { IconType, NotificationPlacement } from "antd/lib/notification";
 
 const RegisterForm: React.FC = () => {
     const router = useRouter();
+
+    const openNotification = (
+        description: string,
+        placement: NotificationPlacement,
+        type: IconType | undefined
+    ) => {
+        notification.open({
+            message: "Notification",
+            placement,
+            description,
+            type: type,
+            duration: 1.5
+        });
+    };
 
     const onFinish = async (values: {
         username: string,
         password: string,
         confirm: string
     }) => {
-        console.log("Success:", values);
         try {
-            await axios.post("http://123.56.149.216:8080/auth/register", {
-                email: values.username,
-                password: values.password,
-                confirmPassword: values.confirm
-            });
-            router.push("/Login/").then();
-        } catch (error) {
-            alert("Register failed");
+            await axios
+                .post("http://123.56.149.216:8080/auth/register", {
+                    email: values.username,
+                    password: values.password,
+                    confirmPassword: values.confirm
+                })
+                .then(() => {
+                    openNotification(
+                        "Register successful! Redirecting...",
+                        "top",
+                        "success"
+                    );
+                    router.push("/login").then();
+                });
+        } catch (err) {
+            onFinishFailed();
         }
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
+    const onFinishFailed = () => {
+        openNotification("Register failed, please try again.", "top", "error");
     };
 
     return (
@@ -113,7 +135,7 @@ const RegisterForm: React.FC = () => {
                 }}
             >
                 <Button type="primary" htmlType="submit">
-                    Submit
+                    Register
                 </Button>
             </Form.Item>
         </Form>

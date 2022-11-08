@@ -15,7 +15,7 @@ const initialState: ShoppingCartState = {
 
 export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
-    async (jwt: string) => {
+    async (jwt: string | null) => {
         const axiosResponse = await axios.get(
             `http://123.56.149.216:8080/api/shoppingCart`,
             {

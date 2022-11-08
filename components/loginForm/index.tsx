@@ -1,22 +1,30 @@
-import React, { useEffect } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import React from "react";
+import { Button, Checkbox, Form, Input, notification } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
+import { getShoppingCart } from "../../redux/reducers/cartSlice";
+import { IconType, NotificationPlacement } from "antd/lib/notification";
 
 const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.auth.loading);
-    const jwt = useReduxSelector((s) => s.auth.jwt);
-
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
-    useEffect(() => {
-        if (jwt) {
-            router.push("/").then();
-        }
-    }, [jwt]);
+    const openNotification = (
+        description: string,
+        placement: NotificationPlacement,
+        type: IconType | undefined
+    ) => {
+        notification.open({
+            message: "Notification",
+            placement,
+            description,
+            type: type,
+            duration: 1.5
+        });
+    };
 
     const onFinish = (values) => {
         dispatch(
@@ -24,11 +32,24 @@ const LoginForm: React.FC = () => {
                 email: values.username,
                 password: values.password
             })
-        );
+        ).then((res) => {
+            if (res.payload) {
+                openNotification(
+                    "Login successful! Redirecting...",
+                    "top",
+                    "success"
+                );
+                dispatch(getShoppingCart(res.payload)).then(() =>
+                    router.push("/")
+                );
+            } else {
+                onFinishFailed();
+            }
+        });
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
+    const onFinishFailed = () => {
+        openNotification("Login failed, please try again.", "top", "error");
     };
 
     return (
