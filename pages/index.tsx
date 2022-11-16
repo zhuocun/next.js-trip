@@ -2,11 +2,11 @@ import React from "react";
 import { Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import SideMenu from "components/sideMenu";
-import Carousel from "../components/carousel";
-import ProductCollection from "../components/productCollection";
-import Partners from "../components/partners";
+import Carousel from "components/carousel";
+import ProductCollection from "components/productCollection";
+import Partners from "components/partners";
 import { GetStaticProps, NextPage } from "next";
-import MainLayout from "../layouts/mainLayout";
+import MainLayout from "layouts/mainLayout";
 import axios from "axios";
 
 const sider1 = "/sider/sider_1.png";

@@ -9,16 +9,16 @@ import {
     Row,
     Typography
 } from "antd";
-import { commentMockData } from "../../mocks/comments";
-import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
+import { commentMockData } from "mocks/comments";
+import { useReduxDispatch, useReduxSelector } from "redux/hooks";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { addToCart } from "../../redux/reducers/cartSlice";
-import ProductIntro from "../../components/productIntro";
-import ProductComments from "../../components/productComments";
 import { GetServerSideProps, NextPage } from "next";
-import styles from "../../styles/productDetail.module.css";
-import MainLayout from "../../layouts/mainLayout";
+import styles from "styles/productDetail.module.css";
 import axios from "axios";
+import { addToCart } from "redux/reducers/cartSlice";
+import ProductIntro from "components/productIntro";
+import ProductComments from "components/productComments";
+import MainLayout from "layouts/mainLayout";
 
 const { RangePicker } = DatePicker;
 

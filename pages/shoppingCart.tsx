@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Affix, Col, Row } from "antd";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { clearCart, createOrder } from "../redux/reducers/cartSlice";
+import { useReduxDispatch, useReduxSelector } from "redux/hooks";
+import { clearCart, createOrder } from "redux/reducers/cartSlice";
 import { useRouter } from "next/router";
-import ProductList from "../components/productList";
-import CartManager from "../components/cartManager";
+import CartManager from "components/cartManager";
+import ProductList from "components/productList";
 import { NextPage } from "next";
-import styles from "../styles/shoppingCart.module.css";
-import MainLayout from "../layouts/mainLayout";
+import styles from "styles/shoppingCart.module.css";
+import MainLayout from "layouts/mainLayout";
 
 const ShoppingCart: NextPage = () => {
     const cartLoading = useReduxSelector((s) => s.cart.loading);
