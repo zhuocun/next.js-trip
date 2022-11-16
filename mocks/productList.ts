@@ -5,14 +5,13 @@
 export const productList1 = [
     {
         id: 1,
-        title:
-            "埃及阿斯旺+卢克索+红海Red Sea+开罗+亚历山大12日跟团游(5钻)·【官方旗舰明星纯玩团】25人封顶|含签证小费全程餐|3晚尼罗河游轮+3晚红海全包度假村+1晚底比斯古都|升级内陆飞机|优质中文导游队伍|七大神庙+赠项目",
+        title: "埃及阿斯旺+卢克索+红海Red Sea+开罗+亚历山大12日跟团游(5钻)·【官方旗舰明星纯玩团】25人封顶|含签证小费全程餐|3晚尼罗河游轮+3晚红海全包度假村+1晚底比斯古都|升级内陆飞机|优质中文导游队伍|七大神庙+赠项目",
         price: "11990",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 2,
@@ -20,9 +19,9 @@ export const productList1 = [
         price: "13290",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 3,
@@ -30,9 +29,9 @@ export const productList1 = [
         price: "4000",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 4,
@@ -40,9 +39,9 @@ export const productList1 = [
         price: "7399",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 5,
@@ -50,9 +49,9 @@ export const productList1 = [
         price: "3499",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 6,
@@ -60,9 +59,9 @@ export const productList1 = [
         price: "5999",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 7,
@@ -70,9 +69,9 @@ export const productList1 = [
         price: "6199",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 8,
@@ -80,9 +79,9 @@ export const productList1 = [
         price: "13699",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 9,
@@ -90,24 +89,23 @@ export const productList1 = [
         price: "5021",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
-    },
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
+    }
 ];
 
 // 新品上市
 export const productList2 = [
     {
         id: 10,
-        title:
-            "南京3日2晚跟团游(4钻)·观中山陵+游总统府+览博物院『游六朝古都 听漫长历史』&逛秦淮河风光带+老门东『品美食 唤醒您的舌尖』&牛首山+报恩寺『诚心祈福 放空心灵』& 2晚连住4钻酒店",
+        title: "南京3日2晚跟团游(4钻)·观中山陵+游总统府+览博物院『游六朝古都 听漫长历史』&逛秦淮河风光带+老门东『品美食 唤醒您的舌尖』&牛首山+报恩寺『诚心祈福 放空心灵』& 2晚连住4钻酒店",
         price: "11990",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 11,
@@ -115,9 +113,9 @@ export const productList2 = [
         price: "13290",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 12,
@@ -125,9 +123,9 @@ export const productList2 = [
         price: "4000",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 13,
@@ -135,9 +133,9 @@ export const productList2 = [
         price: "7399",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 14,
@@ -145,9 +143,9 @@ export const productList2 = [
         price: "3499",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 15,
@@ -155,9 +153,9 @@ export const productList2 = [
         price: "5999",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 16,
@@ -165,9 +163,9 @@ export const productList2 = [
         price: "6199",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 17,
@@ -175,9 +173,9 @@ export const productList2 = [
         price: "13699",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 18,
@@ -185,24 +183,23 @@ export const productList2 = [
         price: "5021",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
-    },
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
+    }
 ];
 
 // 国内游推荐
 export const productList3 = [
     {
         id: 19,
-        title:
-            "埃及阿斯旺+卢克索+红海Red Sea+开罗+亚历山大12日跟团游(5钻)·【官方旗舰明星纯玩团】25人封顶|含签证小费全程餐|3晚尼罗...",
+        title: "埃及阿斯旺+卢克索+红海Red Sea+开罗+亚历山大12日跟团游(5钻)·【官方旗舰明星纯玩团】25人封顶|含签证小费全程餐|3晚尼罗...",
         price: "11990",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 20,
@@ -210,9 +207,9 @@ export const productList3 = [
         price: "13290",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 21,
@@ -220,9 +217,9 @@ export const productList3 = [
         price: "4000",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 22,
@@ -230,9 +227,9 @@ export const productList3 = [
         price: "7399",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 23,
@@ -240,9 +237,9 @@ export const productList3 = [
         price: "3499",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 24,
@@ -250,9 +247,9 @@ export const productList3 = [
         price: "5999",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 25,
@@ -260,9 +257,9 @@ export const productList3 = [
         price: "6199",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 26,
@@ -270,9 +267,9 @@ export const productList3 = [
         price: "13699",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
     },
     {
         id: 27,
@@ -280,8 +277,8 @@ export const productList3 = [
         price: "5021",
         touristRoutePictures: [
             {
-                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg",
-            },
-        ],
-    },
+                url: "https://s3.ax1x.com/2020/12/15/rMQOIJ.jpg"
+            }
+        ]
+    }
 ];
