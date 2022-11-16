@@ -1,6 +1,13 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "paths": {
+            "@/public/*": ["./public/*"],
+            "@/components/*": ["./components/*"],
+            "@/redux/*": ["./redux/*"],
+            "@/styles/*": ["./styles/*"],
+            "@/layouts/*": ["./layouts/*"]
+        },
         "noImplicitAny": false,
         "target": "es5",
         "lib": ["dom", "dom.iterable", "esnext"],

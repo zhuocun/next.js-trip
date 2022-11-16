@@ -4,10 +4,10 @@ import { search } from "redux/reducers/searchSlice";
 import { useRouter } from "next/router";
 import Header from "components/header";
 import FilterArea from "components/filter";
-import ProductList from "components/productList";
 import Footer from "components/footer";
 import { NextPage } from "next";
 import styles from "styles/searchResult.module.css";
+import ProductList from "@/components/productList";
 
 const SearchResult: NextPage = () => {
     const router = useRouter();
