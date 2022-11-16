@@ -8,7 +8,7 @@ interface ITouristRoute {
     price: number;
     rating: number;
     touristRoutePictures: {
-        url: string
+        url: string;
     }[];
     travelDays: string;
     tripType: string;

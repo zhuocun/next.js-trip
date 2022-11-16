@@ -23,9 +23,9 @@ const RegisterForm: React.FC = () => {
     };
 
     const onFinish = async (values: {
-        username: string,
-        password: string,
-        confirm: string
+        username: string;
+        password: string;
+        confirm: string;
     }) => {
         try {
             await axios

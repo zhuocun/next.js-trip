@@ -18,9 +18,9 @@ const initialState: ProductSearchState = {
 export const search = createAsyncThunk(
     "productSearch/search",
     async (parameters: {
-        keywords: string | string[],
-        nextPage: number | string,
-        pageSize: number | string
+        keywords: string | string[];
+        nextPage: number | string;
+        pageSize: number | string;
     }) => {
         let url = `http://123.56.149.216:8080/api/touristRoutes?`;
         url += `pageNumber=${parameters.nextPage}`;

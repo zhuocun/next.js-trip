@@ -3,7 +3,7 @@ import i18n from "i18next";
 
 export interface LanguageState {
     currentLanguage: "en" | "zh";
-    languageList: { name: string, code: string }[];
+    languageList: { name: string; code: string }[];
 }
 
 const initialState: LanguageState = {

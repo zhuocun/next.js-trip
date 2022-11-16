@@ -1,34 +1,34 @@
 {
-  "header": {
-    "title": "Next.js 旅游网",
-    "register": "注册",
-    "login": "登陆",
-    "home_page": "网站首页",
-    "stays": "住宿预定",
-    "flights": "航班信息",
-    "trains": "火车列次",
-    "cars": "租车出行",
-    "tours_tickets": "旅游 & 门票",
-    "bundle_save": "套餐 & 省钱",
-    "attractions": "热门景点",
-    "gift_cards": "礼品卡",
-    "rewards": "Next.js旅游网奖励",
-    "deals": "本周特惠",
-    "shoppingCart": "购物车 ",
-    "logout": "登出",
-    "welcome_without_login": "欢迎!",
-    "hail": "你好 ",
-    "welcome": "，欢迎回来！"
-  },
-  "footer": {
-    "detail": "版权所有 @ Next.js Trip by Zhuocun",
-    "add_new_language": "添加新语言"
-  },
-  "home_page": {
-    "hot_recommended": "爆款推荐",
-    "new_arrival": "新品上市",
-    "domestic_travel": "国内游推荐",
-    "joint_venture": "合作企业",
-    "start_from": "(起)"
-  }
+    "header": {
+        "title": "Next.js 旅游网",
+        "register": "注册",
+        "login": "登陆",
+        "home_page": "网站首页",
+        "stays": "住宿预定",
+        "flights": "航班信息",
+        "trains": "火车列次",
+        "cars": "租车出行",
+        "tours_tickets": "旅游 & 门票",
+        "bundle_save": "套餐 & 省钱",
+        "attractions": "热门景点",
+        "gift_cards": "礼品卡",
+        "rewards": "Next.js旅游网奖励",
+        "deals": "本周特惠",
+        "shoppingCart": "购物车 ",
+        "logout": "登出",
+        "welcome_without_login": "欢迎!",
+        "hail": "你好 ",
+        "welcome": "，欢迎回来！"
+    },
+    "footer": {
+        "detail": "版权所有 @ Next.js Trip by Zhuocun",
+        "add_new_language": "添加新语言"
+    },
+    "home_page": {
+        "hot_recommended": "爆款推荐",
+        "new_arrival": "新品上市",
+        "domestic_travel": "国内游推荐",
+        "joint_venture": "合作企业",
+        "start_from": "(起)"
+    }
 }

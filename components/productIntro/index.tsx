@@ -13,10 +13,7 @@ interface Props {
     productDetail: IProductDetail;
 }
 
-const ProductIntro: React.FC<Props> = ({
-                                           productDetail
-                                       }) => {
-
+const ProductIntro: React.FC<Props> = ({ productDetail }) => {
     const columns: ColumnsType<ProductDescription> = [
         {
             key: "title",
@@ -53,7 +50,10 @@ const ProductIntro: React.FC<Props> = ({
             title: "Discount",
             description: productDetail.price ? (
                 <>
-                    $<Typography.Text delete>{productDetail.originalPrice}</Typography.Text>{" "}
+                    $
+                    <Typography.Text delete>
+                        {productDetail.originalPrice}
+                    </Typography.Text>{" "}
                     <Typography.Text type="danger" strong>
                         ${productDetail.price}
                     </Typography.Text>
@@ -65,7 +65,11 @@ const ProductIntro: React.FC<Props> = ({
         {
             key: 3,
             title: "Rating",
-            description: productDetail.rating ? <Rate allowHalf defaultValue={+productDetail.rating} /> : "No data"
+            description: productDetail.rating ? (
+                <Rate allowHalf defaultValue={+productDetail.rating} />
+            ) : (
+                "No data"
+            )
         }
     ];
 
@@ -88,14 +92,22 @@ const ProductIntro: React.FC<Props> = ({
                 <Typography.Text style={{ marginLeft: 50 }}>
                     {productDetail.rating ? "Rating: " : null}
                     <span className={styles["intro-detail-strong-text"]}>
-                        {productDetail.rating ? productDetail.rating + " / 5" : null}
+                        {productDetail.rating
+                            ? productDetail.rating + " / 5"
+                            : null}
                     </span>
                 </Typography.Text>
             </div>
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
-                {productDetail.touristRoutePictures.map((p, index) => <Image preview={false} key={index} height={150}
-                                                                             src={p.url} />)}
+                {productDetail.touristRoutePictures.map((p, index) => (
+                    <Image
+                        preview={false}
+                        key={index}
+                        height={150}
+                        src={p.url}
+                    />
+                ))}
             </Carousel>
             {/* product detail in table */}
             <Table<ProductDescription>

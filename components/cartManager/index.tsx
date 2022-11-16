@@ -22,14 +22,13 @@ interface Props {
 }
 
 const CartManager: React.FC<Props> = ({
-                                          cartLoading,
-                                          orderLoading,
-                                          originalPrice,
-                                          currentPrice,
-                                          onClearCart,
-                                          onCreateOrder
-                                      }) => {
-
+    cartLoading,
+    orderLoading,
+    originalPrice,
+    currentPrice,
+    onClearCart,
+    onCreateOrder
+}) => {
     const columns: ColumnsType<CartIntro> = [
         {
             title: "Item",
@@ -47,7 +46,9 @@ const CartManager: React.FC<Props> = ({
         {
             key: 1,
             item: "Full price: ",
-            amount: <Text delete>$ {originalPrice.toString().slice(0, 10)}</Text>
+            amount: (
+                <Text delete>$ {originalPrice.toString().slice(0, 10)}</Text>
+            )
         },
         {
             key: 3,
@@ -66,14 +67,22 @@ const CartManager: React.FC<Props> = ({
             actions={[
                 <Row key={"buttons"}>
                     <Col span={14}>
-                        <Button style={{ marginLeft: 20 }} type="primary" danger onClick={onCreateOrder}
-                                loading={orderLoading}>
+                        <Button
+                            style={{ marginLeft: 20 }}
+                            type="primary"
+                            danger
+                            onClick={onCreateOrder}
+                            loading={orderLoading}
+                        >
                             <CheckCircleOutlined />
                             Create Order
                         </Button>
                     </Col>
                     <Col span={10}>
-                        <Button style={{ marginRight: 20 }} onClick={onClearCart}>
+                        <Button
+                            style={{ marginRight: 20 }}
+                            onClick={onClearCart}
+                        >
                             <DeleteOutlined />
                             Clear
                         </Button>

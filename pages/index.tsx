@@ -64,7 +64,7 @@ const Home: NextPage<Props> = (Props) => {
 };
 
 export const getStaticProps: GetStaticProps<{
-    collections: ICollection[]
+    collections: ICollection[];
 }> = async () => {
     try {
         const collections = (

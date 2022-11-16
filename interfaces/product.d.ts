@@ -7,7 +7,7 @@ interface IProductDetail {
     price: string;
     rating: string;
     touristRoutePictures: {
-        url: string
+        url: string;
     }[];
     features: string;
     fees: string;

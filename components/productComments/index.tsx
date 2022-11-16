@@ -3,10 +3,10 @@ import { Comment, List } from "antd";
 
 interface Props {
     data: {
-        author: string,
-        avatar: string,
-        content: string,
-        createDate: string
+        author: string;
+        avatar: string;
+        content: string;
+        createDate: string;
     }[];
 }
 

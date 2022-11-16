@@ -1,5 +1,14 @@
 import React from "react";
-import { Anchor, Button, Col, DatePicker, Divider, Menu, Row, Typography } from "antd";
+import {
+    Anchor,
+    Button,
+    Col,
+    DatePicker,
+    Divider,
+    Menu,
+    Row,
+    Typography
+} from "antd";
 import { commentMockData } from "../../mocks/comments";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { ShoppingCartOutlined } from "@ant-design/icons";
@@ -34,12 +43,13 @@ const ProductDetail: NextPage<Props> = (Props) => {
                 <Row>
                     {/* intro */}
                     <Col span={13}>
-                        {productDetail ?
-                            <ProductIntro productDetail={productDetail} /> : null}
+                        {productDetail ? (
+                            <ProductIntro productDetail={productDetail} />
+                        ) : null}
                     </Col>
                     <Col span={11}>
                         {/* add to cart button */}
-                        {jwt ?
+                        {jwt ? (
                             <Button
                                 style={{ marginTop: 50, display: "block" }}
                                 type="primary"
@@ -49,8 +59,8 @@ const ProductDetail: NextPage<Props> = (Props) => {
                             >
                                 <ShoppingCartOutlined />
                                 Add to cart
-                            </Button> : null
-                        }
+                            </Button>
+                        ) : null}
                         {/* date */}
                         <RangePicker open style={{ marginTop: 25 }} />
                     </Col>
@@ -60,7 +70,10 @@ const ProductDetail: NextPage<Props> = (Props) => {
             <Anchor className={styles["product-detail-anchor"]}>
                 <Menu mode="horizontal">
                     <Menu.Item key="1">
-                        <Anchor.Link href="#features" title="Features"></Anchor.Link>
+                        <Anchor.Link
+                            href="#features"
+                            title="Features"
+                        ></Anchor.Link>
                     </Menu.Item>
 
                     <Menu.Item key="2">
@@ -72,47 +85,59 @@ const ProductDetail: NextPage<Props> = (Props) => {
                     </Menu.Item>
 
                     <Menu.Item key="4">
-                        <Anchor.Link href="#comments" title="Comments"></Anchor.Link>
+                        <Anchor.Link
+                            href="#comments"
+                            title="Comments"
+                        ></Anchor.Link>
                     </Menu.Item>
                 </Menu>
             </Anchor>
             {/* features */}
             <div id="features" className={styles["product-detail-container"]}>
                 <Divider>
-                    <Typography.Title level={3}>
-                        Features
-                    </Typography.Title>
+                    <Typography.Title level={3}>Features</Typography.Title>
                 </Divider>
-                {productDetail ?
-                    (<div dangerouslySetInnerHTML={{ __html: productDetail.features }}
-                          style={{ margin: 50 }} />) : null}
+                {productDetail ? (
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: productDetail.features
+                        }}
+                        style={{ margin: 50 }}
+                    />
+                ) : null}
             </div>
             {/* fees */}
             <div id="fees" className={styles["product-detail-container"]}>
                 <Divider>
-                    <Typography.Title level={3}>
-                        Fees
-                    </Typography.Title>
+                    <Typography.Title level={3}>Fees</Typography.Title>
                 </Divider>
-                {productDetail ?
-                    (<div dangerouslySetInnerHTML={{ __html: productDetail?.fees }} style={{ margin: 50 }} />) : null}
+                {productDetail ? (
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: productDetail?.fees
+                        }}
+                        style={{ margin: 50 }}
+                    />
+                ) : null}
             </div>
             {/* notes */}
             <div id="notes" className={styles["product-detail-container"]}>
                 <Divider>
-                    <Typography.Title level={3}>
-                        Notes
-                    </Typography.Title>
+                    <Typography.Title level={3}>Notes</Typography.Title>
                 </Divider>
-                {productDetail ?
-                    (<div dangerouslySetInnerHTML={{ __html: productDetail?.notes }} style={{ margin: 50 }} />) : null}
+                {productDetail ? (
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: productDetail?.notes
+                        }}
+                        style={{ margin: 50 }}
+                    />
+                ) : null}
             </div>
             {/* comments */}
             <div id="comments" className={styles["product-detail-container"]}>
                 <Divider>
-                    <Typography.Title level={3}>
-                        Comments
-                    </Typography.Title>
+                    <Typography.Title level={3}>Comments</Typography.Title>
                 </Divider>
                 <div style={{ margin: 40 }}>
                     <ProductComments data={commentMockData} />
@@ -123,11 +148,13 @@ const ProductDetail: NextPage<Props> = (Props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<{
-    productDetail: IProductDetail
+    productDetail: IProductDetail;
 }> = async (context) => {
     try {
         const productDetail = (
-            await axios.get(`http://123.56.149.216:8080/api/touristRoutes/${context.params?.touristRouteId}`)
+            await axios.get(
+                `http://123.56.149.216:8080/api/touristRoutes/${context.params?.touristRouteId}`
+            )
         ).data;
         return { props: { productDetail } };
     } catch (err) {

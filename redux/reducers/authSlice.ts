@@ -15,7 +15,7 @@ const initialState: AuthenticationState = {
 
 export const login = createAsyncThunk(
     "authentication/login",
-    async (parameters: { email: string, password: string }) => {
+    async (parameters: { email: string; password: string }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/auth/login`,
             {

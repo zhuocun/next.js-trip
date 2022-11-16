@@ -16,7 +16,7 @@ const initialState: OrderState = {
 
 export const checkout = createAsyncThunk(
     "order/checkout",
-    async (parameters: { jwt: string | null, orderId: string | undefined }) => {
+    async (parameters: { jwt: string | null; orderId: string | undefined }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
             null,

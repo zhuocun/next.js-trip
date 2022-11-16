@@ -30,7 +30,7 @@ export const getShoppingCart = createAsyncThunk(
 
 export const addToCart = createAsyncThunk(
     "shoppingCart/addToCart",
-    async (parameters: { jwt: string, touristRouteId: string | undefined }) => {
+    async (parameters: { jwt: string; touristRouteId: string | undefined }) => {
         const axiosResponse = await axios.post(
             `http://123.56.149.216:8080/api/shoppingCart/items`,
             {
@@ -64,7 +64,7 @@ export const createOrder = createAsyncThunk(
 
 export const clearCart = createAsyncThunk(
     "shoppingCart/clearCart",
-    async (parameters: { jwt: string | null, itemIds: number[] }) => {
+    async (parameters: { jwt: string | null; itemIds: number[] }) => {
         let url = `http://123.56.149.216:8080/api/shoppingCart/items/`;
         url += `(${parameters.itemIds.join(",")})`;
         return await axios.delete(url, {

@@ -21,10 +21,10 @@ interface CheckoutCardProps {
 }
 
 const CheckoutCard: React.FC<CheckoutCardProps> = ({
-                                                       loading,
-                                                       orderSet,
-                                                       onCheckout
-                                                   }) => {
+    loading,
+    orderSet,
+    onCheckout
+}) => {
     const router = useRouter();
     const columns: ColumnsType<OrderInfo> = [
         {
@@ -46,17 +46,19 @@ const CheckoutCard: React.FC<CheckoutCardProps> = ({
 
     const paymentData: OrderInfo[] = orderSet
         ? orderSet.orderItems.map((i, index) => ({
-            key: index,
-            item: i.touristRoute.title.slice(0, 25),
-            originalPrice: (
-                <Title level={5} delete>$ {i.originalPrice} </Title>
-            ),
-            currentPrice: (
-                <Title type="danger" level={5}>
-                    $ {(i.originalPrice * i.discountPresent).toFixed(2)}
-                </Title>
-            )
-        }))
+              key: index,
+              item: i.touristRoute.title.slice(0, 25),
+              originalPrice: (
+                  <Title level={5} delete>
+                      $ {i.originalPrice}{" "}
+                  </Title>
+              ),
+              currentPrice: (
+                  <Title type="danger" level={5}>
+                      $ {(i.originalPrice * i.discountPresent).toFixed(2)}
+                  </Title>
+              )
+          }))
         : [];
 
     return (
@@ -75,7 +77,12 @@ const CheckoutCard: React.FC<CheckoutCardProps> = ({
                         Home
                     </Button>
                 ) : (
-                    <Button type="primary" danger onClick={onCheckout} loading={loading}>
+                    <Button
+                        type="primary"
+                        danger
+                        onClick={onCheckout}
+                        loading={loading}
+                    >
                         <CheckCircleOutlined />
                         Checkout
                     </Button>
@@ -86,7 +93,9 @@ const CheckoutCard: React.FC<CheckoutCardProps> = ({
                 <Meta
                     title={
                         <Title level={2}>
-                            {orderSet && orderSet.state === "Completed" ? "Payment successful" : "Total"}
+                            {orderSet && orderSet.state === "Completed"
+                                ? "Payment successful"
+                                : "Total"}
                         </Title>
                     }
                     description={
