@@ -80,7 +80,6 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        // get shopping cart
         [getShoppingCart.pending.type]: (state) => {
             state.loading = true;
         },
@@ -96,7 +95,6 @@ export const cartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        // add item to shopping cart
         [addToCart.pending.type]: (state) => {
             state.loading = true;
         },
@@ -112,7 +110,6 @@ export const cartSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
-        // clear shopping cart
         [clearCart.pending.type]: (state) => {
             state.loading = true;
         },
