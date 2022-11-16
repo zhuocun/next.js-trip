@@ -1,15 +1,15 @@
 import React from "react";
 import { Col, Row } from "antd";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
+import { useReduxDispatch, useReduxSelector } from "redux/hooks";
 import { checkout } from "../redux/reducers/orderSlice";
-import { getShoppingCart } from "../redux/reducers/cartSlice";
-import CreditCard from "../components/creditCard";
-import CheckoutCard from "../components/checkoutCard";
+import { getShoppingCart } from "redux/reducers/cartSlice";
+import CreditCard from "components/creditCard";
+import CheckoutCard from "components/checkoutCard";
 import { NextPage } from "next";
-import MainLayout from "../layouts/mainLayout";
+import MainLayout from "layouts/mainLayout";
 
 const Checkout: NextPage = () => {
-    const jwtToken = useReduxSelector((s) => s.auth.jwt) as string;
+    const jwtToken = useReduxSelector((s) => s.auth.jwt);
     const loading = useReduxSelector((s) => s.order.loading);
     const orderSet = useReduxSelector((s) => s.order.currentOrder);
     const dispatch = useReduxDispatch();
@@ -25,7 +25,12 @@ const Checkout: NextPage = () => {
                         loading={loading}
                         orderSet={orderSet}
                         onCheckout={() => {
-                            dispatch(checkout({ jwt: jwtToken, orderId: orderSet?.id }));
+                            dispatch(
+                                checkout({
+                                    jwt: jwtToken,
+                                    orderId: orderSet?.id
+                                })
+                            );
                             dispatch(getShoppingCart(jwtToken));
                         }}
                     />
