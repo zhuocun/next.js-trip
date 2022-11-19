@@ -7,7 +7,7 @@ import FilterArea from "components/filter";
 import Footer from "components/footer";
 import { NextPage } from "next";
 import styles from "styles/searchResult.module.css";
-import ProductList from "@/components/productList";
+import ProductList from "components/productList";
 
 const SearchResult: NextPage = () => {
     const router = useRouter();

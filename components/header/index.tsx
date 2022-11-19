@@ -27,7 +27,7 @@ const Header: React.FC = () => {
     const onSearch = (keywords) => {
         for (let i = 0; i < keywords.length; i++) {
             if (keywords[i] !== " ") {
-                router.push(`/search/${keywords}`).then();
+                router.push(`/search/${keywords}`);
                 break;
             }
         }

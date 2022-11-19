@@ -1,9 +1,6 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "paths": {
-            "@/*": ["./*"]
-        },
         "noImplicitAny": false,
         "target": "es5",
         "lib": ["dom", "dom.iterable", "esnext"],

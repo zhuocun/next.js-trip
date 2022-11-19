@@ -22,14 +22,14 @@ const ShoppingCart: NextPage = () => {
             return;
         } else {
             dispatch(createOrder(jwt)).then(() => {
-                router.push("/checkout").then();
+                router.push("/checkout");
             });
         }
     };
 
     useEffect(() => {
         if (!jwt) {
-            router.push("/").then();
+            router.push("/");
         }
     }, [jwt]);
 
@@ -40,7 +40,7 @@ const ShoppingCart: NextPage = () => {
                 itemIds: cartItems.map((i) => i.id)
             })
         ).then(() => {
-            router.push("/").then();
+            router.push("/");
         });
     };
 
