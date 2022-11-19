@@ -70,7 +70,6 @@
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
     "*.{js,css,md,ts,tsx}": "prettier --write"
   }
 }
