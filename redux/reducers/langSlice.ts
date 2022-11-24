@@ -19,7 +19,7 @@ export const languageSlice = createSlice({
     initialState,
     reducers: {
         fetchSwitch: (state, action) => {
-            i18n.changeLanguage(action.payload).then();
+            i18n.changeLanguage(action.payload);
             state.currentLanguage = action.payload;
         },
         fetchAdd: (state) => {
