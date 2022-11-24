@@ -1,7 +1,7 @@
 import React from "react";
 import "styles/globals.css";
 import "i18n/configs";
-import store from "redux/store";
+import store from "redux";
 import { Provider } from "react-redux";
 import axios from "axios";
 import { AppProps } from "next/app";
