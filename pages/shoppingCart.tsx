@@ -58,17 +58,17 @@ const ShoppingCart: NextPage = () => {
         <MainLayout>
             <Row>
                 <Col span={17}>
-                    <div className={"product-list-container"}>
+                    <section className={"product-list-container"}>
                         <ProductList
                             data={cartItems.map((s) => s.touristRoute)}
                             pagination={null}
                             loading={cartLoading}
                         />
-                    </div>
+                    </section>
                 </Col>
                 <Col span={7}>
                     <Affix>
-                        <div className={styles["payment-card-container"]}>
+                        <section className={styles["payment-card-container"]}>
                             <CartManager
                                 cartLoading={cartLoading}
                                 orderLoading={orderLoading}
@@ -77,7 +77,7 @@ const ShoppingCart: NextPage = () => {
                                 onCreateOrder={onCreateOrder}
                                 onClearCart={onClearCart}
                             />
-                        </div>
+                        </section>
                     </Affix>
                 </Col>
             </Row>

@@ -39,7 +39,7 @@ const ProductDetail: NextPage<Props> = (Props) => {
 
     return (
         <MainLayout>
-            <div className={styles["product-intro-container"]}>
+            <section className={styles["product-intro-container"]}>
                 <Row>
                     {/* intro */}
                     <Col span={13}>
@@ -65,7 +65,7 @@ const ProductDetail: NextPage<Props> = (Props) => {
                         <RangePicker open style={{ marginTop: 25 }} />
                     </Col>
                 </Row>
-            </div>
+            </section>
             {/* anchor menu */}
             <Anchor className={styles["product-detail-anchor"]}>
                 <Menu mode="horizontal">
@@ -93,56 +93,62 @@ const ProductDetail: NextPage<Props> = (Props) => {
                 </Menu>
             </Anchor>
             {/* features */}
-            <div id="features" className={styles["product-detail-container"]}>
+            <section
+                id="features"
+                className={styles["product-detail-container"]}
+            >
                 <Divider>
                     <Typography.Title level={3}>Features</Typography.Title>
                 </Divider>
                 {productDetail ? (
-                    <div
+                    <article
                         dangerouslySetInnerHTML={{
                             __html: productDetail.features
                         }}
                         style={{ margin: 50 }}
                     />
                 ) : null}
-            </div>
+            </section>
             {/* fees */}
-            <div id="fees" className={styles["product-detail-container"]}>
+            <section id="fees" className={styles["product-detail-container"]}>
                 <Divider>
                     <Typography.Title level={3}>Fees</Typography.Title>
                 </Divider>
                 {productDetail ? (
-                    <div
+                    <article
                         dangerouslySetInnerHTML={{
                             __html: productDetail?.fees
                         }}
                         style={{ margin: 50 }}
                     />
                 ) : null}
-            </div>
+            </section>
             {/* notes */}
-            <div id="notes" className={styles["product-detail-container"]}>
+            <section id="notes" className={styles["product-detail-container"]}>
                 <Divider>
                     <Typography.Title level={3}>Notes</Typography.Title>
                 </Divider>
                 {productDetail ? (
-                    <div
+                    <article
                         dangerouslySetInnerHTML={{
                             __html: productDetail?.notes
                         }}
                         style={{ margin: 50 }}
                     />
                 ) : null}
-            </div>
+            </section>
             {/* comments */}
-            <div id="comments" className={styles["product-detail-container"]}>
+            <section
+                id="comments"
+                className={styles["product-detail-container"]}
+            >
                 <Divider>
                     <Typography.Title level={3}>Comments</Typography.Title>
                 </Divider>
                 <div style={{ margin: 40 }}>
                     <ProductComments data={commentMockData} />
                 </div>
-            </div>
+            </section>
         </MainLayout>
     );
 };

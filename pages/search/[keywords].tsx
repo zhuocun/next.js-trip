@@ -42,9 +42,9 @@ const SearchResult: NextPage = () => {
     }
 
     return (
-        <div>
+        <main>
             <Header />
-            <div className={"page-content"}>
+            <section className={"page-content"}>
                 <div className={styles["filter-container"]}>
                     <FilterArea />
                 </div>
@@ -56,9 +56,9 @@ const SearchResult: NextPage = () => {
                         onPageChange={onPageChange}
                     />
                 </div>
-            </div>
+            </section>
             <Footer />
-        </div>
+        </main>
     );
 };
 
