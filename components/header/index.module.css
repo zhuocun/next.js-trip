@@ -1,15 +1,15 @@
+.app-header {
+    background-color: #000072;
+}
+
+.main-header {
+    background-color: #000072;
+}
+
 .inner {
     width: 1230px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.app-header {
-    background-color: #000072 !important;
-}
-
-.main-header {
-    background-color: #000072 !important;
 }
 
 .App-logo {
