@@ -96,7 +96,10 @@ const ProductDetail: NextPage<{
                     <Menu mode="horizontal" items={menuItems} />
                 </Anchor>
                 {/* features */}
-                <section className={styles["product-detail-container"]}>
+                <section
+                    id="features"
+                    className={styles["product-detail-container"]}
+                >
                     <Divider>
                         <Typography.Title level={3}>Features</Typography.Title>
                     </Divider>
@@ -108,7 +111,10 @@ const ProductDetail: NextPage<{
                     />
                 </section>
                 {/* fees */}
-                <section className={styles["product-detail-container"]}>
+                <section
+                    id="fees"
+                    className={styles["product-detail-container"]}
+                >
                     <Divider>
                         <Typography.Title level={3}>Fees</Typography.Title>
                     </Divider>
@@ -120,7 +126,10 @@ const ProductDetail: NextPage<{
                     />
                 </section>
                 {/* notes */}
-                <section className={styles["product-detail-container"]}>
+                <section
+                    id="notes"
+                    className={styles["product-detail-container"]}
+                >
                     <Divider>
                         <Typography.Title level={3}>Notes</Typography.Title>
                     </Divider>
@@ -132,7 +141,10 @@ const ProductDetail: NextPage<{
                     />
                 </section>
                 {/* comments */}
-                <section className={styles["product-detail-container"]}>
+                <section
+                    id="comments"
+                    className={styles["product-detail-container"]}
+                >
                     <Divider>
                         <Typography.Title level={3}>Comments</Typography.Title>
                     </Divider>
