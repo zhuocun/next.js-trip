@@ -40,7 +40,7 @@ const Home: NextPage<{
             <ProductCollection
                 title={
                     <Typography.Title level={3} type="danger">
-                        New Trips
+                        {t("home_page.new_trips")}
                     </Typography.Title>
                 }
                 sideImg={sider2}
@@ -49,7 +49,7 @@ const Home: NextPage<{
             <ProductCollection
                 title={
                     <Typography.Title level={3} type="success">
-                        Domestic Trip
+                        {t("home_page.domestic_trips")}
                     </Typography.Title>
                 }
                 sideImg={sider3}
