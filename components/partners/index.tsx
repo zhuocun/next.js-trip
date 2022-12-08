@@ -11,7 +11,7 @@ const img4 = "/partner/facebook.png";
 const companies = [
     { src: img1, title: "Microsoft" },
     { src: img2, title: "Youtube" },
-    { src: img3, title: "Ins" },
+    { src: img3, title: "Instagram" },
     { src: img4, title: "Facebook" }
 ];
 
@@ -26,12 +26,8 @@ const Partners: React.FC = () => {
             </Divider>
             <Row>
                 {companies.map((c, index) => (
-                    <Col span={6} key={"business-partner-" + index}>
-                        <img
-                            src={c.src}
-                            alt="business-partner"
-                            className={styles.img}
-                        />
+                    <Col span={6} key={"partner-" + index}>
+                        <img src={c.src} alt="partner" className={styles.img} />
                     </Col>
                 ))}
             </Row>
