@@ -31,7 +31,7 @@ const ShoppingCart: NextPage = () => {
         if (!jwt) {
             router.push("/");
         }
-    }, [jwt]);
+    }, [jwt, router]);
 
     const onClearCart = () => {
         dispatch(

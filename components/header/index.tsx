@@ -39,7 +39,6 @@ const Header: React.FC = () => {
 
     useEffect(() => {
         if (jwt) {
-            // prettier-ignore
             const token = jwt_decode<MyJwtPayload>(jwt);
             setUsername(token.username);
         }
