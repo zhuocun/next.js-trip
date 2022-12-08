@@ -13,12 +13,9 @@ const sider1 = "/sider/sider_1.png";
 const sider2 = "/sider/sider_2.png";
 const sider3 = "/sider/sider_3.png";
 
-interface Props {
+const Home: NextPage<{
     collections: ICollection[];
-}
-
-const Home: NextPage<Props> = (Props) => {
-    const collections = Props.collections;
+}> = ({ collections }) => {
     const { t } = useTranslation();
 
     return (

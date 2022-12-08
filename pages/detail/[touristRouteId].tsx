@@ -22,12 +22,9 @@ import MainLayout from "layouts/mainLayout";
 
 const { RangePicker } = DatePicker;
 
-interface Props {
+const ProductDetail: NextPage<{
     productDetail: IProductDetail;
-}
-
-const ProductDetail: NextPage<Props> = (Props) => {
-    const productDetail = Props.productDetail;
+}> = ({ productDetail }) => {
     const jwt = useReduxSelector((s) => s.auth.jwt) as string;
     const cartLoading = useReduxSelector((s) => s.cart.loading);
 
