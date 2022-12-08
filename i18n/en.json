@@ -1,32 +1,32 @@
 {
-  "header": {
-    "title": "Next.js Trip",
-    "register": "Register",
-    "login": "Login",
-    "home_page": "Home",
-    "stays": "Stays",
-    "flights": "Flights",
-    "trains": "Trains",
-    "cars": "Cars",
-    "tours_tickets": "Tours & Tickets",
-    "bundle_save": "Bundle & Save",
-    "attractions": "Attractions",
-    "gift_cards": "Gift Cards",
-    "rewards": "Next.js Trip Rewards",
-    "deals": "Weekly Deals",
-    "shoppingCart": "My cart ",
-    "logout": "Logout",
-    "welcome_without_login": "Welcome!",
-    "hail": "Hi ",
-    "welcome": ", welcome!"
-  },
-  "footer": {
-    "detail": "© Next.js Trip by Zhuocun. All Rights Reserved.",
-    "add_new_language": "add new language"
-  },
-  "home_page": {
-    "hot_recommended": "Hot Recommendations",
-    "new_trips": "New Trips",
-    "domestic_trips": "Domestic trips"
-  }
+    "header": {
+        "title": "Next.js Trip",
+        "register": "Register",
+        "login": "Login",
+        "home_page": "Home",
+        "stays": "Stays",
+        "flights": "Flights",
+        "trains": "Trains",
+        "cars": "Cars",
+        "tours_tickets": "Tours & Tickets",
+        "bundle_save": "Bundle & Save",
+        "attractions": "Attractions",
+        "gift_cards": "Gift Cards",
+        "rewards": "Next.js Trip Rewards",
+        "deals": "Weekly Deals",
+        "shoppingCart": "My cart ",
+        "logout": "Logout",
+        "welcome_without_login": "Welcome!",
+        "hail": "Hi ",
+        "welcome": ", welcome!"
+    },
+    "footer": {
+        "detail": "© Next.js Trip by Zhuocun. All Rights Reserved.",
+        "add_new_language": "add new language"
+    },
+    "home_page": {
+        "hot_recommended": "Hot Recommendations",
+        "new_trips": "New Trips",
+        "domestic_trips": "Domestic trips"
+    }
 }
