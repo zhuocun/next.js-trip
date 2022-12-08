@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import environment from "../../constants/env";
 
 interface AuthenticationState {
     loading: boolean;
@@ -17,7 +18,7 @@ export const login = createAsyncThunk(
     "authentication/login",
     async (parameters: { email: string; password: string }) => {
         const axiosResponse = await axios.post(
-            `http://123.56.149.216:8080/auth/login`,
+            `${environment.authBaseUrl}/login`,
             {
                 email: parameters.email,
                 password: parameters.password

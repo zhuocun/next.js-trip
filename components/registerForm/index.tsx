@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { IconType, NotificationPlacement } from "antd/lib/notification";
+import environment from "../../constants/env";
 
 const RegisterForm: React.FC = () => {
     const router = useRouter();
@@ -29,7 +30,7 @@ const RegisterForm: React.FC = () => {
     }) => {
         try {
             await axios
-                .post("http://123.56.149.216:8080/auth/register", {
+                .post(`${environment.authBaseUrl}/register`, {
                     email: values.username,
                     password: values.password,
                     confirmPassword: values.confirm

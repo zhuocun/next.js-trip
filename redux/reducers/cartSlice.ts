@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import environment from "../../constants/env";
 
 interface ShoppingCartState {
     loading: boolean;
@@ -17,7 +18,7 @@ export const getShoppingCart = createAsyncThunk(
     "shoppingCart/getShoppingCart",
     async (jwt: string | null) => {
         const axiosResponse = await axios.get(
-            `http://123.56.149.216:8080/api/shoppingCart`,
+            `${environment.apiBaseUrl}/shoppingCart`,
             {
                 headers: {
                     Authorization: `bearer ${jwt}`
@@ -32,7 +33,7 @@ export const addToCart = createAsyncThunk(
     "shoppingCart/addToCart",
     async (parameters: { jwt: string; touristRouteId: string | undefined }) => {
         const axiosResponse = await axios.post(
-            `http://123.56.149.216:8080/api/shoppingCart/items`,
+            `${environment.apiBaseUrl}/shoppingCart/items`,
             {
                 touristRouteId: parameters.touristRouteId
             },
@@ -50,7 +51,7 @@ export const createOrder = createAsyncThunk(
     "shoppingCart/createOrder",
     async (jwt: string | null) => {
         const axiosResponse = await axios.post(
-            `http://123.56.149.216:8080/api/shoppingCart/checkout`,
+            `${environment.apiBaseUrl}/shoppingCart/checkout`,
             null,
             {
                 headers: {
@@ -65,7 +66,7 @@ export const createOrder = createAsyncThunk(
 export const clearCart = createAsyncThunk(
     "shoppingCart/clearCart",
     async (parameters: { jwt: string | null; itemIds: number[] }) => {
-        let url = `http://123.56.149.216:8080/api/shoppingCart/items/`;
+        let url = `${environment.apiBaseUrl}/shoppingCart/items/`;
         url += `(${parameters.itemIds.join(",")})`;
         return await axios.delete(url, {
             headers: {

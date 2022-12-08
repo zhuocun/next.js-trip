@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createOrder } from "./cartSlice";
+import environment from "../../constants/env";
 
 interface OrderState {
     loading: boolean;
@@ -18,7 +19,7 @@ export const checkout = createAsyncThunk(
     "order/checkout",
     async (parameters: { jwt: string | null; orderId: string | undefined }) => {
         const axiosResponse = await axios.post(
-            `http://123.56.149.216:8080/api/orders/${parameters.orderId}/placeOrder`,
+            `${environment.apiBaseUrl}/orders/${parameters.orderId}/placeOrder`,
             null,
             {
                 headers: {
