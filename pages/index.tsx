@@ -31,7 +31,7 @@ const Home: NextPage<{
             <ProductCollection
                 title={
                     <Typography.Title level={3} type="warning">
-                        {t("home_page.hot_recommended")}
+                        {t("home_page.hot_recommendations")}
                     </Typography.Title>
                 }
                 sideImg={sider1}
