@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./index.module.css";
 import { Carousel, Rate, Table, Typography } from "antd";
 import { ColumnsType } from "antd/lib/table";
-import Image from "next/image";
 
 interface ProductDescription {
     key: number;
@@ -102,10 +101,9 @@ const ProductIntro: React.FC<Props> = ({ productDetail }) => {
             {/* carousel */}
             <Carousel autoplay slidesToShow={3}>
                 {productDetail.touristRoutePictures.map((p, index) => (
-                    <Image
+                    <img
                         key={index}
                         height={150}
-                        width={450}
                         src={p.url}
                         alt={"carouselPic"}
                     />

@@ -20,11 +20,18 @@ const Home: NextPage<{
 
     return (
         <MainLayout>
-            <Row style={{ marginTop: 24 }}>
+            <Row
+                style={{
+                    marginTop: 24,
+                    width: "auto",
+                    height: "auto",
+                    position: "relative"
+                }}
+            >
                 <Col span={6}>
                     <SideMenu />
                 </Col>
-                <Col span={18}>
+                <Col span={18} style={{ position: "relative" }}>
                     <Carousel />
                 </Col>
             </Row>
