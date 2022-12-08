@@ -13,13 +13,13 @@ const Carousel: React.FC = () => {
                 src={carouselImage1}
                 alt={"img1"}
                 width={1200}
-                height={300}
+                height={250}
             />
             <Image
                 src={carouselImage2}
                 alt={"img2"}
                 width={1200}
-                height={300}
+                height={250}
             />
         </AntCarousel>
     );
