@@ -94,7 +94,7 @@ const CheckoutCard: React.FC<CheckoutCardProps> = ({
                     title={
                         <Title level={2}>
                             {orderSet && orderSet.state === "Completed"
-                                ? "Payment successful"
+                                ? "Payment Successful"
                                 : "Total"}
                         </Title>
                     }
