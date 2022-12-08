@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
-import { Carousel as AntCarousel, Image } from "antd";
+import { Carousel as AntCarousel } from "antd";
+import Image from "next/image";
 
 const Carousel: React.FC = () => {
     const carouselImage1 = "/carousel/carousel_1.jpg";
@@ -8,8 +9,18 @@ const Carousel: React.FC = () => {
 
     return (
         <AntCarousel autoplay className={styles.slider}>
-            <Image preview={false} src={carouselImage1} />
-            <Image preview={false} src={carouselImage2} />
+            <Image
+                src={carouselImage1}
+                alt={"img1"}
+                width={1200}
+                height={300}
+            />
+            <Image
+                src={carouselImage2}
+                alt={"img2"}
+                width={1200}
+                height={300}
+            />
         </AntCarousel>
     );
 };

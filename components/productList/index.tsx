@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, List, Rate, Tag, Typography } from "antd";
+import { List, Rate, Tag, Typography } from "antd";
 import Link from "next/link";
+import Image from "next/image";
 
 const listData = (productList: ITouristRoute[] | null) =>
     productList?.map((p) => ({
@@ -79,7 +80,6 @@ const ProductList: React.FC<Props> = ({
                     ]}
                     extra={
                         <Image
-                            preview={false}
                             width={272}
                             height={172}
                             alt="image"
