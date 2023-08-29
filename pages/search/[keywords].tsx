@@ -38,7 +38,7 @@ const SearchResult: NextPage = () => {
     // }
 
     if (error) {
-        return <div>error：{error}</div>;
+        return <div>error: {error}</div>;
     }
 
     return (
