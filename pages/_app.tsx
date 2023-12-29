@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import axios from "axios";
 import { AppProps } from "next/app";
 
-axios.defaults.headers["x-icode"] = "E28C11308F543C16";
+axios.defaults.headers["x-icode"] = "5D3A997F0D09A968";
 
 const NextJSTrip = ({ Component, pageProps }: AppProps) => {
     return (

@@ -3,7 +3,7 @@ module.exports = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "z3.ax1x.com",
+                hostname: "pic.imgdb.cn",
                 pathname: "/**"
             }
         ]

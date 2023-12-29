@@ -20,6 +20,7 @@ import { addToCart } from "redux/reducers/cartSlice";
 import ProductIntro from "components/productIntro";
 import ProductComments from "components/productComments";
 import MainLayout from "layouts/mainLayout";
+import environment from "constants/env";
 
 const { RangePicker } = DatePicker;
 
@@ -170,7 +171,7 @@ export const getStaticProps: GetStaticProps<{
     try {
         const productDetail = (
             await axios.get(
-                `http://123.56.149.216:8080/api/touristRoutes/${context.params?.touristRouteId}`
+                `${environment.apiBaseUrl}/touristRoutes/${context.params?.touristRouteId}`
             )
         ).data;
         return { props: { productDetail }, revalidate: 1000 * 60 };

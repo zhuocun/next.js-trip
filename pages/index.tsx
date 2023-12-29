@@ -8,6 +8,7 @@ import Partners from "components/partners";
 import { GetStaticProps, NextPage } from "next";
 import MainLayout from "layouts/mainLayout";
 import axios from "axios";
+import environment from "constants/env";
 
 const sider1 = "/sider/sider_1.png";
 const sider2 = "/sider/sider_2.png";
@@ -72,7 +73,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async () => {
     try {
         const collections = (
-            await axios.get("http://123.56.149.216:8080/api/productCollections")
+            await axios.get(`${environment.apiBaseUrl}/productCollections`)
         ).data;
         return { props: { collections }, revalidate: 1000 * 60 };
     } catch (err) {
