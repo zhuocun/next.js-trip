@@ -4,13 +4,13 @@ import styles from "./index.module.css";
 import { useTranslation } from "react-i18next";
 
 const img1 = "/partner/microsoft.png";
-const img2 = "/partner/youtube.png";
+const img2 = "/partner/youTube.png";
 const img3 = "/partner/instagram.png";
 const img4 = "/partner/facebook.png";
 
 const companies = [
     { src: img1, title: "Microsoft" },
-    { src: img2, title: "Youtube" },
+    { src: img2, title: "YouTube" },
     { src: img3, title: "Instagram" },
     { src: img4, title: "Facebook" }
 ];

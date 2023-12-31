@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     const cartItems = useReduxSelector((s) => s.cart.cartItems);
     const loading = useReduxSelector((s) => s.cart.loading);
 
-    const onSearch = (keywords) => {
+    const onSearch = (keywords: string) => {
         for (let i = 0; i < keywords.length; i++) {
             if (keywords[i] !== " ") {
                 router.push(`/search/${keywords}`);

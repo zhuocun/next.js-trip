@@ -11,7 +11,7 @@ interface FilterTagProps {
 const FilterTag: React.FC<FilterTagProps> = (props) => {
     const [checked, setChecked] = useState(false);
 
-    const handleChange = (checked) => {
+    const handleChange = (checked: boolean) => {
         setChecked(checked);
     };
 

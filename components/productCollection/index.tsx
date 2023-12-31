@@ -18,7 +18,7 @@ const ProductCollection: React.FC<Props> = ({
     const productGroup1: ITouristRoute[] = [];
     const productGroup2: ITouristRoute[] = [];
     const productGroup3: ITouristRoute[] = [];
-    touristRoutes.slice(1).forEach(function (t, index) {
+    touristRoutes.slice(1).forEach((t, index) => {
         if (index <= 1) {
             productGroup1.push(t);
         } else if (index >= 2 && index <= 3) {
